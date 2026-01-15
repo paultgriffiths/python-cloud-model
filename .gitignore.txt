@@ -1,2 +1,35 @@
 __pycache__/
 *.pyc
+
+# Python virtual environments
+venv/
+.env/
+.envrc
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Build / cache
+build/
+dist/
+*.egg-info/
+
+# Test / coverage
+.coverage
+htmlcov/
+
+# IDE / editors
+.vscode/
+.idea/
+
+# Generated results (plots, tables)
+*.png
+*.csv
+*.xlsx
