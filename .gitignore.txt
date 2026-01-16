@@ -33,3 +33,6 @@ htmlcov/
 *.png
 *.csv
 *.xlsx
+
+__pycache__/
+*.pyc
