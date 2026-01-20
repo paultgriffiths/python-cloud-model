@@ -94,9 +94,15 @@ pip install numpy scipy matplotlib
 ```bash
 pip install numpy scipy matplotlib
 
+### 2. Run parcel simulations
+
 python run_parcel_competition.py
 
+### 3. Run biological ice-nucleation experiments
+
 python run_bioIN_onset.py
+
+### 4. Generate figures
 
 python plot_results_polished.py
 
