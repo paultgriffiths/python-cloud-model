@@ -4,7 +4,7 @@
 This repository contains a physically based Python parcel model developed to study
 cloud droplet activation and condensational growth in mixed aerosol populations.
 
-The model is designed as a **research-oriented framework**, with a strong emphasis on
+The model is designed as a research-oriented framework, with a strong emphasis on
 physical interpretability, numerical stability, and transparent implementation.
 
 ## Scientific Motivation
