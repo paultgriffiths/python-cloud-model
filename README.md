@@ -90,6 +90,10 @@ It is recommended to use a virtual environment.
 ```bash
 pip install numpy scipy matplotlib
 
+### 1. Install dependencies
+```bash
+pip install numpy scipy matplotlib
+
 python run_parcel_competition.py
 
 python run_bioIN_onset.py
