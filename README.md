@@ -86,26 +86,36 @@ on liquid- and ice-phase cloud formation.
 This project is written in Python (>=3.9).
 It is recommended to use a virtual environment.
 
-### 1. Install dependencies
+### 0. Create and activate a virtual environment
 ```bash
-pip install numpy scipy matplotlib
+python -m venv venv 
+source venv/bin/activate
+```
+
+On Windows:
+venv\Scripts\activate
 
 ### 1. Install dependencies
 ```bash
 pip install numpy scipy matplotlib
+```
 
 ### 2. Run parcel simulations
-
+```bash
 python run_parcel_competition.py
 
+```
 ### 3. Run biological ice-nucleation experiments
-
+```bash
 python run_bioIN_onset.py
 
+```
 ### 4. Generate figures
+```bash
 
 python plot_results_polished.py
 
 python plot_bioIN_onset.py
 
 ```
+
