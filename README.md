@@ -1,16 +1,12 @@
 # Python Cloud Parcel Model
 
 ## Project Overview
-This repository contains a physically based Python parcel model developed to study
-cloud droplet activation and condensational growth in mixed aerosol populations.
+This repository contains a physically based Python parcel model developed to study cloud droplet activation and condensational growth in mixed aerosol populations.
 
-The model is designed as a research-oriented framework, with a strong emphasis on
-physical interpretability, numerical stability, and transparent implementation.
+The model is designed as a research-oriented framework, with a strong emphasis on physical interpretability, numerical stability, and transparent implementation.
 
 ## Scientific Motivation
-Aerosol–cloud interactions remain a major source of uncertainty in climate modelling.
-Parcel models offer a controlled environment to isolate key microphysical processes
-while retaining detailed thermodynamic descriptions.
+Aerosol–cloud interactions remain a major source of uncertainty in climate modelling. Parcel models offer a controlled environment to isolate key microphysical processes while retaining detailed thermodynamic descriptions.
 
 This project focuses in particular on:
 - Köhler-based aerosol activation
@@ -36,55 +32,35 @@ Key components include:
 ## Results and Key Findings
 
 ### 1. Supersaturation sensitivity to updraft velocity
-A series of parcel simulations were performed to examine the sensitivity of peak
-supersaturation to changes in updraft velocity (cooling rate).
+A series of parcel simulations were performed to examine the sensitivity of peak supersaturation to changes in updraft velocity (cooling rate).
 
-Across the tested range (w = 0.2–2.0 m s⁻¹), the model remains numerically stable and
-exhibits a monotonic increase in peak supersaturation with increasing updraft velocity.
-This behaviour is physically expected, as stronger updrafts generate supersaturation
-more rapidly through enhanced cooling.
+Across the tested range (w = 0.2–2.0 m s⁻¹), the model remains numerically stable and exhibits a monotonic increase in peak supersaturation with increasing updraft velocity. This behaviour is physically expected, as stronger updrafts generate supersaturation more rapidly through enhanced cooling.
 
-These results confirm that the model captures the fundamental dynamical control on
-liquid-phase cloud droplet activation.
+These results confirm that the model captures the fundamental dynamical control on liquid-phase cloud droplet activation.
 
 ### 2. Minimal biological ice-nucleation parameterisation
-A minimal biological ice-nucleation (IN) class was introduced to represent the
-temperature-dependent activation of biological particles (e.g. pollen-like IN).
+A minimal biological ice-nucleation (IN) class was introduced to represent the temperature-dependent activation of biological particles (e.g. pollen-like IN).
 
-Ice activity is parameterised using a logistic dependence on temperature, characterised
-by a midpoint temperature (T₅₀) and activation width. Diagnostic tests show that the
-fraction of ice-active particles increases rapidly with decreasing temperature,
-consistent with established laboratory and field observations of biological IN.
+Ice activity is parameterised using a logistic dependence on temperature, characterised by a midpoint temperature (T₅₀) and activation width. Diagnostic tests show that the fraction of ice-active particles increases rapidly with decreasing temperature, consistent with established laboratory and field observations of biological IN.
 
 ### 3. Ice onset in a cooling parcel
-The biological IN class was coupled to the cooling parcel framework to diagnose the
-onset of ice nucleation under different updraft velocities.
+The biological IN class was coupled to the cooling parcel framework to diagnose the onset of ice nucleation under different updraft velocities.
 
-For a fixed biological IN population, the onset temperature of ice nucleation remains
-nearly invariant across updraft velocities, indicating that ice initiation is primarily
-thermodynamically controlled. In contrast, the onset time decreases systematically with
-increasing updraft velocity, as stronger updrafts reach the critical temperature more
-rapidly.
+For a fixed biological IN population, the onset temperature of ice nucleation remains nearly invariant across updraft velocities, indicating that ice initiation is primarily thermodynamically controlled. In contrast, the onset time decreases systematically with increasing updraft velocity, as stronger updrafts reach the critical temperature more rapidly.
 
 ### 4. Comparison of liquid- and ice-phase sensitivities
-Taken together, these experiments highlight contrasting roles of updraft velocity in
-cloud microphysical processes:
+Taken together, these experiments highlight contrasting roles of updraft velocity in cloud microphysical processes:
+- Updraft velocity strongly controls the magnitude of peak supersaturation and therefore liquid droplet activation.
+- Biological ice nucleation is comparatively insensitive to updraft velocity in temperature space, but sensitive in time, with faster updrafts leading to earlier ice onset.
 
-- Updraft velocity strongly controls the magnitude of peak supersaturation and therefore
-  liquid droplet activation.
-- Biological ice nucleation is comparatively insensitive to updraft velocity in
-  temperature space, but sensitive in time, with faster updrafts leading to earlier ice
-  onset.
-
-This comparison demonstrates how the same dynamical forcing can exert distinct controls
-on liquid- and ice-phase cloud formation.
+This comparison demonstrates how the same dynamical forcing can exert distinct controls on liquid- and ice-phase cloud formation.
 
 ---
 
 ## How to Run the Model
 
-This project is written in Python (>=3.9).
-It is recommended to use a virtual environment.
+This project is written in Python (>=3.9). It is recommended to use a virtual environment.
+
 
 ### 0. Create and activate a virtual environment
 ```bash
@@ -92,8 +68,11 @@ python -m venv venv
 source venv/bin/activate
 ```
 
-On Windows:
+On Windows (PowerShell / CMD)
+```bash
+python -m venv venv
 venv\Scripts\activate
+```
 
 ### 1. Install dependencies
 ```bash
