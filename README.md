@@ -65,21 +65,28 @@ This project is written in Python (>=3.9). It is recommended to use a virtual en
 ### 0. Create and activate a virtual environment
 ```bash
 python -m venv venv 
+
+```
+
+### On Linux / macOS:
+```bash
 source venv/bin/activate
+
 ```
 
 ### On Windows (PowerShell / CMD)
 ```bash
-python -m venv venv
 venv\Scripts\activate
+
 ```
 
 ### 1. Install dependencies
 ```bash
 pip install numpy scipy matplotlib
+
 ```
 
-### 2. Run parcel simulations
+### 2. Run parcel simulations (liquid phase)
 ```bash
 python run_parcel_competition.py
 
@@ -89,12 +96,18 @@ python run_parcel_competition.py
 python run_bioIN_onset.py
 
 ```
-### 4. Generate figures
+### 4. Run minimal mixed-phase prototype (liquid + biological ice)
 ```bash
+python run_mixed_phase_minimal.py
 
+```
+
+### 5. Generate figures
+```bash
 python plot_results_polished.py
-
 python plot_bioIN_onset.py
+python plot_mixed_phase_compare.py
+
 
 ```
 
