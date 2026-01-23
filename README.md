@@ -132,7 +132,6 @@ Running the plotting scripts generates the following figures:
 - `mixed_phase_S_vs_time.png` – Supersaturation evolution with and without biological ice nucleation
 
 
-```
 
 
 
