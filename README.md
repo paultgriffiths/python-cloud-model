@@ -68,7 +68,7 @@ python -m venv venv
 source venv/bin/activate
 ```
 
-On Windows (PowerShell / CMD)
+### On Windows (PowerShell / CMD)
 ```bash
 python -m venv venv
 venv\Scripts\activate
