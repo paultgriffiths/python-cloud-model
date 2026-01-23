@@ -124,6 +124,15 @@ python plot_mixed_phase_compare.py
 
 
 ```
+### Output Figures
+Running the plotting scripts generates the following figures:
+- `peak_supersaturation_vs_pollen.png` – Peak supersaturation as a function of pollen concentration
+- `updraft_sensitivity_Speak_vs_w.png` – Peak supersaturation versus updraft velocity
+- `bioIN_onset_vs_updraft.png` – Ice nucleation onset time versus updraft velocity
+- `mixed_phase_S_vs_time.png` – Supersaturation evolution with and without biological ice nucleation
+
+
+```
 
 
 
