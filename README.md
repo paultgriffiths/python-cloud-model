@@ -71,15 +71,6 @@ liquid- and ice-phase cloud formation.
 ---
 
 ## How to Run the Model
-This project is written in Python (>=3.9). It is recommended to use a virtual environment.
-
-### 0. Create and activate a virtual environment
-
-Create:
-```bash
-python -m venv venv
-
-## How to Run the Model
 This project is written in **Python (>=3.9)**.
 It is recommended to use a virtual environment.
 
