@@ -1,0 +1,33 @@
+# ice_growth.py
+# Minimal ice deposition growth (toy but stable)
+
+def ice_deposition_sink(S, es, qi, dt, k0=1e-5, alpha=50.0):
+    """
+    Compute a simple vapour sink due to ice deposition growth.
+
+    Inputs
+    -------
+    S   : supersaturation (dimensionless, e.g. 0.003 = 0.3%)
+    es  : saturation vapour pressure (Pa)
+    qi  : ice mass proxy (arbitrary units, treated like "amount of ice")
+    dt  : timestep (s)
+    k0  : base strength (tuning parameter)
+    alpha : controls how sink increases with qi
+
+    Returns
+    -------
+    de   : vapour pressure removed (Pa)
+    qi_new : updated qi
+    """
+
+    if S <= 0.0:
+        return 0.0, qi
+
+    # Growth rate increases with supersaturation and with existing ice amount
+    growth_factor = (1.0 + alpha * qi)
+    de = k0 * growth_factor * S * es * dt
+
+    # Update qi consistently (simple proportional update)
+    qi_new = qi + 1e-8 * de  # scaling chosen for stability / readability
+
+    return de, qi_new

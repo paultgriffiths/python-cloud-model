@@ -18,6 +18,17 @@ This project focuses in particular on:
 - Sensitivity to aerosol size and hygroscopicity
 - The role of large biological particles (e.g. pollen)
 
+### Mixed-phase prototype with ice growth
+
+A minimal mixed-phase extension was implemented including biological ice nucleation
+and a simple vapour deposition growth term for ice.
+
+Once ice nucleation occurs, supersaturation is rapidly depleted relative to the
+liquid-only case, while an ice mass proxy (qi) increases monotonically with time.
+This demonstrates the strong vapour sink associated with ice growth in mixed-phase
+clouds.
+
+
 ## Repository Structure
 The core model implementation is located in the `parcel_model/` directory.
 
