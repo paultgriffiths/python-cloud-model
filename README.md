@@ -1,6 +1,10 @@
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
+![Research Code](https://img.shields.io/badge/code-research-blueviolet.svg)
+![Citation](https://img.shields.io/badge/citation-available-brightgreen.svg)
 ![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Status](https://img.shields.io/badge/status-research--prototype-orange.svg)
+
 
 # Python Cloud Parcel Model
 
