@@ -1,3 +1,7 @@
+![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![Status](https://img.shields.io/badge/status-research--prototype-orange.svg)
+
 # Python Cloud Parcel Model
 
 ## Project Overview
@@ -145,6 +149,7 @@ python plot_mixed_phase_compare.py
 ### 6. Output Figures
 ```bash
 Running the plotting scripts generates the following figures:
+
 - peak_supersaturation_vs_pollen.png – Peak supersaturation as a function of pollen concentration
 
 - updraft_sensitivity_Speak_vs_w.png – Peak supersaturation versus updraft velocity
