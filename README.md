@@ -97,6 +97,13 @@ These experiments highlight contrasting roles of updraft velocity:
 
 ## How to Run the Model
 
+python run_mixed_phase_minimal.py
+python run_mixed_phase_updraft_sweep.py
+python plot_mixed_phase_compare.py
+python plot_mixed_phase_growth.py
+python plot_mixed_phase_updraft_sweep.py
+
+
 ### Requirements
 
 - Python >= 3.9
@@ -163,7 +170,24 @@ Running the plotting scripts generates the following figures:
 - mixed_phase_S_vs_time.png – Supersaturation evolution with and without biological ice nucleation
 
 ```
+In the most recent update, the model was extended with a minimal mixed-phase framework including ice growth.
 
+New additions include:
 
+- A mixed-phase parcel prototype combining liquid droplets and biological ice nucleation
 
+- A simple ice growth (vapour deposition) term, tracked using an ice mass proxy (qi)
 
+- Updraft sensitivity experiments comparing cases with and without ice
+
+- New scripts to sweep updraft velocity and diagnose ice onset timing
+
+New figures showing:
+
+- Supersaturation evolution with and without ice
+
+- Ice growth (qi) as a function of time
+
+- Peak supersaturation versus updraft velocity in mixed-phase conditions
+
+These updates demonstrate how ice formation rapidly depletes supersaturation and how ice onset is thermodynamically controlled, while its timing depends on updraft speed
