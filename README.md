@@ -155,24 +155,33 @@ venv\Scripts\activate
 pip install numpy scipy matplotlib
 
 ```
-### 2. Run parcel simulations (liquid phase)
+### 2.Run simulations
+
+Liquid-only parcel:
 ```bash
 python run_parcel_competition.py
 
 ```
-### 3. Run biological ice-nucleation experiments
+Biological ice nucleation onset:
 ```bash
 python run_bioIN_onset.py
 
 ```
 
-### 4. Run minimal mixed-phase prototype (liquid + biological ice)
+Minimal mixed-phase parcel (liquid + ice growth):
 ```bash
 python run_mixed_phase_minimal.py
 
 ```
 
-### 5. Generate figures
+Mixed-phase updraft sweep:
+```bash
+python run_mixed_phase_updraft_sweep.py
+
+```
+
+
+### 3. Generate figures
 ```bash
 python plot_results_polished.py
 python plot_bioIN_onset.py
@@ -183,37 +192,24 @@ python plot_mixed_phase_updraft_sweep.py
 
 ```
 
-### 6. Output Figures
+### Output Figures
 ```bash
-Running the plotting scripts generates the following figures:
+Running the plotting scripts generates figures including:
 
-- peak_supersaturation_vs_pollen.png – Peak supersaturation as a function of pollen concentration
+Peak supersaturation versus updraft velocity
 
-- updraft_sensitivity_Speak_vs_w.png – Peak supersaturation versus updraft velocity
+Ice nucleation onset time versus updraft velocity
 
-- bioIN_onset_vs_updraft.png – Ice nucleation onset time versus updraft velocity
+Supersaturation evolution with and without ice
 
-- mixed_phase_S_vs_time.png – Supersaturation evolution with and without biological ice nucleation
+Ice growth (qi) as a function of time
+
+Mixed-phase peak supersaturation versus updraft velocity
 
 ```
-In the most recent update, the model was extended with a minimal mixed-phase framework including ice growth.
 
-New additions include:
+### Status
+```bash
+This repository represents a research prototype intended for process-level understanding and exploratory studies of cloud microphysics. It is well suited as a basis for further sensitivity studies, literature comparison, and potential publication-oriented development.
 
-- A mixed-phase parcel prototype combining liquid droplets and biological ice nucleation
-
-- A simple ice growth (vapour deposition) term, tracked using an ice mass proxy (qi)
-
-- Updraft sensitivity experiments comparing cases with and without ice
-
-- New scripts to sweep updraft velocity and diagnose ice onset timing
-
-New figures showing:
-
-- Supersaturation evolution with and without ice
-
-- Ice growth (qi) as a function of time
-
-- Peak supersaturation versus updraft velocity in mixed-phase conditions
-
-These updates demonstrate how ice formation rapidly depletes supersaturation and how ice onset is thermodynamically controlled, while its timing depends on updraft speed
+```
