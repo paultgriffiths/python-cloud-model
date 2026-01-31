@@ -177,6 +177,9 @@ python run_mixed_phase_minimal.py
 python plot_results_polished.py
 python plot_bioIN_onset.py
 python plot_mixed_phase_compare.py
+python plot_mixed_phase_growth.py
+python plot_mixed_phase_updraft_sweep.py
+
 
 ```
 
