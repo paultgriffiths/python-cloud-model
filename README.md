@@ -213,3 +213,19 @@ Mixed-phase peak supersaturation versus updraft velocity
 This repository represents a research prototype intended for process-level understanding and exploratory studies of cloud microphysics. It is well suited as a basis for further sensitivity studies, literature comparison, and potential publication-oriented development.
 
 ```
+
+### Recent Update: Mixed-Phase Vapour Budget Physics
+```bash
+The model has recently been extended with a first physically motivated mixed-phase framework in which the vapour budget is separated with respect to liquid water and ice.
+
+Key additions include:
+
+- Explicit diagnosis of supersaturation relative to liquid water (Sw) and ice (Si)
+- A simple ice mass proxy (qi) to track ice growth following nucleation
+- Time-evolution diagnostics of parcel temperature, supersaturation, and ice growth
+- New figures showing T(t), Sw(t), Si(t), and qi(t) during parcel ascent
+
+This framework provides the basis for introducing physically based condensation/evaporation and deposition/sublimation parameterisations (e.g. Maxwell-type growth equations), and for investigating how the Bergeron–Findeisen process emerges and how numerically stable the coupled mixed-phase system is.
+
+
+```
