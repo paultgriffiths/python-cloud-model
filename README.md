@@ -7,116 +7,85 @@
 
 # Python Cloud Parcel Model
 
+A research-oriented Python parcel model to study cloud microphysics, with a focus on aerosol activation, vapour competition, and mixed-phase (liquid–ice) cloud processes.
+
+---
+
 ## Project Overview
 
-This repository contains a physically based Python parcel model developed to study cloud droplet activation, condensational growth, and mixed-phase cloud processes in idealised rising air parcels.
+This repository contains a physically based cloud parcel model designed to explore how aerosols, cloud droplets, and ice particles interact during the ascent of an air parcel.
 
-The model is designed as a **research-oriented framework**, with emphasis on:
-- physical interpretability  
-- numerical stability  
-- transparent and modular implementation  
+The model emphasises:
+- Physical transparency
+- Simple but meaningful parameterisations
+- Time-evolution diagnostics that help explain cloud processes step by step
 
 ---
 
 ## Scientific Motivation
 
-Aerosol–cloud interactions remain a major source of uncertainty in climate modelling. Parcel models provide a controlled framework to isolate key microphysical processes while retaining detailed thermodynamic descriptions.
+Aerosol–cloud interactions and mixed-phase cloud processes remain major sources of uncertainty in climate science. Parcel models provide a controlled framework to isolate key microphysical mechanisms while retaining realistic thermodynamics.
 
-This project focuses on:
-
-- Köhler-based aerosol activation  
-- Vapour competition between aerosol modes  
-- Sensitivity to aerosol size and hygroscopicity  
-- The role of large biological particles (e.g. pollen)  
-- A minimal mixed-phase (liquid + ice) cloud prototype  
+This project investigates:
+- Köhler-based aerosol activation
+- Vapour competition between aerosol populations
+- Sensitivity to updraft velocity
+- Biological ice nucleation (e.g. pollen-like INPs)
+- Vapour transfer between liquid droplets and ice crystals
 
 ---
 
-## Model Description
+## Mixed-Phase Physics (Liquid + Ice)
 
-The model simulates an ascending air parcel subject to prescribed cooling (updraft velocity). As the parcel cools:
+A mixed-phase extension has been implemented that explicitly separates vapour exchange with liquid droplets and ice crystals.
 
-1. Supersaturation develops  
-2. Liquid droplets activate on aerosol particles  
-3. Biological ice nucleation may occur once temperatures are sufficiently low  
-4. Ice particles grow by vapour deposition, depleting supersaturation  
+Key features include:
+- Supersaturation with respect to liquid water (Sw)
+- Supersaturation with respect to ice (Si)
+- Separate vapour sink/source terms for liquid and ice
+- Temperature-dependent biological ice nucleation
+- Diagnostic tracking of:
+  - Cloud liquid water (qcloud)
+  - Ice mass proxy (qice)
+  - Cloud droplet number (Ncloud)
+  - Ice crystal number (Nice)
 
-This simple framework allows direct comparison between liquid-only and mixed-phase cloud evolution.
+This framework allows the transition from liquid-dominated growth to ice-dominated vapour depletion to emerge naturally.
+
+---
+
+## Key Results
+
+### Liquid-Only Regime
+- Supersaturation increases with updraft velocity
+- Cloud droplets activate and grow via condensation
+- Vapour competition occurs primarily between droplets
+
+### Mixed-Phase Regime
+- Ice nucleation occurs at a nearly fixed temperature
+- Ice growth rapidly becomes the dominant vapour sink
+- Liquid water growth stalls after ice onset
+- Vapour is preferentially transferred to ice crystals, consistent with the Bergeron–Findeisen mechanism
 
 ---
 
 ## Repository Structure
 
-The core implementation is located in the `parcel_model/` directory.
+All model components are located in the `parcel_model/` directory.
 
 Key files include:
-
-- `activation.py` – aerosol activation (κ-Köhler theory)  
-- `aerosol.py` – aerosol population definitions  
-- `constants.py` – physical and thermodynamic constants  
-- `kohler.py` – Köhler theory implementation  
-- `run_parcel_simple.py` – basic liquid-only parcel simulation  
-- `run_parcel_competition.py` – vapour competition experiments  
-- `run_bioIN_onset.py` – biological ice-nucleation onset diagnostics  
-- `run_mixed_phase_minimal.py` – minimal mixed-phase (liquid + ice growth) model  
-- `run_mixed_phase_updraft_sweep.py` – updraft sensitivity experiments  
-- `plot_*.py` – plotting and visualisation scripts  
+- `aerosol.py` – aerosol population definitions
+- `activation.py` – Köhler-based aerosol activation
+- `thermodynamics.py` – saturation and supersaturation calculations
+- `biological_in.py` – biological ice nucleation scheme
+- `run_parcel_competition.py` – liquid-phase vapour competition
+- `run_bioIN_onset.py` – ice nucleation onset experiments
+- `run_mixed_phase_minimal.py` – minimal mixed-phase parcel model
+- `run_mixed_phase_physics.py` – separated liquid/ice vapour physics
+- `plot_*.py` – plotting and diagnostic scripts
 
 ---
 
-## Results Summary
-
-### 1. Supersaturation Sensitivity to Updraft Velocity
-
-Peak supersaturation increases monotonically with updraft velocity (cooling rate) over the range  
-**w = 0.2–2.0 m s⁻¹**.
-
-This confirms the expected dynamical control of updraft velocity on liquid droplet activation.
-
----
-
-### 2. Biological Ice Nucleation
-
-A minimal biological ice-nucleation parameterisation is implemented using a logistic temperature dependence defined by a midpoint temperature (T₅₀) and activation width.
-
-The fraction of ice-active particles increases rapidly with decreasing temperature, consistent with laboratory and field observations of biological ice nucleation.
-
----
-
-### 3. Ice Onset in a Cooling Parcel
-
-Coupling biological ice nucleation to the parcel model shows that:
-
-- Ice onset temperature is nearly invariant with respect to updraft velocity  
-- Ice onset time decreases systematically with increasing updraft velocity  
-
-This indicates that ice initiation is primarily **thermodynamically controlled**, while parcel dynamics determine the **timing** of ice formation.
-
----
-
-### 4. Mixed-Phase Effects and Ice Growth
-
-A minimal ice growth (vapour deposition) term is included after ice onset. Ice growth is tracked using an ice mass proxy (`qi`).
-
-Key behaviours observed:
-
-- Supersaturation is rapidly depleted once ice growth begins  
-- Ice mass (`qi`) increases monotonically with time  
-- Mixed-phase parcels reach lower peak supersaturation than liquid-only parcels  
-
-These results highlight the strong vapour sink associated with ice growth in mixed-phase clouds.
-
----
-
-### 5. Mixed-Phase Updraft Sweep
-
-Updraft sensitivity experiments comparing liquid-only and mixed-phase cases show that:
-
-- Peak supersaturation increases with updraft velocity in both cases  
-- Ice formation reduces peak supersaturation relative to the liquid-only case  
-- Ice onset temperature remains fixed, while onset time decreases with increasing updraft  
-
----
 
 ## How to Run the Model
 
@@ -152,7 +121,7 @@ venv\Scripts\activate
 ```
 ### 1. Install dependencies
 ```bash
-pip install numpy scipy matplotlib
+pip install numpy scipy matplotlib pandas
 
 ```
 ### 2.Run simulations
@@ -183,6 +152,7 @@ python run_mixed_phase_updraft_sweep.py
 
 ### 3. Generate figures
 ```bash
+
 python plot_results_polished.py
 python plot_bioIN_onset.py
 python plot_mixed_phase_compare.py
@@ -194,38 +164,42 @@ python plot_mixed_phase_updraft_sweep.py
 
 ### Output Figures
 ```bash
-Running the plotting scripts generates figures including:
 
-Peak supersaturation versus updraft velocity
+Outputs
 
-Ice nucleation onset time versus updraft velocity
+The model generates:
 
-Supersaturation evolution with and without ice
+Time series of temperature, supersaturation, and vapour tendencies
 
-Ice growth (qi) as a function of time
+Evolution of qcloud, qice, Ncloud, and Nice
 
-Mixed-phase peak supersaturation versus updraft velocity
+Figures illustrating:
+
+Temperature vs time
+
+Supersaturation vs time
+
+Liquid and ice growth
+
+Number concentration evolution
+
+### Next Steps
+
+Planned developments include:
+
+Physically based Maxwell-type growth equations
+
+Latent heat feedback on temperature and buoyancy
+
+Sensitivity studies with respect to IN efficiency and number
+
+Comparison with published mixed-phase cloud studies
 
 ```
 
 ### Status
 ```bash
-This repository represents a research prototype intended for process-level understanding and exploratory studies of cloud microphysics. It is well suited as a basis for further sensitivity studies, literature comparison, and potential publication-oriented development.
 
-```
-
-### Recent Update: Mixed-Phase Vapour Budget Physics
-```bash
-The model has recently been extended with a first physically motivated mixed-phase framework in which the vapour budget is separated with respect to liquid water and ice.
-
-Key additions include:
-
-- Explicit diagnosis of supersaturation relative to liquid water (Sw) and ice (Si)
-- A simple ice mass proxy (qi) to track ice growth following nucleation
-- Time-evolution diagnostics of parcel temperature, supersaturation, and ice growth
-- New figures showing T(t), Sw(t), Si(t), and qi(t) during parcel ascent
-
-This framework provides the basis for introducing physically based condensation/evaporation and deposition/sublimation parameterisations (e.g. Maxwell-type growth equations), and for investigating how the Bergeron–Findeisen process emerges and how numerically stable the coupled mixed-phase system is.
-
+This code is a research prototype intended for process understanding and hypothesis generation rather than operational forecasting.
 
 ```
