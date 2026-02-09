@@ -89,13 +89,6 @@ Key files include:
 
 ## How to Run the Model
 
-python run_mixed_phase_minimal.py
-python run_mixed_phase_updraft_sweep.py
-python plot_mixed_phase_compare.py
-python plot_mixed_phase_growth.py
-python plot_mixed_phase_updraft_sweep.py
-
-
 ### Requirements
 
 - Python >= 3.9
