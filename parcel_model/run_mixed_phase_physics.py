@@ -1,223 +1,133 @@
-"""
-run_mixed_phase_physics.py
-
-Mixed-phase parcel model (skeleton):
-- Separate vapour tendency terms over liquid and ice
-- Tracks: T(t), qv(t), Sw(t), Si(t), ql(t), qi(t)
-- Includes placeholders for physically-based growth equations (Maxwell-type)
-
-Author: (your name)
-"""
-
-from __future__ import annotations
-import math
 import csv
-
 from thermodynamics import saturation_vapor_pressure, supersaturation
-# NOTE: You already have saturation_vapor_pressure(T) for liquid.
-# We will add a simple placeholder for ice saturation below.
-
 from aerosol import AerosolPopulation
 from activation import check_activation
 from biological_in import BiologicalIN, check_ice_nucleation
 
+# If you already have an ice vapour pressure function in your code, use it.
+# Otherwise, we approximate e_si using a simple factor to keep the skeleton stable.
+# (You can later replace this with a proper e_si(T) parameterisation.)
+def saturation_vapor_pressure_ice_approx(T):
+    # crude approximation: ice saturation slightly lower than liquid near 0C
+    # replace later with a proper e_si(T)
+    return 0.9 * saturation_vapor_pressure(T)
 
-# ------------------------------------------------------------
-# 1) Saturation vapour pressure over ice (placeholder)
-# ------------------------------------------------------------
-def saturation_vapor_pressure_ice(T: float) -> float:
-    """
-    Placeholder for e_si(T).
-    Replace later with a standard parameterization (Murphy & Koop 2005, etc.).
-    For now, we approximate e_si as slightly lower than e_sw.
-    """
-    e_sw = saturation_vapor_pressure(T)
-    return 0.95 * e_sw  # TEMPORARY placeholder (replace with proper formula)
+def run(w=1.0, dt=1.0, t_end=1200.0, outfile="mixed_phase_physics_timeseries.csv"):
+    # --- Aerosol populations (liquid CCN)
+    sulfate = AerosolPopulation("sulfate", N=500e6, radius=30e-9, kappa=1.0, rho_p=1770.0)
+    pollen  = AerosolPopulation("pollen",  N=3000.0, radius=5e-6, kappa=0.1, rho_p=1000.0)
 
+    # --- Biological IN population (ice)
+    bio = BiologicalIN(name="bioIN", N=50.0, T50=263.15, width=2.0)  # tweak later
 
-# ------------------------------------------------------------
-# 2) Supersaturation wrt liquid and ice
-# ------------------------------------------------------------
-def supersaturation_wrt_liquid(e: float, T: float) -> float:
-    e_sw = saturation_vapor_pressure(T)
-    return (e - e_sw) / e_sw
+    # --- Parcel setup
+    T = 273.15
+    RH0 = 0.95
+    e = RH0 * saturation_vapor_pressure(T)
 
+    cooling_rate = 0.01 * w  # K/s
 
-def supersaturation_wrt_ice(e: float, T: float) -> float:
-    e_si = saturation_vapor_pressure_ice(T)
-    return (e - e_si) / e_si
-
-
-# ------------------------------------------------------------
-# 3) Growth tendency placeholders (Maxwell-type skeleton)
-# ------------------------------------------------------------
-def liquid_tendency(Sw: float, activated_liquid: bool, esw: float) -> float:
-    """
-    Returns C_l (vapour sink/source due to liquid), units: Pa/s or arbitrary.
-    Positive C_l means vapour REMOVED (condensation), negative means vapour ADDED (evaporation).
-
-    Placeholder: linear relaxation. Replace with Maxwell-type growth later.
-    """
-    if not activated_liquid:
-        return 0.0
-
-    k_l = 0.2  # tune later
-    # if Sw > 0 -> condensation (sink), if Sw < 0 -> evaporation (source)
-    return k_l * Sw * esw
-
-
-def ice_tendency(Si: float, ice_active: bool, esi: float, qi: float) -> float:
-    """
-    Returns C_i (vapour sink/source due to ice), units: Pa/s or arbitrary.
-    Positive C_i means vapour REMOVED (deposition), negative means vapour ADDED (sublimation).
-
-    Placeholder: linear deposition sink stronger than liquid.
-    """
-    if not ice_active:
-        return 0.0
-
-    k_i = 1.0  # tune later
-    return k_i * Si * esi
-
-
-def update_ice_mass_proxy(qi: float, Ci: float, dt: float) -> float:
-    """
-    Very simple ice-mass proxy growth:
-    qi increases with positive deposition sink (Ci>0).
-    This is a placeholder. Replace with a proper mass budget later.
-    """
-    if Ci > 0:
-        qi = qi + 1e-12 * Ci * dt  # arbitrary scaling
-    return qi
-
-
-# ------------------------------------------------------------
-# 4) Main run
-# ------------------------------------------------------------
-def run_mixed_phase_physics(
-    w: float = 1.0,
-    dt: float = 1.0,
-    t_end: float = 1200.0,
-    RH0: float = 0.95,
-    T0: float = 273.15,
-    include_ice: bool = True,
-    save_csv: bool = True,
-    csv_name: str = "mixed_phase_physics_timeseries.csv",
-    verbose: bool = True,
-):
-    """
-    Mixed-phase parcel model skeleton.
-    Uses:
-    - separate Sw, Si
-    - separate vapour tendencies C_l, C_i
-    """
-
-    # ----- Liquid CCN populations -----
-    sulfate = AerosolPopulation(
-        name="sulfate", N=500e6, radius=30e-9, kappa=1.0, rho_p=1770.0
-    )
-    pollen = AerosolPopulation(
-        name="pollen", N=3000.0, radius=5e-6, kappa=0.1, rho_p=1000.0
-    )
-
-    # ----- Biological IN population -----
-    bio = BiologicalIN(name="bioIN", N=50.0, T50=263.15, width=2.0)
-
-    # ----- Parcel state -----
-    T = T0
-    e = RH0 * saturation_vapor_pressure(T)  # vapour partial pressure proxy
-    qi = 0.0
-    ql = 0.0  # optional placeholder liquid proxy (not yet used)
-
-    cooling_rate = 0.01 * w  # same mapping used before
+    # --- Simple bulk “water substance” proxies
+    qcloud = 0.0  # liquid water proxy
+    qice   = 0.0  # ice water proxy
 
     ice_active = False
     ice_onset_t = None
     ice_onset_T = None
 
-    # ----- Storage -----
-    times, Ts, Sws, Sis, es_list = [], [], [], [], []
-    Cis, Cls, qis = [], [], []
+    # --- Tunable sink strengths (prototype)
+    k_liq = 0.20    # liquid condensation/evap strength
+    k_ice = 0.80    # ice deposition/sublim strength (make larger to see B-F)
 
-    if verbose:
-        print("\nMixed-phase physics skeleton run")
-        print(f"w={w:.2f} m/s, cooling_rate={cooling_rate:.4f} K/s, dt={dt}, t_end={t_end}")
-        print("t(s)   T(K)     Sw         Si        ice_active    qi")
+    print("\nMixed-phase physics run")
+    print(f"w={w:.2f} m/s, cooling_rate={cooling_rate:.4f} K/s, dt={dt}, t_end={t_end}")
+    print("t(s)   T(K)     Sw         Si        ice_active    qcloud      qice        Ncloud     Nice")
 
-    t = 0.0
-    while t <= t_end:
-        esw = saturation_vapor_pressure(T)
-        esi = saturation_vapor_pressure_ice(T)
+    with open(outfile, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow([
+            "t_s","T_K","Sw","Si","e_Pa",
+            "dqcloud_dt","dqice_dt",
+            "qcloud","qice",
+            "Ncloud","Nice",
+            "ice_active"
+        ])
 
-        Sw = supersaturation_wrt_liquid(e, T)
-        Si = supersaturation_wrt_ice(e, T)
+        t = 0.0
+        while t <= t_end:
+            esw = saturation_vapor_pressure(T)
+            esi = saturation_vapor_pressure_ice_approx(T)
 
-        # Liquid activation checks (existing code)
-        check_activation(Sw, sulfate, T=T)
-        check_activation(Sw, pollen, T=T)
+            Sw = supersaturation(e, esw)
+            Si = (e/esi) - 1.0
 
-        activated_liquid = sulfate.activated or pollen.activated
+            # --- Liquid activation (counts)
+            check_activation(Sw, sulfate, T=T)
+            check_activation(Sw, pollen,  T=T)
 
-        # Ice nucleation switch
-        if include_ice and (not ice_active):
-            nucleated, N_active = check_ice_nucleation(T, bio, N_threshold=1.0)
-            if nucleated:
-                ice_active = True
-                ice_onset_t = t
-                ice_onset_T = T
+            Ncloud = 0.0
+            if sulfate.activated:
+                Ncloud += sulfate.N
+            if pollen.activated:
+                Ncloud += pollen.N
 
-        # Separate vapour tendencies (placeholders)
-        Cl = liquid_tendency(Sw, activated_liquid, esw)  # Pa/s
-        Ci = ice_tendency(Si, ice_active, esi, qi)       # Pa/s
+            # --- Ice nucleation (Nice)
+            Nice = 0.0
+            if not ice_active:
+                nucleated, N_active = check_ice_nucleation(T, bio, N_threshold=1.0)
+                if nucleated:
+                    ice_active = True
+                    ice_onset_t = t
+                    ice_onset_T = T
+                    Nice = N_active
+                else:
+                    Nice = 0.0
+            else:
+                # once ice is active, keep Nice as “active fraction” * N
+                # (simple; you can later evolve Nice with time)
+                _, N_active = check_ice_nucleation(T, bio, N_threshold=0.0)
+                Nice = N_active
 
-        # Vapour budget: e decreases if sinks are positive
-        # Convert tendencies to a change in e over dt
-        e = e - (Cl + Ci) * dt
-        if e < 0:
-            e = 0.0
+            # --- Vapour tendencies (prototype, sign-aware)
+            # Liquid: if Sw>0 => condense (dqcloud_dt positive, vapour decreases)
+            #         if Sw<0 => evaporate (dqcloud_dt negative, vapour increases)
+            dqcloud_dt = 0.0
+            if Ncloud > 0.0:
+                dqcloud_dt = k_liq * Sw
 
-        # Update ice mass proxy
-        qi = update_ice_mass_proxy(qi, Ci, dt)
+            # Ice: if Si>0 and ice_active => deposition (dqice_dt positive)
+            #      if Si<0 => sublimation (dqice_dt negative)
+            dqice_dt = 0.0
+            if ice_active and Nice > 0.0:
+                dqice_dt = k_ice * Si
 
-        # Save
-        times.append(t)
-        Ts.append(T)
-        Sws.append(Sw)
-        Sis.append(Si)
-        es_list.append(e)
-        Cls.append(Cl)
-        Cis.append(Ci)
-        qis.append(qi)
+            # --- Update proxies
+            qcloud += dqcloud_dt * dt
+            qice   += dqice_dt   * dt
 
-        if verbose and int(t) % 60 == 0:
-            print(f"{int(t):4d}  {T:7.2f}  {Sw: .3e}  {Si: .3e}     {str(ice_active):>5}    {qi: .3e}")
+            # --- Vapour update: remove vapour when condens/deposit; add when evap/sublim
+            # (This is a toy mapping; later you’ll replace with proper vapour budget in Pa/s)
+            e = e - (dqcloud_dt + dqice_dt) * esw * dt
+            if e < 0.0:
+                e = 0.0
 
-        # Advance parcel temperature
-        T = T - cooling_rate * dt
-        t += dt
+            # --- Print every 60s
+            if int(t) % 60 == 0:
+                print(f"{int(t):4d}  {T:7.2f}  {Sw: .3e}  {Si: .3e}   {str(ice_active):>5}   "
+                      f"{qcloud: .3e}  {qice: .3e}  {Ncloud: .3e}  {Nice: .3e}")
 
-    if include_ice and verbose:
-        if ice_active:
-            print(f"\nIce onset detected at t={ice_onset_t:.0f}s, T={ice_onset_T:.2f}K")
-        else:
-            print("\nIce onset not reached in simulation window")
+            writer.writerow([t, T, Sw, Si, e, dqcloud_dt, dqice_dt, qcloud, qice, Ncloud, Nice, int(ice_active)])
 
-    # Save CSV for plotting
-    if save_csv:
-        with open(csv_name, "w", newline="") as f:
-            wtr = csv.writer(f)
-            wtr.writerow(["t_s", "T_K", "Sw", "Si", "e_Pa", "Cl_Pa_per_s", "Ci_Pa_per_s", "qi_proxy"])
-            for i in range(len(times)):
-                wtr.writerow([times[i], Ts[i], Sws[i], Sis[i], es_list[i], Cls[i], Cis[i], qis[i]])
-        if verbose:
-            print(f"\nSaved timeseries: {csv_name}")
+            # --- advance
+            T = T - cooling_rate * dt
+            t += dt
 
-    return times, Ts, Sws, Sis, es_list, Cls, Cis, qis, ice_onset_t, ice_onset_T
+    if ice_onset_t is not None:
+        print(f"\nIce onset detected at t={ice_onset_t:.0f}s, T={ice_onset_T:.2f}K")
+    else:
+        print("\nIce onset not reached within simulation")
 
-
-def main():
-    run_mixed_phase_physics(w=1.0, include_ice=True, verbose=True)
-
+    print(f"Saved timeseries: {outfile}")
 
 if __name__ == "__main__":
-    main()
+    run()
