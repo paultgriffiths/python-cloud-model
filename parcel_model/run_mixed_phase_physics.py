@@ -12,13 +12,14 @@ def saturation_vapor_pressure_ice_approx(T):
     # replace later with a proper e_si(T)
     return 0.9 * saturation_vapor_pressure(T)
 
-def run(w=1.0, dt=1.0, t_end=1200.0, outfile="mixed_phase_physics_timeseries.csv"):
+def run(w=1.0, dt=1.0, t_end=1200.0, 
+outfile="mixed_phase_N500.csv"):
     # --- Aerosol populations (liquid CCN)
     sulfate = AerosolPopulation("sulfate", N=500e6, radius=30e-9, kappa=1.0, rho_p=1770.0)
     pollen  = AerosolPopulation("pollen",  N=3000.0, radius=5e-6, kappa=0.1, rho_p=1000.0)
 
     # --- Biological IN population (ice)
-    bio = BiologicalIN(name="bioIN", N=50.0, T50=263.15, width=2.0)  # tweak later
+    bio = BiologicalIN(name="bioIN", N=500.0, T50=263.15, width=2.0)  # tweak later
 
     # --- Parcel setup
     T = 273.15
