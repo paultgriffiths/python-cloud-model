@@ -71,7 +71,7 @@ This framework allows the transition from liquid-dominated growth to ice-dominat
 
 A sensitivity analysis was performed to investigate the impact of ice-nucleating particle (IN) number on mixed-phase ice growth.
 
-The results show that increasing the IN number leads to:
+The results show that increasing the IN number is associated with:
 
 - Earlier onset of ice growth due to enhanced ice nucleation
 - Faster ice mass growth rates once ice is activated
