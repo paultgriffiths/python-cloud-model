@@ -67,6 +67,21 @@ This framework allows the transition from liquid-dominated growth to ice-dominat
 - Liquid water growth stalls after ice onset
 - Vapour is preferentially transferred to ice crystals, consistent with the Bergeron–Findeisen mechanism
 
+## Sensitivity of Ice Growth to IN Number
+
+A sensitivity analysis was performed to investigate the impact of ice-nucleating particle (IN) number on mixed-phase ice growth.
+
+The results show that increasing the IN number leads to:
+
+- Earlier onset of ice growth due to enhanced ice nucleation
+- Faster ice mass growth rates once ice is activated
+- Stronger vapour depletion by ice crystals, consistent with the Bergeron–Findeisen mechanism
+- A reduced role of liquid water growth at high IN concentrations
+
+These findings highlight the strong control exerted by IN number on mixed-phase cloud evolution and vapour partitioning.
+
+**Figure:** Sensitivity of ice mass proxy (qice) to varying IN number (Nice = 5, 50, 500).
+
 ---
 
 ## Repository Structure
