@@ -14,7 +14,8 @@ rho_l = 1000.0    # kg/m^3  (liquid water density)
 rho_i = 917.0     # kg/m^3  (ice density)
 Lv = 2.5e6        # J/kg    (latent heat vap)
 Ls = 2.834e6      # J/kg    (latent heat subl, approx)
-P0 = 101325.0     # Pa (use constant for now)
+P0 = 101325.0     # Pa
+cp = 1005.0       # J/kg/K (specific heat of air)
 
 # ---------------------------
 # Diffusivity + thermal conductivity (simple T scalings)
@@ -47,6 +48,10 @@ def G_ice(T, esi, P=P0):
     B = (rho_i * Ls * Ls) / (k * Rv * T * T)
     return 1.0 / (A + B)
 
+# ---------------------------
+# Helper: mass per volume from N and radius
+# q = N * (4/3) pi rho r^3
+# ---------------------------
 def q_from_N_r(N, r, rho):
     return N * (4.0 / 3.0) * math.pi * rho * r**3
 
@@ -56,12 +61,15 @@ def run(w=1.0, dt=1.0, t_end=1200.0, outfile="mixed_phase_maxwell_timeseries.csv
 
     bio = BiologicalIN(name="bioIN", N=5e0, T50=263.15, width=2.0)
 
+    # Parcel state
     T = 273.15
     RH0 = 0.95
     e = RH0 * esat_water(T)
 
-    cooling_rate = 0.01 * w
+    # "Dynamics" (toy)
+    cooling_rate = 0.01 * w  # K/s
 
+    # Mean radii
     r_cloud = 1e-6
     r_ice   = 5e-6
 
@@ -69,7 +77,7 @@ def run(w=1.0, dt=1.0, t_end=1200.0, outfile="mixed_phase_maxwell_timeseries.csv
     ice_onset_t = None
     ice_onset_T = None
 
-    print("\nMixed-phase Maxwell growth run")
+    print("\nMixed-phase Maxwell growth run (with latent heating)")
     print(f"w={w:.2f} m/s, cooling_rate={cooling_rate:.4f} K/s, dt={dt}, t_end={t_end}")
     print("t(s)   T(K)     Sw         Si        r_cloud(um)  r_ice(um)   Ncloud      Nice        qcloud      qice")
 
@@ -82,6 +90,7 @@ def run(w=1.0, dt=1.0, t_end=1200.0, outfile="mixed_phase_maxwell_timeseries.csv
             "drcloud_dt","drice_dt",
             "qcloud","qice",
             "cond_rate_kgm3s","dep_rate_kgm3s",
+            "latent_heating_Ks","dT_dt_Ks",
             "ice_active"
         ])
 
@@ -91,7 +100,7 @@ def run(w=1.0, dt=1.0, t_end=1200.0, outfile="mixed_phase_maxwell_timeseries.csv
             esw = esat_water(T)
             esi = esat_ice(T)
 
-            # --- separate supersaturations (DON'T name these Sw/Si to avoid shadowing functions)
+            # --- separate supersaturations
             Sw_val = Sw(e, T)
             Si_val = Si(e, T)
 
@@ -129,30 +138,39 @@ def run(w=1.0, dt=1.0, t_end=1200.0, outfile="mixed_phase_maxwell_timeseries.csv
                 Gi = G_ice(T, esi, P0)
                 drice_dt = (Gi / max(r_ice, 1e-9)) * Si_val
 
+            # prevent radii going negative
             r_cloud = max(r_cloud + drcloud_dt * dt, 0.0)
             r_ice   = max(r_ice   + drice_dt   * dt, 0.0)
 
+            # --- Compute qcloud, qice
             qcloud = q_from_N_r(Ncloud, r_cloud, rho_l) if Ncloud > 0 else 0.0
             qice   = q_from_N_r(Nice,   r_ice,   rho_i) if Nice   > 0 else 0.0
 
-            # vapour sink rates (kg/m^3/s)
+            # --- Condensation/deposition rates as vapour sink
+            # dm/dt per particle = 4*pi*r^2*rho * dr/dt
             cond_rate = 0.0
             if Ncloud > 0.0:
                 dm_dt_one = 4.0 * math.pi * r_cloud**2 * rho_l * drcloud_dt
-                cond_rate = Ncloud * dm_dt_one
+                cond_rate = Ncloud * dm_dt_one   # kg/m^3/s (can be negative)
 
             dep_rate = 0.0
             if ice_active and Nice > 0.0:
                 dm_dt_one = 4.0 * math.pi * r_ice**2 * rho_i * drice_dt
-                dep_rate  = Nice * dm_dt_one
+                dep_rate  = Nice * dm_dt_one     # kg/m^3/s (can be negative)
 
-            # temperature tendency (still only dynamical cooling for now)
-            dT_dt = -cooling_rate
+            # ---------------------------
+            # Temperature tendency with latent heating
+            # ---------------------------
+            latent_heating = (Lv * cond_rate + Ls * dep_rate) / cp  # K/s
+            dT_dt = -cooling_rate + latent_heating
 
-            # vapour density tendency -> e tendency
+            # ---------------------------
+            # Vapour density tendency -> e tendency
+            # ρv = e/(Rv*T)  =>  dρv/dt ≈ -(cond_rate + dep_rate)
+            # de/dt = Rv*T*dρv/dt + (e/T)*dT/dt
+            # ---------------------------
             drhov_dt = -(cond_rate + dep_rate)
             de_dt = Rv * T * drhov_dt + (e / T) * dT_dt
-
             e = max(e + de_dt * dt, 0.0)
 
             if int(t) % 60 == 0:
@@ -167,9 +185,11 @@ def run(w=1.0, dt=1.0, t_end=1200.0, outfile="mixed_phase_maxwell_timeseries.csv
                 drcloud_dt, drice_dt,
                 qcloud, qice,
                 cond_rate, dep_rate,
+                latent_heating, dT_dt,
                 int(ice_active)
             ])
 
+            # advance
             T = T + dT_dt * dt
             t += dt
 
