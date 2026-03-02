@@ -61,11 +61,25 @@ This framework allows the transition from liquid-dominated growth to ice-dominat
 - Cloud droplets activate and grow via condensation
 - Vapour competition occurs primarily between droplets
 
+## Quantitative Definition of Ice-Dominated Regime
+
+To diagnose the transition from liquid- to ice-dominated vapour depletion, we define a dominance ratio:
+
+R = |dep_rate| / |cond_rate|
+
+- R < 1 → Liquid-dominated regime
+- R ≥ 1 → Ice-dominated regime
+
+Under baseline aerosol and IN conditions, R remains below unity, indicating that condensation remains the dominant vapour sink.
+Sensitivity experiments show that increasing IN number and decreasing CCN enhances R and can approach ice-dominated conditions.
+
+In the baseline configuration used here, R remains below unity, indicating that condensation remains the dominant vapour sink under these conditions.
+
 ### Mixed-Phase Regime
 - Ice nucleation occurs at a nearly fixed temperature
-- Ice growth rapidly becomes the dominant vapour sink
-- Liquid water growth stalls after ice onset
-- Vapour is preferentially transferred to ice crystals, consistent with the Bergeron–Findeisen mechanism
+- Ice growth increases with decreasing temperature
+- Vapour competition emerges between liquid droplets and ice crystals
+- The strength of the Bergeron–Findeisen process depends sensitively on aerosol and IN number concentration
 
 ## Sensitivity of Ice Growth to IN Number
 
@@ -193,21 +207,18 @@ Number concentration evolution
 
 ### Next Steps
 
-Planned developments include:
+Fully coupled buoyancy–updraft feedback
 
-Physically based Maxwell-type growth equations
+Pressure evolution along parcel ascent
 
-Latent heat feedback on temperature and buoyancy
+Size-distribution (multi-bin) microphysics
 
-Sensitivity studies with respect to IN efficiency and number
-
-Comparison with published mixed-phase cloud studies
+Comparison with laboratory or field observations
 
 ```
 
-### Status
-```bash
+## Status
 
-This code is a research prototype intended for process understanding and hypothesis generation rather than operational forecasting.
+This code is a research-oriented prototype developed for physical process exploration and hypothesis testing. It is not intended for operational forecasting or climate prediction applications.
 
 ```

@@ -55,11 +55,14 @@ def G_ice(T, esi, P=P0):
 def q_from_N_r(N, r, rho):
     return N * (4.0 / 3.0) * math.pi * rho * r**3
 
-def run(w=1.0, dt=1.0, t_end=1200.0, outfile="mixed_phase_maxwell_timeseries.csv"):
-    sulfate = AerosolPopulation("sulfate", N=500e6, radius=30e-9, kappa=1.0, rho_p=1770.0)
+def run(w=1.0, dt=1.0, t_end=1200.0,
+        sulfate_N=500e6,
+        bio_N=5.0,
+        outfile="mixed_phase_maxwell_timeseries.csv"):
+    sulfate = AerosolPopulation("sulfate", N=sulfate_N, radius=30e-9, kappa=1.0, rho_p=1770.0)
     pollen  = AerosolPopulation("pollen",  N=3000.0, radius=5e-6,  kappa=0.1, rho_p=1000.0)
 
-    bio = BiologicalIN(name="bioIN", N=5e0, T50=263.15, width=2.0)
+    bio = BiologicalIN(name="bioIN", N=bio_N, T50=263.15, width=2.0)
 
     # Parcel state
     T = 273.15
