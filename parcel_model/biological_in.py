@@ -7,17 +7,6 @@ import math
 class BiologicalIN:
     """
     Minimal representation of a biological ice-nucleating particle (IN) class.
-
-    Parameters
-    ----------
-    name : str
-        Name of the biological IN class
-    N : float
-        Number concentration (m^-3)
-    T50 : float
-        Temperature (K) at which 50% of particles are ice-active
-    width : float
-        Controls how rapidly activation increases with decreasing temperature (K)
     """
 
     def __init__(self, name: str, N: float, T50: float = 263.15, width: float = 2.0):
@@ -42,19 +31,25 @@ class BiologicalIN:
         return self.N * self.ice_active_fraction(T)
 
 
-def check_ice_nucleation(T: float, bio_in: BiologicalIN, N_threshold: float = 1.0):
+def check_ice_nucleation(
+    T: float,
+    bio_in: BiologicalIN,
+    N_threshold: float = 1.0,
+    frac_threshold: float = 0.1,
+    T_max: float = 273.15
+):
     """
-    Simple ice nucleation check.
-
-    If the number of active IN exceeds a threshold, nucleation is assumed to occur.
-
-    Returns
-    -------
-    nucleated : bool
-        Whether ice nucleation occurs
-    N_active : float
-        Active IN number concentration (m^-3)
+    Physically constrained ice nucleation check.
     """
+
     N_active = bio_in.active_IN_number(T)
-    nucleated = (N_active >= N_threshold)
+
+    # Guard: no nucleation above freezing
+    if T > T_max:
+        return False, N_active
+
+    # Require meaningful active fraction
+    crit = max(float(N_threshold), float(frac_threshold) * bio_in.N)
+    nucleated = (N_active >= crit)
+
     return nucleated, N_active

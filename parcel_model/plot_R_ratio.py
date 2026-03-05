@@ -1,9 +1,10 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import sys
 
 def main():
-    csv_file = "mixed_phase_maxwell_timeseries.csv"
+    csv_file = sys.argv[1] if len(sys.argv) > 1 else "mixed_phase_maxwell_timeseries.csv"
     df = pd.read_csv(csv_file)
 
     # Required columns
