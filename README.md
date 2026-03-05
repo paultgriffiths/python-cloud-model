@@ -1,120 +1,162 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
 ![Research Code](https://img.shields.io/badge/code-research-blueviolet.svg)
-![Citation](https://img.shields.io/badge/citation-available-brightgreen.svg)
 ![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Status](https://img.shields.io/badge/status-research--prototype-orange.svg)
 
 # Python Cloud Parcel Model
 
-A research-oriented Python parcel model to study cloud microphysics, with a focus on aerosol activation, vapour competition, and mixed-phase (liquid–ice) cloud processes.
+A physically based **cloud parcel model** implemented in Python to investigate aerosol activation, vapour competition, and mixed-phase cloud microphysics.
+
+The model is designed as a **transparent research framework** to explore how aerosol populations, liquid droplets, and ice crystals interact during the ascent of an air parcel.
 
 ---
 
-## Project Overview
+# Scientific Context
 
-This repository contains a physically based cloud parcel model designed to explore how aerosols, cloud droplets, and ice particles interact during the ascent of an air parcel.
+Mixed-phase clouds remain a major source of uncertainty in atmospheric science and climate modelling.
 
-The model emphasises:
-- Physical transparency
-- Simple but meaningful parameterisations
-- Time-evolution diagnostics that help explain cloud processes step by step
+Key unresolved processes include:
 
----
+- aerosol–cloud interactions  
+- biological ice nucleation  
+- vapour competition between droplets and ice  
+- sensitivity to updraft velocity  
 
-## Scientific Motivation
+Parcel models provide a controlled framework to isolate these processes while maintaining physically consistent thermodynamics.
 
-Aerosol–cloud interactions and mixed-phase cloud processes remain major sources of uncertainty in climate science. Parcel models provide a controlled framework to isolate key microphysical mechanisms while retaining realistic thermodynamics.
-
-This project investigates:
-- Köhler-based aerosol activation
-- Vapour competition between aerosol populations
-- Sensitivity to updraft velocity
-- Biological ice nucleation (e.g. pollen-like INPs)
-- Vapour transfer between liquid droplets and ice crystals
+This repository implements a **minimal but physically interpretable parcel model** that allows these interactions to emerge naturally.
 
 ---
 
-## Mixed-Phase Physics (Liquid + Ice)
+# Physical Framework
 
-A mixed-phase extension has been implemented that explicitly separates vapour exchange with liquid droplets and ice crystals.
+The parcel model simulates the ascent of an air parcel with prescribed updraft velocity.
 
-Key features include:
-- Supersaturation with respect to liquid water (Sw)
-- Supersaturation with respect to ice (Si)
-- Separate vapour sink/source terms for liquid and ice
-- Temperature-dependent biological ice nucleation
-- Diagnostic tracking of:
-  - Cloud liquid water (qcloud)
-  - Ice mass proxy (qice)
-  - Cloud droplet number (Ncloud)
-  - Ice crystal number (Nice)
-
-This framework allows the transition from liquid-dominated growth to ice-dominated vapour depletion to emerge naturally.
+Key physical components include:
 
 ---
 
-## Key Results
+## Aerosol Activation
 
-### Liquid-Only Regime
-- Supersaturation increases with updraft velocity
-- Cloud droplets activate and grow via condensation
-- Vapour competition occurs primarily between droplets
-
-## Quantitative Definition of Ice-Dominated Regime
-
-To diagnose the transition from liquid- to ice-dominated vapour depletion, we define a dominance ratio:
-
-R = |dep_rate| / |cond_rate|
-
-- R < 1 → Liquid-dominated regime
-- R ≥ 1 → Ice-dominated regime
-
-Under baseline aerosol and IN conditions, R remains below unity, indicating that condensation remains the dominant vapour sink.
-Sensitivity experiments show that increasing IN number and decreasing CCN enhances R and can approach ice-dominated conditions.
-
-In the baseline configuration used here, R remains below unity, indicating that condensation remains the dominant vapour sink under these conditions.
-
-### Mixed-Phase Regime
-- Ice nucleation occurs at a nearly fixed temperature
-- Ice growth increases with decreasing temperature
-- Vapour competition emerges between liquid droplets and ice crystals
-- The strength of the Bergeron–Findeisen process depends sensitively on aerosol and IN number concentration
-
-## Sensitivity of Ice Growth to IN Number
-
-A sensitivity analysis was performed to investigate the impact of ice-nucleating particle (IN) number on mixed-phase ice growth.
-
-The results show that increasing the IN number is associated with:
-
-- Earlier onset of ice growth due to enhanced ice nucleation
-- Faster ice mass growth rates once ice is activated
-- Stronger vapour depletion by ice crystals, consistent with the Bergeron–Findeisen mechanism
-- A reduced role of liquid water growth at high IN concentrations
-
-These findings highlight the strong control exerted by IN number on mixed-phase cloud evolution and vapour partitioning.
-
-**Figure:** Sensitivity of ice mass proxy (qice) to varying IN number (Nice = 5, 50, 500).
+Cloud droplet formation follows **Köhler theory**, allowing aerosols to activate when supersaturation exceeds the critical value.
 
 ---
 
-## Repository Structure
+## Supersaturation Formulation
+
+Supersaturation is calculated separately for liquid water and ice:
+```
+ Sw = (e − esat_water) / esat_water
+ Si = (e − esat_ice) / esat_ice
+```
+
+This separation allows droplets and ice crystals to interact with the vapour field through distinct thermodynamic constraints.
+
+---
+
+## Maxwell-Type Growth
+
+Droplet and ice growth follow Maxwell-type diffusion-limited growth equations:
+```
+ dr/dt = (G / r) S
+```
+
+where **G(T)** represents the combined effects of vapour diffusion and latent heat transport.
+
+---
+
+## Latent Heat Feedback
+
+Condensation and deposition release latent heat, modifying parcel temperature through:
+```
+dT/dt = − cooling_rate + latent_heating
+```
+
+This ensures thermodynamic consistency between microphysics and parcel evolution.
+
+---
+
+## Biological Ice Nucleation
+
+Ice nucleation is represented through a temperature-dependent biological IN parameterisation based on a logistic activation curve.
+
+---
+
+# Bergeron–Findeisen Diagnostic
+
+To quantify the transition from liquid-dominated to ice-dominated vapour depletion, we define a diagnostic ratio:
+```
+ R = |dep_rate| / |cond_rate|
+
+
+Interpretation:
+
+| Regime | Condition |
+|------|------|
+| Liquid dominated | R < 1 |
+| Ice dominated | R ≥ 1 |
+
+This provides a quantitative diagnostic for the onset of the **Bergeron–Findeisen process**.
+
+Under baseline aerosol and IN conditions, condensation remains the dominant vapour sink (**R < 1**).
+
+Sensitivity experiments demonstrate that:
+
+- increasing IN number  
+- decreasing CCN concentration  
+- increasing updraft velocity  
+
+can significantly increase **R**, strengthening vapour competition between droplets and ice.
+
+---
+
+# Example Diagnostics
+
+## Supersaturation evolution
+
+![Supersaturation](figures/maxwell_S_vs_T.png)
+
+---
+
+## Liquid and ice mass evolution
+
+![Mass evolution](figures/maxwell_q_vs_T.png)
+
+---
+
+## Ice-dominance diagnostic
+
+![Dominance ratio](figures/R_vs_time.png)
+
+---
+
+# Repository Structure
 
 All model components are located in the `parcel_model/` directory.
 
 Key files include:
+
 - `aerosol.py` – aerosol population definitions
 - `activation.py` – Köhler-based aerosol activation
 - `thermodynamics.py` – saturation and supersaturation calculations
 - `biological_in.py` – biological ice nucleation scheme
+
 - `run_parcel_competition.py` – liquid-phase vapour competition
 - `run_bioIN_onset.py` – ice nucleation onset experiments
 - `run_mixed_phase_minimal.py` – minimal mixed-phase parcel model
 - `run_mixed_phase_physics.py` – separated liquid/ice vapour physics
+
 - `plot_*.py` – plotting and diagnostic scripts
+   plot_R_ratio.py
+   plot_mixed_phase_growth.py
+   plot_mixed_phase_updraft_sweep.py
+
+Figures used in this README are located in:
 
 ---
 
+# Installation
 
 ## How to Run the Model
 
@@ -187,38 +229,91 @@ python plot_mixed_phase_updraft_sweep.py
 ### Output Figures
 ```bash
 
-Outputs
+---
 
-The model generates:
+# Running the Model
 
-Time series of temperature, supersaturation, and vapour tendencies
+### Liquid-phase aerosol activation
+python run_parcel_competition.py
 
-Evolution of qcloud, qice, Ncloud, and Nice
+### Ice nucleation onset experiment
+python run_bioIN_onset.py
 
-Figures illustrating:
 
-Temperature vs time
+### Minimal mixed-phase parcel model
+python run_mixed_phase_minimal.py
 
-Supersaturation vs time
 
-Liquid and ice growth
+### Physically based mixed-phase parcel model
+python run_mixed_phase_maxwell.py
 
-Number concentration evolution
 
-### Next Steps
+---
 
-Fully coupled buoyancy–updraft feedback
-
-Pressure evolution along parcel ascent
-
-Size-distribution (multi-bin) microphysics
-
-Comparison with laboratory or field observations
+# Generating Diagnostics
+```
+python plot_R_ratio.py
+python plot_mixed_phase_growth.py
+python plot_mixed_phase_updraft_sweep.py
 
 ```
 
-## Status
+These scripts generate diagnostic figures illustrating:
 
-This code is a research-oriented prototype developed for physical process exploration and hypothesis testing. It is not intended for operational forecasting or climate prediction applications.
+- supersaturation evolution
+- droplet and ice growth
+- vapour competition
+- sensitivity to updraft velocity
+
+---
+
+# Planned Developments
+
+Future extensions of the model include:
+
+- fully coupled buoyancy–updraft feedback
+- pressure evolution along parcel ascent
+- multi-bin droplet and ice size distributions
+- sensitivity studies across aerosol populations
+- comparison with laboratory and field observations
+
+---
+
+# Status
+
+This repository contains a **research prototype** developed for physical process exploration and hypothesis generation.
+
+It is not intended for operational forecasting or climate prediction applications.
+
+---
+
+# Citation
+
+If you use this code in research, please cite the repository once the Zenodo DOI is activated.
 
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
