@@ -190,24 +190,24 @@ pip install numpy scipy matplotlib pandas
 ```
 ### 2. Run simulations
 
-# Liquid-only parcel:
+## Liquid-only parcel:
 ```bash
 python run_parcel_competition.py
 
 ```
-# Biological ice nucleation onset:
+## Biological ice nucleation onset:
 ```bash
 python run_bioIN_onset.py
 
 ```
 
-# Minimal mixed-phase parcel (liquid + ice growth):
+## Minimal mixed-phase parcel (liquid + ice growth):
 ```bash
 python run_mixed_phase_minimal.py
 
 ```
 
-# Mixed-phase updraft sweep:
+## Mixed-phase updraft sweep:
 ```bash
 python run_mixed_phase_updraft_sweep.py
 
