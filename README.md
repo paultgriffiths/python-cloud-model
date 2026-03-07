@@ -266,7 +266,7 @@ These scripts generate diagnostic figures illustrating:
 ---
 
 # Planned Developments
-```bash
+
 Future extensions of the model include:
 
 - fully coupled buoyancy–updraft feedback
@@ -274,7 +274,7 @@ Future extensions of the model include:
 - multi-bin droplet and ice size distributions
 - sensitivity studies across aerosol populations
 - comparison with laboratory and field observations
-```
+
 ---
 
 # Status
