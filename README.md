@@ -115,7 +115,7 @@ can significantly increase **R**, strengthening vapour competition between dropl
 
 Example Diagnostics
 ```
----
+
 
 Supersaturation evolution
 
@@ -123,7 +123,7 @@ Liquid and ice mass evolution
 
 Ice-dominance diagnostic
 
----
+
 
 ```
 
@@ -153,7 +153,7 @@ python-cloud-model/
 └── .gitignore
 
 ```
----
+
 
 Key files
 ```
@@ -180,8 +180,8 @@ Key files
 - plot_mixed_phase_growth.py — liquid/ice mass evolution
 
 - plot_mixed_phase_updraft_sweep.py — sensitivity to updraft velocity
+
 ```
----
 
 # Installation
 
