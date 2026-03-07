@@ -91,11 +91,10 @@ To quantify the transition from liquid-dominated to ice-dominated vapour depleti
 
 
 Interpretation:
----
- Regime               Condition  
----
+
+  Regime               Condition  
+
  Liquid dominated      R < 1     
----
  Ice dominated         R ≥ 1     
 
 
