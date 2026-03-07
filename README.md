@@ -113,18 +113,20 @@ can significantly increase **R**, strengthening vapour competition between dropl
 ---
 
 # Example Diagnostics
-```
-## Supersaturation evolution
 
-## Liquid and ice mass evolution
-
-## Ice-dominance diagnostic
-
-```
 ---
 
-# Repository Structure
-```
+Supersaturation evolution
+
+Liquid and ice mass evolution
+
+Ice-dominance diagnostic
+
+---
+
+## Repository Structure
+
+```text
 python-cloud-model/
 ├── figures/
 │ ├── maxwell_S_vs_T.png
