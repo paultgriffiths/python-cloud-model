@@ -278,12 +278,11 @@ Future extensions of the model include:
 ---
 
 # Status
-```bash
+
 This repository contains a **research prototype** developed for physical process exploration and hypothesis generation.
 
 It is not intended for operational forecasting or climate prediction applications.
 
-```
 ---
 
 # Citation
