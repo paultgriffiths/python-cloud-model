@@ -93,9 +93,9 @@ To quantify the transition from liquid-dominated to ice-dominated vapour depleti
 
 Interpretation:
 
-** Liquid dominated**             **R < 1**  
+**Liquid dominated           R < 1**  
    
- **Ice dominated**              ** R ≥ 1**     
+**Ice dominated              R ≥ 1**     
 
 
 This provides a quantitative diagnostic for the onset of the **Bergeron–Findeisen process**.
