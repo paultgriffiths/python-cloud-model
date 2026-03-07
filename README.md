@@ -98,9 +98,9 @@ Interpretation:
  Ice dominated                R ≥ 1     
 
 
-This provides a quantitative diagnostic for the onset of the *Bergeron–Findeisen process*.
+This provides a quantitative diagnostic for the onset of the **Bergeron–Findeisen process**.
 
-Under baseline aerosol and IN conditions, condensation remains the dominant vapour sink (*R < 1*).
+Under baseline aerosol and IN conditions, condensation remains the dominant vapour sink (**R < 1**).
 
 Sensitivity experiments demonstrate that:
 
@@ -108,7 +108,7 @@ Sensitivity experiments demonstrate that:
 - decreasing CCN concentration  
 - increasing updraft velocity  
 
-can significantly increase *R*, strengthening vapour competition between droplets and ice.
+can significantly increase **R**, strengthening vapour competition between droplets and ice.
 
 
 ---
