@@ -91,14 +91,16 @@ To quantify the transition from liquid-dominated to ice-dominated vapour depleti
 
 
 Interpretation:
+---
+ Regime               Condition  
+---
+ Liquid dominated      R < 1     
+---
+ Ice dominated         R ≥ 1     
 
-| Regime | Condition |
-|------|------|
-| Liquid dominated | R < 1 |
-| Ice dominated | R ≥ 1 |
 
 This provides a quantitative diagnostic for the onset of the **Bergeron–Findeisen process**.
-```
+
 Under baseline aerosol and IN conditions, condensation remains the dominant vapour sink (**R < 1**).
 
 Sensitivity experiments demonstrate that:
@@ -115,50 +117,67 @@ can significantly increase **R**, strengthening vapour competition between dropl
 ```
 ## Supersaturation evolution
 
-![Supersaturation](figures/maxwell_S_vs_T.png)
-
----
-
 ## Liquid and ice mass evolution
-
-![Mass evolution](figures/maxwell_q_vs_T.png)
-
----
 
 ## Ice-dominance diagnostic
 
-![Dominance ratio](figures/R_vs_time.png)
 ```
 ---
 
 # Repository Structure
+```
+python-cloud-model/
+├── figures/
+│ ├── maxwell_S_vs_T.png
+│ ├── maxwell_q_vs_T.png
+│ └── R_vs_time.png
+├── parcel_model/
+│ ├── aerosol.py
+│ ├── activation.py
+│ ├── thermodynamics.py
+│ ├── biological_in.py
+│ ├── run_parcel_competition.py
+│ ├── run_bioIN_onset.py
+│ ├── run_mixed_phase_minimal.py
+│ ├── run_mixed_phase_physics.py
+│ ├── run_mixed_phase_maxwell.py
+│ ├── plot_R_ratio.py
+│ ├── plot_mixed_phase_growth.py
+│ └── plot_mixed_phase_updraft_sweep.py
+├── README.md
+├── requirements.txt
+└── .gitignore
+```
+---
+Key files
+```
+- aerosol.py — aerosol population definitions
 
-All model components are located in the `parcel_model/` directory.
+- activation.py — Köhler-based aerosol activation
 
-Key files include:
+- thermodynamics.py — saturation and supersaturation calculations
 
-- `aerosol.py` – aerosol population definitions
-- `activation.py` – Köhler-based aerosol activation
-- `thermodynamics.py` – saturation and supersaturation calculations
-- `biological_in.py` – biological ice nucleation scheme
+- biological_in.py — biological ice nucleation scheme
 
-- `run_parcel_competition.py` – liquid-phase vapour competition
-- `run_bioIN_onset.py` – ice nucleation onset experiments
-- `run_mixed_phase_minimal.py` – minimal mixed-phase parcel model
-- `run_mixed_phase_physics.py` – separated liquid/ice vapour physics
+- run_parcel_competition.py — liquid-phase vapour competition
 
-- `plot_*.py` – plotting and diagnostic scripts
-   plot_R_ratio.py
-   plot_mixed_phase_growth.py
-   plot_mixed_phase_updraft_sweep.py
+- run_bioIN_onset.py — ice nucleation onset experiments
 
-Figures used in this README are located in:
+- run_mixed_phase_minimal.py — minimal mixed-phase parcel model
 
+- run_mixed_phase_physics.py — separated liquid/ice vapour physics
+
+- run_mixed_phase_maxwell.py — Maxwell-based mixed-phase parcel model
+
+- plot_R_ratio.py — Bergeron–Findeisen diagnostic
+
+- plot_mixed_phase_growth.py — liquid/ice mass evolution
+
+- plot_mixed_phase_updraft_sweep.py — sensitivity to updraft velocity
+```
 ---
 
 # Installation
-
-## How to Run the Model
 
 ### Requirements
 
@@ -167,86 +186,62 @@ Figures used in this README are located in:
 
 ---
 
-### 0. Create and activate a virtual environment
-Create:
+### 1. Create and activate a virtual environment
+Create the environment:
 ```bash
 python -m venv venv
 
 ```
-### Activate on Linux / macOS:
+Activate on Linux / macOS:
 ```bash
 source venv/bin/activate
 
 ```
-### Activate on Windows (PowerShell / CMD):
+Activate on Windows (PowerShell / CMD):
 ```bash
 venv\Scripts\activate
 
 ```
-### 1. Install dependencies
+### 2. Install dependencies
 ```bash
 pip install numpy scipy matplotlib pandas
 
 ```
-### 2. Run simulations
+If needed, you can also install manually:
+```bash
+pip install numpy scipy matplotlib pandas
 
-## Liquid-only parcel:
+```
+
+### Run simulations
+
+Liquid-only parcel:
 ```bash
 python run_parcel_competition.py
 
 ```
-## Biological ice nucleation onset:
+Biological ice nucleation onset:
 ```bash
 python run_bioIN_onset.py
 
 ```
 
-## Minimal mixed-phase parcel (liquid + ice growth):
+Minimal mixed-phase parcel (liquid + ice growth):
 ```bash
 python run_mixed_phase_minimal.py
 
 ```
+Physically based mixed-phase parcel model
+```bash
+python parcel_model/run_mixed_phase_maxwell.py
 
-## Mixed-phase updraft sweep:
+```
+
+Mixed-phase updraft sweep:
 ```bash
 python run_mixed_phase_updraft_sweep.py
 
 ```
-
-
-### 3. Generate figures
-```bash
-
-python plot_results_polished.py
-python plot_bioIN_onset.py
-python plot_mixed_phase_compare.py
-python plot_mixed_phase_growth.py
-python plot_mixed_phase_updraft_sweep.py
-
-
-```
-
-### Output Figures
-```bash
-
----
-
-# Running the Model
-
-### Liquid-phase aerosol activation
-python run_parcel_competition.py
-
-### Ice nucleation onset experiment
-python run_bioIN_onset.py
-
-
-### Minimal mixed-phase parcel model
-python run_mixed_phase_minimal.py
-
-
-### Physically based mixed-phase parcel model
-python run_mixed_phase_maxwell.py
-
 
 ---
 
@@ -268,7 +263,7 @@ These scripts generate diagnostic figures illustrating:
 ---
 
 # Planned Developments
-
+```bash
 Future extensions of the model include:
 
 - fully coupled buoyancy–updraft feedback
@@ -276,20 +271,21 @@ Future extensions of the model include:
 - multi-bin droplet and ice size distributions
 - sensitivity studies across aerosol populations
 - comparison with laboratory and field observations
-
+```
 ---
 
 # Status
-
+```bash
 This repository contains a **research prototype** developed for physical process exploration and hypothesis generation.
 
 It is not intended for operational forecasting or climate prediction applications.
 
+```
 ---
 
 # Citation
-
-If you use this code in research, please cite the repository once the Zenodo DOI is activated.
+```bash
+If you use this code in research, please cite the repository.
 
 ```
 
