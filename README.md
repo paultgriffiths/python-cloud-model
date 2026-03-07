@@ -113,17 +113,14 @@ can significantly increase **R**, strengthening vapour competition between dropl
 ```
 ---
 
-Example Diagnostics
+## Example Diagnostics
+
 ```
-
-
 Supersaturation evolution
 
 Liquid and ice mass evolution
 
 Ice-dominance diagnostic
-
-
 
 ```
 
