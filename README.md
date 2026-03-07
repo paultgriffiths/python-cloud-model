@@ -126,7 +126,7 @@ Ice-dominance diagnostic
 
 ## Repository Structure
 
-```
+```text
 python-cloud-model/
 ├── figures/
 │ ├── maxwell_S_vs_T.png
@@ -151,6 +151,7 @@ python-cloud-model/
 
 ```
 ---
+
 Key files
 ```
 - aerosol.py — aerosol population definitions
