@@ -127,7 +127,6 @@ Ice-dominance diagnostic
 ## Repository Structure
 
 ```
-
 python-cloud-model/
 ├── figures/
 │ ├── maxwell_S_vs_T.png
