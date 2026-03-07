@@ -89,6 +89,7 @@ To quantify the transition from liquid-dominated to ice-dominated vapour depleti
 ```
  R = |dep_rate| / |cond_rate|
 
+```
 
 Interpretation:
 
@@ -110,7 +111,7 @@ Sensitivity experiments demonstrate that:
 
 can significantly increase *R*, strengthening vapour competition between droplets and ice.
 
-```
+
 ---
 
 ## Example Diagnostics
