@@ -98,7 +98,7 @@ Interpretation:
 | Ice dominated | R ≥ 1 |
 
 This provides a quantitative diagnostic for the onset of the **Bergeron–Findeisen process**.
-
+```
 Under baseline aerosol and IN conditions, condensation remains the dominant vapour sink (**R < 1**).
 
 Sensitivity experiments demonstrate that:
@@ -112,7 +112,7 @@ can significantly increase **R**, strengthening vapour competition between dropl
 ---
 
 # Example Diagnostics
-
+```
 ## Supersaturation evolution
 
 ![Supersaturation](figures/maxwell_S_vs_T.png)
