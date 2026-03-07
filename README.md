@@ -128,7 +128,7 @@ can significantly increase **R**, strengthening vapour competition between dropl
 ## Ice-dominance diagnostic
 
 ![Dominance ratio](figures/R_vs_time.png)
-
+```
 ---
 
 # Repository Structure
