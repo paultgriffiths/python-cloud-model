@@ -11,7 +11,6 @@ It focuses on the emergence of mixed-phase microphysical processes from first-pr
 
 ---
 
-
 A physically based **cloud parcel model** implemented in Python to investigate aerosol activation, vapour competition, and mixed-phase cloud microphysics.
 
 The model is designed as a **transparent research framework** to explore how aerosol populations, liquid droplets, and ice crystals interact during the ascent of an air parcel.
@@ -159,41 +158,53 @@ Sensitivity experiments demonstrate that:
 
 can significantly increase **R**, strengthening vapour competition between droplets and ice.
 
+---
+
+## Model Diagnostics
+
+These diagnostics illustrate the competition between liquid droplets and ice crystals for available water vapour within the parcel.
+
+In particular, the evolution of the diagnostic ratio \(R = |dep\_rate| / |cond\_rate|\) highlights the transition towards an ice-dominated regime, consistent with the Bergeron–Findeisen process.
+
+Together, these results demonstrate that mixed-phase interactions emerge naturally from physically based thermodynamics and diffusion-limited growth.
 
 ---
 
-## Example Diagnostics
+### Supersaturation evolution
 
- These diagnostics illustrate the competition between liquid droplets and ice crystals for available vapour.
-
- In particular, the increase of the R ratio highlights the transition towards an ice-dominated regime, consistent with the Bergeron–Findeisen process.
-
- This demonstrates that the model captures the emergence of mixed-phase interactions from physically based principles.
-
- ### Thermodynamic driver (Si − Sw)
-  ![Si minus Sw](figures/Si_minus_Sw_vs_T.png)
-
-  Difference between supersaturation with respect to ice and liquid water. This highlights the thermodynamic driver of the Bergeron–Findeisen process.
-
-
-###  Supersaturation evolution
  ![Supersaturation](figures/maxwell_S_vs_T.png)
 
- Supersaturation evolution for liquid water and ice during parcel cooling.
+Supersaturation with respect to liquid water (Sw) and ice (Si) evolves differently as the parcel cools.  
+Following droplet activation, Sw approaches a quasi-steady state due to condensation, while Si continues to increase because the saturation vapour pressure over ice is lower than over liquid water.
 
 ---
 
-###  Liquid and ice mass evolution
+### Thermodynamic driver (Si − Sw)
+
+ ![Si minus Sw](figures/Si_minus_Sw_vs_T.png)
+
+The difference between supersaturation with respect to ice and liquid water (Si − Sw) highlights the fundamental thermodynamic driver of the Bergeron–Findeisen process.  
+As temperature decreases, Si exceeds Sw, favouring vapour deposition onto ice crystals.
+
+---
+
+### Liquid and ice mass evolution
+
  ![Mass evolution](figures/maxwell_q_vs_T.png)
 
- Evolution of liquid and ice mass with temperature.
+The evolution of liquid water mass (qcloud) and ice mass (qice) reflects the partitioning of water substance within the parcel.  
+Liquid water increases rapidly following activation, while ice mass grows more gradually through vapour deposition after nucleation.
 
 ---
 
-###  Ice-dominance diagnostic
+### Vapour competition (R vs time)
+
  ![R ratio](figures/R_vs_time.png)
 
- Diagnostic ratio R showing the transition to ice-dominated vapour uptake.
+The diagnostic ratio \(R = |dep\_rate| / |cond\_rate|\) quantifies vapour competition between ice deposition and liquid condensation.  
+When \(R < 1\), condensation dominates vapour removal.  
+When \(R \geq 1\), vapour depletion becomes dominated by ice deposition, indicating the onset of Bergeron–Findeisen conditions.
+
 
 ---
 
@@ -257,7 +268,24 @@ python-cloud-model/
 
 - **plot_mixed_phase_updraft_sweep.py** — sensitivity to updraft velocity
 
+---  
 
+## Workflow
+
+The overall workflow of the model is illustrated below:
+
+  ![Workflow](figures/workflow_diagram.png)
+
+*Figure: Workflow of the parcel model from simulation to diagnostics and visualisation.*
+
+Model → Simulation Output → Diagnostics → Figures
+
+- **Model**: core parcel model computes thermodynamic and microphysical evolution  
+- **Simulation Output**: results are saved as time series (CSV files)  
+- **Diagnostics**: derived quantities (e.g. R ratio, Si − Sw) are computed  
+- **Figures**: visualisations are generated to interpret physical behaviour  
+  
+---
 
 ## Installation
 
