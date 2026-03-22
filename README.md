@@ -43,6 +43,69 @@ Key physical components include:
 
 ---
 
+## Governing Equations
+
+The parcel model is based on a physically consistent representation of vapour, liquid, and ice interactions in a rising air parcel.
+
+### Supersaturation
+
+Supersaturation is defined separately with respect to liquid water and ice:
+
+Sw = (e − esat_water) / esat_water  
+Si = (e − esat_ice) / esat_ice  
+
+This separation allows liquid droplets and ice crystals to interact with the vapour field under distinct thermodynamic constraints.
+
+---
+
+### Vapour Budget
+
+The total vapour tendency is decomposed into contributions from liquid condensation and ice deposition:
+
+dqv/dt = (dqv/dt)_liq + (dqv/dt)_ice  
+
+where:
+
+(dqv/dt)_liq = − cond_rate  
+(dqv/dt)_ice = − dep_rate  
+
+This formulation enables explicit competition between liquid droplets and ice particles for available water vapour.
+
+---
+
+### Growth Formulation (Maxwell-type)
+
+Droplet and ice growth are represented using diffusion-limited Maxwell-type equations:
+
+dr/dt = (G / r) S  
+
+where G(T) accounts for the combined effects of vapour diffusion and latent heat transfer.
+
+---
+
+### Temperature Evolution
+
+Temperature evolves due to adiabatic cooling and latent heat release:
+
+dT/dt = − cooling_rate + (Lv / cp) · (dql/dt) + (Ls / cp) · (dqi/dt)
+
+This coupling ensures thermodynamic consistency between microphysical growth and parcel evolution.
+
+---
+
+### Ice-Dominance Diagnostic
+
+To quantify vapour competition, a diagnostic ratio is defined:
+
+R = |dep_rate| / |cond_rate|
+
+R < 1 → liquid-dominated regime  
+R ≥ 1 → ice-dominated regime  
+
+This diagnostic provides a quantitative measure of the transition to ice-dominated vapour depletion, consistent with the Bergeron–Findeisen process.
+
+---
+
 ### Aerosol Activation
 
 Cloud droplet formation follows **Köhler theory**, allowing aerosols to activate when supersaturation exceeds the critical value.
