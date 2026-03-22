@@ -273,9 +273,7 @@ python-cloud-model/
 ## Workflow
 
 The overall workflow of the model is illustrated below:
-
   ![Workflow](figures/workflow_diagram.png)
-
 *Figure: Workflow of the parcel model from simulation to diagnostics and visualisation.*
 
 Model → Simulation Output → Diagnostics → Figures
