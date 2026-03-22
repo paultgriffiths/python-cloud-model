@@ -5,7 +5,7 @@
 
 # Python Cloud Parcel Model
 
-This project aims to provide a physically interpretable framework for studying aerosol–cloud–ice interactions in a controlled parcel environment.
+This repository provides a physically interpretable framework for studying aerosol–cloud–ice interactions in a controlled parcel environment.
 
 It focuses on the emergence of mixed-phase microphysical processes from first-principles thermodynamics, rather than parameterised large-scale modelling.
 
