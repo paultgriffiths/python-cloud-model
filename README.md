@@ -113,17 +113,15 @@ can significantly increase **R**, strengthening vapour competition between dropl
 
 ## Example Diagnostics
 
-```
-### Supersaturation evolution
-![Supersaturation](figures/maxwell_S_vs_T.png)
+###  Supersaturation evolution
+ ![Supersaturation](figures/maxwell_S_vs_T.png)
 
-### Liquid and ice mass evolution
-![Mass evolution](figures/maxwell_q_vs_T.png)
+###  Liquid and ice mass evolution
+ ![Mass evolution](figures/maxwell_q_vs_T.png)
 
-### Ice-dominance diagnostic
-![R ratio](figures/R_vs_time.png)
+###  Ice-dominance diagnostic
+ ![R ratio](figures/R_vs_time.png)
 
-```
 
 ## Repository Structure
 
@@ -278,9 +276,8 @@ It is not intended for operational forecasting or climate prediction application
 ### Citation
 
 If you use this code in research, please cite the repository.
-Further citation detaills will be provided upon DOI release.
+A DOI wil be provided upon Zenodo release.
 
-```
 
 
 
