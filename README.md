@@ -115,13 +115,15 @@ can significantly increase **R**, strengthening vapour competition between dropl
 
 ###  Supersaturation evolution
  ![Supersaturation](figures/maxwell_S_vs_T.png)
+Supersaturation evolution for liquid water and ice during parcel cooling.
 
 ###  Liquid and ice mass evolution
  ![Mass evolution](figures/maxwell_q_vs_T.png)
+Evolution of liquid and ice mass with temperature.
 
 ###  Ice-dominance diagnostic
  ![R ratio](figures/R_vs_time.png)
-
+Diagnostic ratio R showing the transition to ice-dominated vapour uptake.
 
 ## Repository Structure
 
