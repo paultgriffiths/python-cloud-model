@@ -153,20 +153,31 @@ python-cloud-model/
 ```
 
 
-Key files
+## Key Files
 
-- `aerosol.py` — aerosol population definitions
-- `activation.py` — Köhler-based aerosol activation
--`thermodynamics.py` — saturation and supersaturation calculations
--`biological_in.py` — biological ice nucleation scheme
--`run_parcel_competition.py` — liquid-phase vapour competition
--`run_bioIN_onset.py` — ice nucleation onset experiments
--`run_mixed_phase_minimal.py` — minimal mixed-phase parcel model
--`run_mixed_phase_physics.py` — separated liquid/ice vapour physics
--`run_mixed_phase_maxwell.py` — Maxwell-based mixed-phase parcel model
--`plot_R_ratio.py` — Bergeron–Findeisen diagnostic
--`plot_mixed_phase_growth.py` — liquid/ice mass evolution
--`plot_mixed_phase_updraft_sweep.py` — sensitivity to updraft velocity
+- **aerosol.py** — aerosol population definitions
+
+- **activation.py** — Köhler-based aerosol activation
+
+- **thermodynamics.py** — saturation and supersaturation calculations
+
+- **biological_in.py** — biological ice nucleation scheme
+
+- **run_parcel_competition.py** — liquid-phase vapour competition
+
+- **run_bioIN_onset.py** — ice nucleation onset experiments
+
+- **run_mixed_phase_minimal.py** — minimal mixed-phase parcel model
+
+- **run_mixed_phase_physics.py** — separated liquid/ice vapour physics
+
+- **run_mixed_phase_maxwell.py** — Maxwell-based mixed-phase parcel model
+
+- **plot_R_ratio.py** — Bergeron–Findeisen diagnostic
+
+- **plot_mixed_phase_growth.py** — liquid/ice mass evolution
+
+- **plot_mixed_phase_updraft_sweep.py** — sensitivity to updraft velocity
 
 
 
