@@ -61,7 +61,7 @@ This separation allows droplets and ice crystals to interact with the vapour fie
 
 ---
 
-## Maxwell-Type Growth
+### Maxwell-Type Growth
 
 Droplet and ice growth follow Maxwell-type diffusion-limited growth equations:
 ```
@@ -72,7 +72,7 @@ where **G(T)** represents the combined effects of vapour diffusion and latent he
 
 ---
 
-## Latent Heat Feedback
+### Latent Heat Feedback
 
 Condensation and deposition release latent heat, modifying parcel temperature through:
 ```
@@ -83,13 +83,13 @@ This ensures thermodynamic consistency between microphysics and parcel evolution
 
 ---
 
-## Biological Ice Nucleation
+### Biological Ice Nucleation
 
 Ice nucleation is represented through a temperature-dependent biological IN parameterisation based on a logistic activation curve.
 
 ---
 
-# Bergeron–Findeisen Diagnostic
+## Bergeron–Findeisen Diagnostic
 
 To quantify the transition from liquid-dominated to ice-dominated vapour depletion, we define a diagnostic ratio:
 ```
@@ -266,7 +266,7 @@ python run_mixed_phase_updraft_sweep.py
 
 ---
 
-# Generating Diagnostics
+## Generating Diagnostics
 ```
 python plot_R_ratio.py
 python plot_mixed_phase_growth.py
@@ -295,7 +295,7 @@ Future extensions of the model include:
 
 ---
 
-# Status
+## Status
 
 This repository contains a **research prototype** developed for physical process exploration and hypothesis generation.
 
@@ -303,7 +303,7 @@ It is not intended for operational forecasting or climate prediction application
 
 ---
 
-### Citation
+## Citation
 
 If you use this code in research, please cite the repository.
 A DOI wil be provided upon Zenodo release.
