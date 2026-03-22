@@ -173,7 +173,7 @@ can significantly increase **R**, strengthening vapour competition between dropl
  ### Thermodynamic driver (Si − Sw)
   ![Si minus Sw](figures/Si_minus_Sw_vs_T.png)
 
-Difference between supersaturation with respect to ice and liquid water. This highlights the thermodynamic driver of the Bergeron–Findeisen process.
+  Difference between supersaturation with respect to ice and liquid water. This highlights the thermodynamic driver of the Bergeron–Findeisen process.
 
 
 ###  Supersaturation evolution
