@@ -87,16 +87,6 @@ This formulation enables explicit competition between liquid droplets and ice pa
 
 ---
 
-### Growth Formulation (Maxwell-type)
-
-Droplet and ice growth are represented using diffusion-limited Maxwell-type equations:
-
-dr/dt = (G / r) S  
-
-where G(T) accounts for the combined effects of vapour diffusion and latent heat transfer.
-
----
-
 ### Temperature Evolution
 
 Temperature evolves due to adiabatic cooling and latent heat release:
