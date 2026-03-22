@@ -11,7 +11,6 @@ It focuses on the emergence of mixed-phase microphysical processes from first-pr
 
 ---
 
-
 A physically based **cloud parcel model** implemented in Python to investigate aerosol activation, vapour competition, and mixed-phase cloud microphysics.
 
 The model is designed as a **transparent research framework** to explore how aerosol populations, liquid droplets, and ice crystals interact during the ascent of an air parcel.
@@ -269,7 +268,23 @@ python-cloud-model/
 
 - **plot_mixed_phase_updraft_sweep.py** — sensitivity to updraft velocity
 
+---  
 
+## Workflow
+
+The overall workflow of the model is illustrated below:
+ ![Workflow](figures/workflow_diagram.png)
+
+*Figure: Workflow of the parcel model from simulation to diagnostics and visualisation.*
+
+Model → Simulation Output → Diagnostics → Figures
+
+- **Model**: core parcel model computes thermodynamic and microphysical evolution  
+- **Simulation Output**: results are saved as time series (CSV files)  
+- **Diagnostics**: derived quantities (e.g. R ratio, Si − Sw) are computed  
+- **Figures**: visualisations are generated to interpret physical behaviour
+  
+---
 
 ## Installation
 
