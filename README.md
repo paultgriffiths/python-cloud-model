@@ -37,9 +37,23 @@ This repository implements a **minimal but physically interpretable parcel model
 
 ## Physical Framework
 
+These processes are represented mathematically in the governing equations below.
+
 The parcel model simulates the ascent of an air parcel with prescribed updraft velocity.
 
 Key physical components include:
+
+---
+
+### Aerosol Activation
+
+Cloud droplet formation follows **Köhler theory**, allowing aerosols to activate when supersaturation exceeds the critical value.
+
+---
+
+### Biological Ice Nucleation
+
+Ice nucleation is represented through a temperature-dependent biological IN parameterisation based on a logistic activation curve.
 
 ---
 
@@ -106,24 +120,6 @@ This diagnostic provides a quantitative measure of the transition to ice-dominat
 
 ---
 
-### Aerosol Activation
-
-Cloud droplet formation follows **Köhler theory**, allowing aerosols to activate when supersaturation exceeds the critical value.
-
----
-
-### Supersaturation Formulation
-
-Supersaturation is calculated separately for liquid water and ice:
-```text
- Sw = (e − esat_water) / esat_water
- Si = (e − esat_ice) / esat_ice
-```
-
-This separation allows droplets and ice crystals to interact with the vapour field through distinct thermodynamic constraints.
-
----
-
 ### Maxwell-Type Growth
 
 Droplet and ice growth follow Maxwell-type diffusion-limited growth equations:
@@ -146,11 +142,6 @@ This ensures thermodynamic consistency between microphysics and parcel evolution
 
 ---
 
-### Biological Ice Nucleation
-
-Ice nucleation is represented through a temperature-dependent biological IN parameterisation based on a logistic activation curve.
-
----
 
 ## Bergeron–Findeisen Diagnostic
 
