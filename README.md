@@ -192,28 +192,33 @@ can significantly increase **R**, strengthening vapour competition between dropl
 
 ---
 
-
 ## Repository Structure
 
 ```text
 python-cloud-model/
-├── figures/
-│ ├── maxwell_S_vs_T.png
-│ ├── maxwell_q_vs_T.png
-│ └── R_vs_time.png
-├── parcel_model/
-│ ├── aerosol.py
-│ ├── activation.py
-│ ├── thermodynamics.py
-│ ├── biological_in.py
-│ ├── run_parcel_competition.py
-│ ├── run_bioIN_onset.py
-│ ├── run_mixed_phase_minimal.py
-│ ├── run_mixed_phase_physics.py
-│ ├── run_mixed_phase_maxwell.py
-│ ├── plot_R_ratio.py
-│ ├── plot_mixed_phase_growth.py
-│ └── plot_mixed_phase_updraft_sweep.py
+├── parcel_model/        # core physical model
+│   ├── aerosol.py
+│   ├── activation.py
+│   ├── thermodynamics.py
+│   ├── biological_in.py
+│   └── run_mixed_phase_maxwell.py
+│
+├── experiments/         # experiment scripts
+│   ├── run_R_sweep.py
+│   ├── run_R_w_sweep.py
+│   └── run_mixed_phase_updraft_sweep.py
+│
+├── plotting/           # plotting and diagnostics
+│   ├── plot_R_ratio.py
+│   ├── plot_mixed_phase_growth.py
+│   └── plot_Si_minus_Sw.py
+│
+├── data/               # simulation outputs (CSV)
+├── figures/            # generated figures
+│   ├── maxwell_S_vs_T.png
+│   ├── maxwell_q_vs_T.png
+│   └── R_vs_time.png
+│
 ├── README.md
 ├── requirements.txt
 └── .gitignore
