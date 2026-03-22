@@ -120,6 +120,13 @@ can significantly increase **R**, strengthening vapour competition between dropl
 
 ## Example Diagnostics
 
+ These diagnostics illustrate the competition between liquid droplets and ice crystals for available vapour.
+
+ In particular, the increase of the R ratio highlights the transition towards an ice-dominated regime, consistent with the Bergeron–Findeisen process.
+
+ This demonstrates that the model captures the emergence of mixed-phase interactions from physically based principles.
+
+
 ###  Supersaturation evolution
  ![Supersaturation](figures/maxwell_S_vs_T.png)
 
