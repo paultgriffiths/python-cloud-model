@@ -170,6 +170,11 @@ can significantly increase **R**, strengthening vapour competition between dropl
 
  This demonstrates that the model captures the emergence of mixed-phase interactions from physically based principles.
 
+ ### Thermodynamic driver (Si − Sw)
+  ![Si minus Sw](figures/Si_minus_Sw_vs_T.png)
+
+Difference between supersaturation with respect to ice and liquid water. This highlights the thermodynamic driver of the Bergeron–Findeisen process.
+
 
 ###  Supersaturation evolution
  ![Supersaturation](figures/maxwell_S_vs_T.png)
