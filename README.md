@@ -1,4 +1,3 @@
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.XXXXXXX.svg)](https://doi.org/10.5281/zenodo.XXXXXXX)
 ![Research Code](https://img.shields.io/badge/code-research-blueviolet.svg)
 ![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
@@ -12,7 +11,7 @@ The model is designed as a **transparent research framework** to explore how aer
 
 ---
 
-# Scientific Context
+## Scientific Context
 
 Mixed-phase clouds remain a major source of uncertainty in atmospheric science and climate modelling.
 
@@ -29,7 +28,7 @@ This repository implements a **minimal but physically interpretable parcel model
 
 ---
 
-# Physical Framework
+## Physical Framework
 
 The parcel model simulates the ascent of an air parcel with prescribed updraft velocity.
 
@@ -37,16 +36,16 @@ Key physical components include:
 
 ---
 
-## Aerosol Activation
+### Aerosol Activation
 
 Cloud droplet formation follows **Köhler theory**, allowing aerosols to activate when supersaturation exceeds the critical value.
 
 ---
 
-## Supersaturation Formulation
+### Supersaturation Formulation
 
 Supersaturation is calculated separately for liquid water and ice:
-```
+```text
  Sw = (e − esat_water) / esat_water
  Si = (e − esat_ice) / esat_ice
 ```
@@ -88,15 +87,14 @@ Ice nucleation is represented through a temperature-dependent biological IN para
 To quantify the transition from liquid-dominated to ice-dominated vapour depletion, we define a diagnostic ratio:
 ```
  R = |dep_rate| / |cond_rate|
-
 ```
 
 Interpretation:
 
-**Liquid dominated           R < 1**  
-   
-**Ice dominated              R ≥ 1**     
-
+| Regime | Condition |
+|--------|-----------|
+| Liquid dominated | R < 1 |
+| Ice dominated | R >= 1 |
 
 This provides a quantitative diagnostic for the onset of the **Bergeron–Findeisen process**.
 
@@ -116,11 +114,14 @@ can significantly increase **R**, strengthening vapour competition between dropl
 ## Example Diagnostics
 
 ```
-Supersaturation evolution
+### Supersaturation evolution
+![Supersaturation](figures/maxwell_S_vs_T.png)
 
-Liquid and ice mass evolution
+### Liquid and ice mass evolution
+![Mass evolution](figures/maxwell_q_vs_T.png)
 
-Ice-dominance diagnostic
+### Ice-dominance diagnostic
+![R ratio](figures/R_vs_time.png)
 
 ```
 
@@ -153,34 +154,23 @@ python-cloud-model/
 
 
 Key files
-```
-- aerosol.py — aerosol population definitions
 
-- activation.py — Köhler-based aerosol activation
+- `aerosol.py` — aerosol population definitions
+- `activation.py` — Köhler-based aerosol activation
+-`thermodynamics.py` — saturation and supersaturation calculations
+-`biological_in.py` — biological ice nucleation scheme
+-`run_parcel_competition.py` — liquid-phase vapour competition
+-`run_bioIN_onset.py` — ice nucleation onset experiments
+-`run_mixed_phase_minimal.py` — minimal mixed-phase parcel model
+-`run_mixed_phase_physics.py` — separated liquid/ice vapour physics
+-`run_mixed_phase_maxwell.py` — Maxwell-based mixed-phase parcel model
+-`plot_R_ratio.py` — Bergeron–Findeisen diagnostic
+-`plot_mixed_phase_growth.py` — liquid/ice mass evolution
+-`plot_mixed_phase_updraft_sweep.py` — sensitivity to updraft velocity
 
-- thermodynamics.py — saturation and supersaturation calculations
 
-- biological_in.py — biological ice nucleation scheme
 
-- run_parcel_competition.py — liquid-phase vapour competition
-
-- run_bioIN_onset.py — ice nucleation onset experiments
-
-- run_mixed_phase_minimal.py — minimal mixed-phase parcel model
-
-- run_mixed_phase_physics.py — separated liquid/ice vapour physics
-
-- run_mixed_phase_maxwell.py — Maxwell-based mixed-phase parcel model
-
-- plot_R_ratio.py — Bergeron–Findeisen diagnostic
-
-- plot_mixed_phase_growth.py — liquid/ice mass evolution
-
-- plot_mixed_phase_updraft_sweep.py — sensitivity to updraft velocity
-
-```
-
-# Installation
+## Installation
 
 ### Requirements
 
@@ -207,7 +197,7 @@ venv\Scripts\activate
 ```
 ### 2. Install dependencies
 ```bash
-pip install numpy scipy matplotlib pandas
+pip install -r requirements.txt
 
 ```
 If needed, you can also install manually:
@@ -220,7 +210,7 @@ pip install numpy scipy matplotlib pandas
 
 Liquid-only parcel:
 ```bash
-python run_parcel_competition.py
+python parcel_model/run_parcel_competition.py
 
 ```
 Biological ice nucleation onset:
@@ -285,9 +275,10 @@ It is not intended for operational forecasting or climate prediction application
 
 ---
 
-# Citation
-```bash
+### Citation
+
 If you use this code in research, please cite the repository.
+Further citation detaills will be provided upon DOI release.
 
 ```
 
