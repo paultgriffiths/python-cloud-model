@@ -196,7 +196,7 @@ can significantly increase **R**, strengthening vapour competition between dropl
 
 ```text
 python-cloud-model/
-├── parcel_model/        # core physical model
+├── parcel_model/        # core model components
 │   ├── aerosol.py
 │   ├── activation.py
 │   ├── thermodynamics.py
