@@ -205,6 +205,25 @@ The diagnostic ratio \(R = |dep\_rate| / |cond\_rate|\) quantifies vapour compet
 When \(R < 1\), condensation dominates vapour removal.  
 When \(R \geq 1\), vapour depletion becomes dominated by ice deposition, indicating the onset of Bergeron–Findeisen conditions.
 
+---
+
+## Sensitivity of the ice-dominated transition
+
+To examine the conditions under which the parcel transitions from a liquid-dominated to an ice-dominated vapour sink, a sensitivity analysis was performed by varying cloud condensation nuclei (CCN) concentration and ice-nucleating particle (IN) concentration.
+
+The figure below shows the maximum value of the dominance ratio
+
+R = |dep_rate| / |cond_rate|
+
+reached during each simulation.
+
+Regions where R < 1 remain liquid-dominated, while regions where R ≥ 1 indicate a transition to an ice-dominated vapour sink consistent with the Bergeron–Findeisen process.
+
+![Rmax heatmap](figures/Rmax_heatmap_CCN_IN.png)
+
+*Figure: Heatmap of the maximum dominance ratio \(R_{max}\) across CCN and IN concentration. The colour scale shows \(\log_{10}(R_{max})\). Regions marked \(R \geq 1\) indicate simulations in which vapour deposition onto ice exceeds condensation onto liquid droplets, corresponding to an ice-dominated regime.*
+
+The results show that the transition to an ice-dominated regime occurs only when IN concentration is sufficiently high. At low IN concentration, condensation onto liquid droplets remains the dominant vapour sink even when CCN concentration is reduced. This demonstrates that the Bergeron–Findeisen transition depends strongly on the balance between aerosol loading and ice-nucleating particle availability.
 
 ---
 
