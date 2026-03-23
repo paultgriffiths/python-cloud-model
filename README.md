@@ -207,7 +207,7 @@ When \(R \geq 1\), vapour depletion becomes dominated by ice deposition, indicat
 
 ---
 
-## Sensitivity of the ice-dominated transition
+### Sensitivity of the ice-dominated transition
 
 To examine the conditions under which the parcel transitions from a liquid-dominated to an ice-dominated vapour sink, a sensitivity analysis was performed by varying cloud condensation nuclei (CCN) concentration and ice-nucleating particle (IN) concentration.
 
@@ -224,6 +224,56 @@ Regions where R < 1 remain liquid-dominated, while regions where R ≥ 1 indicat
 *Figure: Heatmap of the maximum dominance ratio \(R_{max}\) across CCN and IN concentration. The colour scale shows \(\log_{10}(R_{max})\). Regions marked \(R \geq 1\) indicate simulations in which vapour deposition onto ice exceeds condensation onto liquid droplets, corresponding to an ice-dominated regime.*
 
 The results show that the transition to an ice-dominated regime occurs only when IN concentration is sufficiently high. At low IN concentration, condensation onto liquid droplets remains the dominant vapour sink even when CCN concentration is reduced. This demonstrates that the Bergeron–Findeisen transition depends strongly on the balance between aerosol loading and ice-nucleating particle availability.
+
+---
+
+## Results
+
+### Vapour competition and emergence of mixed-phase behaviour
+
+The model captures the competition between liquid condensation and ice deposition through the diagnostic ratio:
+
+R = |dep_rate| / |cond_rate|
+
+During parcel ascent, condensation initially dominates vapour removal following droplet activation. As temperature decreases and ice nucleation occurs, vapour deposition onto ice crystals increases. In some cases, this leads to a transition where ice becomes the dominant vapour sink (R ≥ 1), consistent with the Bergeron–Findeisen process.
+
+---
+
+### Thermodynamic driver of the Bergeron–Findeisen process
+
+The difference between supersaturation with respect to ice and liquid water (Si − Sw) provides a thermodynamic explanation for this transition.
+
+![Si minus Sw](figures/Si_minus_Sw_vs_T.png)
+
+As temperature decreases, Si increasingly exceeds Sw, creating a vapour pressure gradient that favours deposition onto ice over condensation onto liquid droplets.
+
+---
+
+### Evolution of liquid and ice mass
+
+![Mass evolution](figures/maxwell_q_vs_T.png)
+
+Following activation, liquid water mass increases rapidly due to condensation. Ice mass grows more gradually after nucleation, but can become increasingly important as vapour competition strengthens.
+
+---
+
+### Transition to ice-dominated vapour depletion
+
+![R ratio](figures/R_vs_time.png)
+
+The diagnostic ratio R shows the transition from liquid-dominated (R < 1) to ice-dominated (R ≥ 1) vapour depletion. This transition marks the onset of Bergeron–Findeisen conditions within the parcel.
+
+---
+
+### Sensitivity of the ice-dominated transition
+
+To identify the conditions under which this transition occurs, a sensitivity analysis was performed across CCN and IN concentrations.
+
+![Rmax heatmap](figures/Rmax_heatmap_CCN_IN.png)
+
+*Figure: Heatmap of the maximum dominance ratio R_max across CCN and IN concentration. The colour scale shows log10(R_max). Regions where R ≥ 1 indicate simulations in which vapour deposition onto ice exceeds condensation onto liquid droplets.*
+
+The results show that the transition to an ice-dominated regime occurs only when IN concentration is sufficiently high. At low IN concentration, condensation remains the dominant vapour sink regardless of CCN concentration. This demonstrates that the Bergeron–Findeisen process emerges only within a specific region of CCN–IN parameter space.
 
 ---
 
