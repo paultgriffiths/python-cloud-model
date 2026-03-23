@@ -51,7 +51,7 @@ Ice nucleation is represented through a temperature-dependent biological IN para
 
 The parcel model is based on a physically consistent representation of vapour, liquid, and ice interactions in a rising air parcel.
 
-### Supersaturation
+- **Supersaturation**
 
 Supersaturation is defined separately with respect to liquid water and ice:
 
@@ -60,9 +60,7 @@ Si = (e − esat_ice) / esat_ice
 
 This separation allows liquid droplets and ice crystals to interact with the vapour field under distinct thermodynamic constraints.
 
----
-
-### Vapour Budget
+- **Vapour Budget**
 
 The total vapour tendency is decomposed into contributions from liquid condensation and ice deposition:
 
@@ -75,9 +73,7 @@ where:
 
 This formulation enables explicit competition between liquid droplets and ice particles for available water vapour.
 
----
-
-### Temperature Evolution
+- **Temperature Evolution**
 
 Temperature evolves due to adiabatic cooling and latent heat release:
 
@@ -85,9 +81,7 @@ dT/dt = − cooling_rate + (Lv / cp) · (dql/dt) + (Ls / cp) · (dqi/dt)
 
 This coupling ensures thermodynamic consistency between microphysical growth and parcel evolution.
 
----
-
-### Ice-Dominance Diagnostic
+- **Ice-Dominance Diagnostic**
 
 To quantify vapour competition, a diagnostic ratio is defined:
 
@@ -98,9 +92,7 @@ R ≥ 1 → ice-dominated regime
 
 This diagnostic provides a quantitative measure of the transition to ice-dominated vapour depletion, consistent with the Bergeron–Findeisen process.
 
----
-
-### Maxwell-Type Growth
+- **Maxwell-Type Growth**
 
 Droplet and ice growth follow Maxwell-type diffusion-limited growth equations:
 ```
@@ -109,9 +101,7 @@ Droplet and ice growth follow Maxwell-type diffusion-limited growth equations:
 
 where **G(T)** represents the combined effects of vapour diffusion and latent heat transport.
 
----
-
-### Latent Heat Feedback
+- **Latent Heat Feedback-**
 
 Condensation and deposition release latent heat, modifying parcel temperature through:
 ```
