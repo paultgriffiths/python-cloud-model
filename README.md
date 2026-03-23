@@ -54,17 +54,19 @@ The parcel model is based on a physically consistent representation of vapour, l
 - **Supersaturation**
 
 Supersaturation is defined separately with respect to liquid water and ice:
-
+```
 Sw = (e − esat_water) / esat_water  
-Si = (e − esat_ice) / esat_ice  
+Si = (e − esat_ice) / esat_ice
+```
 
 This separation allows liquid droplets and ice crystals to interact with the vapour field under distinct thermodynamic constraints.
 
 - **Vapour Budget**
 
 The total vapour tendency is decomposed into contributions from liquid condensation and ice deposition:
-
-dqv/dt = (dqv/dt)_liq + (dqv/dt)_ice  
+```
+dqv/dt = (dqv/dt)_liq + (dqv/dt)_ice
+``` 
 
 where:
 
@@ -76,17 +78,17 @@ This formulation enables explicit competition between liquid droplets and ice pa
 - **Temperature Evolution**
 
 Temperature evolves due to adiabatic cooling and latent heat release:
-
+```
 dT/dt = − cooling_rate + (Lv / cp) · (dql/dt) + (Ls / cp) · (dqi/dt)
-
+```
 This coupling ensures thermodynamic consistency between microphysical growth and parcel evolution.
 
 - **Ice-Dominance Diagnostic**
 
 To quantify vapour competition, a diagnostic ratio is defined:
-
+```
 R = |dep_rate| / |cond_rate|
-
+```
 R < 1 → liquid-dominated regime  
 R ≥ 1 → ice-dominated regime  
 
