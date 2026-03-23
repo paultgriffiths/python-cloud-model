@@ -42,11 +42,11 @@ The parcel model simulates the ascent of an air parcel with prescribed updraft v
 
 Key physical components include:
 
-### Aerosol Activation
+- **Aerosol Activation**
 
 Cloud droplet formation follows **Köhler theory**, allowing aerosols to activate when supersaturation exceeds the critical value.
 
-### Biological Ice Nucleation
+- **Biological Ice Nucleation**
 
 Ice nucleation is represented through a temperature-dependent biological IN parameterisation based on a logistic activation curve.
 
