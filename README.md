@@ -37,7 +37,6 @@ This repository implements a **minimal but physically interpretable parcel model
 ## Physical Framework
 
 These processes are represented mathematically in the governing equations below.
-
 The parcel model simulates the ascent of an air parcel with prescribed updraft velocity.
 
 Key physical components include:
