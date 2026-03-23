@@ -101,7 +101,7 @@ Droplet and ice growth follow Maxwell-type diffusion-limited growth equations:
 
 where **G(T)** represents the combined effects of vapour diffusion and latent heat transport.
 
-- **Latent Heat Feedback-**
+- **Latent Heat Feedback**
 
 Condensation and deposition release latent heat, modifying parcel temperature through:
 ```
