@@ -405,19 +405,20 @@ python run_mixed_phase_updraft_sweep.py
 ---
 
 ## Generating Diagnostics
-```
-python plot_R_ratio.py
-python plot_mixed_phase_growth.py
-python plot_mixed_phase_updraft_sweep.py
 
-```
+The following scripts generate diagnostic figures used to analyse mixed-phase cloud behaviour:
 
-These scripts generate diagnostic figures illustrating:
+```bash
+python plotting/plot_R_ratio.py
+python plotting/plot_mixed_phase_growth.py
+python plotting/plot_mixed_phase_updraft_sweep.py
 
-- supersaturation evolution
-- droplet and ice growth
-- vapour competition
-- sensitivity to updraft velocity
+These diagnostics illustrate :
+
+supersaturation evolution (Sw and Si)
+liquid droplet and ice crystal growth
+vapour competition between condensation and deposition
+sensitivity of mixed-phase processes to updraft velocity:
 
 ---
 
