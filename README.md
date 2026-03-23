@@ -9,8 +9,6 @@ This repository provides a physically interpretable framework for studying aeros
 
 It focuses on the emergence of mixed-phase microphysical processes from first-principles thermodynamics, rather than parameterised large-scale modelling.
 
----
-
 A physically based **cloud parcel model** implemented in Python to investigate aerosol activation, vapour competition, and mixed-phase cloud microphysics.
 
 The model is designed as a **transparent research framework** to explore how aerosol populations, liquid droplets, and ice crystals interact during the ascent of an air parcel.
