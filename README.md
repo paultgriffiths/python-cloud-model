@@ -166,8 +166,7 @@ Following droplet activation, Sw approaches a quasi-steady state due to condensa
 
  ![Si minus Sw](figures/Si_minus_Sw_vs_T.png)
 
-The difference between supersaturation with respect to ice and liquid water (Si − Sw) highlights the fundamental thermodynamic driver of the Bergeron–Findeisen process.  
-As temperature decreases, Si exceeds Sw, favouring vapour deposition onto ice crystals.
+The difference between supersaturation with respect to ice and liquid water (Si − Sw) highlights the fundamental thermodynamic driver of the Bergeron–Findeisen process.As temperature decreases, Si exceeds Sw, favouring vapour deposition onto ice crystals.
 
 ---
 
@@ -222,8 +221,7 @@ During parcel ascent, condensation initially dominates vapour removal following 
 
 **Thermodynamic driver of the Bergeron–Findeisen process**
 
-The difference between supersaturation with respect to ice and liquid water (Si − Sw) provides a thermodynamic explanation for this transition.
-As temperature decreases, Si increasingly exceeds Sw, creating a vapour pressure gradient that favours deposition onto ice over condensation onto liquid droplets.
+The difference between supersaturation with respect to ice and liquid water (Si − Sw) provides a thermodynamic explanation for this transition. As temperature decreases, Si increasingly exceeds Sw, creating a vapour pressure gradient that favours deposition onto ice over condensation onto liquid droplets.
 
 **Evolution of liquid and ice mass**
 
@@ -246,11 +244,11 @@ The project is organised to clearly separate model physics, experiments, diagnos
 
 ```text
 python-cloud-model/
-├── parcel_model/        # core model components
-│   ├── aerosol.py              # aerosol population definitions
-│   ├── activation.py           # Köhler-based activation
-│   ├── thermodynamics.py       # saturation and supersaturation calculations
-│   ├── biological_in.py        # biological ice nucleation parameterisation
+├── parcel_model/         # core model components
+│   ├── aerosol.py         # aerosol population definitions
+│   ├── activation.py       # Köhler-based activation
+│   ├── thermodynamics.py    # saturation and supersaturation calculations
+│   ├── biological_in.py       # biological ice nucleation parameterisation
 │   └── run_mixed_phase_maxwell.py   # main mixed-phase parcel model
 │
 ├── experiments/         # experiment scripts
