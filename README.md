@@ -220,26 +220,18 @@ R = |dep_rate| / |cond_rate|
 
 During parcel ascent, condensation initially dominates vapour removal following droplet activation. As temperature decreases and ice nucleation occurs, vapour deposition onto ice crystals increases. In some cases, this leads to a transition where ice becomes the dominant vapour sink (R ≥ 1), consistent with the Bergeron–Findeisen process.
 
----
-
 ### Thermodynamic driver of the Bergeron–Findeisen process
 
 The difference between supersaturation with respect to ice and liquid water (Si − Sw) provides a thermodynamic explanation for this transition.
 As temperature decreases, Si increasingly exceeds Sw, creating a vapour pressure gradient that favours deposition onto ice over condensation onto liquid droplets.
 
----
-
 ### Evolution of liquid and ice mass
 
 Following activation, liquid water mass increases rapidly due to condensation. Ice mass grows more gradually after nucleation, but can become increasingly important as vapour competition strengthens.
 
----
-
 ### Transition to ice-dominated vapour depletion
 
 The diagnostic ratio R shows the transition from liquid-dominated (R < 1) to ice-dominated (R ≥ 1) vapour depletion. This transition marks the onset of Bergeron–Findeisen conditions within the parcel.
-
----
 
 ### Sensitivity of the ice-dominated transition
 
