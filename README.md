@@ -242,30 +242,33 @@ The results show that the transition to an ice-dominated regime occurs only when
 
 ## Repository Structure
 
+The project is organised to clearly separate model physics, experiments, diagnostics, and outputs.
+
 ```text
 python-cloud-model/
 ├── parcel_model/        # core model components
-│   ├── aerosol.py
-│   ├── activation.py
-│   ├── thermodynamics.py
-│   ├── biological_in.py
-│   └── run_mixed_phase_maxwell.py
+│   ├── aerosol.py              # aerosol population definitions
+│   ├── activation.py           # Köhler-based activation
+│   ├── thermodynamics.py       # saturation and supersaturation calculations
+│   ├── biological_in.py        # biological ice nucleation parameterisation
+│   └── run_mixed_phase_maxwell.py   # main mixed-phase parcel model
 │
 ├── experiments/         # experiment scripts
 │   ├── run_R_sweep.py
 │   ├── run_R_w_sweep.py
 │   └── run_mixed_phase_updraft_sweep.py
 │
-├── plotting/           # plotting and diagnostics
+├── plotting/            # plotting and diagnostics
 │   ├── plot_R_ratio.py
 │   ├── plot_mixed_phase_growth.py
 │   └── plot_Si_minus_Sw.py
 │
-├── data/               # simulation outputs (CSV)
-├── figures/            # generated figures
+├── data/                # simulation outputs (CSV files)
+├── figures/             # generated figures
 │   ├── maxwell_S_vs_T.png
 │   ├── maxwell_q_vs_T.png
-│   └── R_vs_time.png
+│   ├── R_vs_time.png
+│   └── Rmax_heatmap_CCN_IN.png
 │
 ├── README.md
 ├── requirements.txt
