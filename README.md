@@ -18,7 +18,6 @@ The model is designed as a **transparent research framework** to explore how aer
 ## Scientific Context
 
 Mixed-phase clouds remain a major source of uncertainty in atmospheric science and climate modelling.
-
 Key unresolved processes include:
 
 - aerosol–cloud interactions  
