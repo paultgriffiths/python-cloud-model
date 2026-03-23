@@ -277,29 +277,47 @@ python-cloud-model/
 
 ##  Key Files
 
-- **aerosol.py** — aerosol population definitions
+---
 
-- **activation.py** — Köhler-based aerosol activation
+### Core model (parcel physics)
 
-- **thermodynamics.py** — saturation and supersaturation calculations
+- **parcel_model/aerosol.py** — aerosol population definitions  
 
-- **biological_in.py** — biological ice nucleation scheme
+- **parcel_model/activation.py** — Köhler-based aerosol activation  
 
-- **run_parcel_competition.py** — liquid-phase vapour competition
+- **parcel_model/thermodynamics.py** — saturation vapour pressure and supersaturation calculations (Sw, Si)  
 
-- **run_bioIN_onset.py** — ice nucleation onset experiments
+- **parcel_model/biological_in.py** — temperature-dependent biological ice nucleation scheme  
 
-- **run_mixed_phase_minimal.py** — minimal mixed-phase parcel model
+- **parcel_model/run_mixed_phase_maxwell.py** — physically based mixed-phase parcel model with Maxwell growth and latent heat feedback  
 
-- **run_mixed_phase_physics.py** — separated liquid/ice vapour physics
+---
 
-- **run_mixed_phase_maxwell.py** — Maxwell-based mixed-phase parcel model
+### Experiments
 
-- **plot_R_ratio.py** — Bergeron–Findeisen diagnostic
+- **experiments/run_R_sweep.py** — sensitivity of vapour competition across parameter space  
 
-- **plot_mixed_phase_growth.py** — liquid/ice mass evolution
+- **experiments/run_R_w_sweep.py** — sensitivity of vapour competition to updraft velocity  
 
-- **plot_mixed_phase_updraft_sweep.py** — sensitivity to updraft velocity
+- **experiments/run_mixed_phase_updraft_sweep.py** — mixed-phase evolution under varying dynamical forcing  
+
+---
+
+### Diagnostics and plotting
+
+- **plotting/plot_R_ratio.py** — Bergeron–Findeisen diagnostic \(R = |dep\_rate| / |cond\_rate|\)  
+
+- **plotting/plot_Si_minus_Sw.py** — thermodynamic driver of vapour transfer (Si − Sw)  
+
+- **plotting/plot_mixed_phase_growth.py** — evolution of liquid and ice mass  
+
+---
+
+### Outputs
+
+- **data/** — simulation outputs (CSV time series)  
+
+- **figures/** — generated figures for diagnostics and analysis  
 
 ---  
 
