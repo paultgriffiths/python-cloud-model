@@ -29,7 +29,6 @@ Key unresolved processes include:
 - sensitivity to updraft velocity  
 
 Parcel models provide a controlled framework to isolate these processes while maintaining physically consistent thermodynamics.
-
 This repository implements a **minimal but physically interpretable parcel model** that allows these interactions to emerge naturally.
 
 ---
