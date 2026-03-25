@@ -209,6 +209,14 @@ The results show that the transition to an ice-dominated regime occurs only when
 
 ---
 
+### Sensitivity of the ice-dominated regime
+
+![Rmax heatmap](figures/Rmax_heatmap_CCN_IN_boundary.png)
+
+*Figure: Heatmap of the maximum dominance ratio (R_max) across CCN and IN concentrations. The colour scale shows log10(R_max). The white contour line represents the transition boundary (R = 1), separating liquid-dominated (R < 1) from ice-dominated (R ≥ 1) vapour depletion regimes. The results show that the Bergeron–Findeisen process emerges only when ice-nucleating particle concentration exceeds a critical threshold.*
+
+---
+
 ## Results
 
 **Vapour competition and emergence of mixed-phase behaviour**
