@@ -347,6 +347,16 @@ Model → Simulation Output → Diagnostics → Figures
 
 ## Installation
 
+### ⚡ Quick Start
+
+Clone the repository and run a simulation in minutes:
+
+```bash
+git clone https://github.com/your-username/python-cloud-model.git
+cd python-cloud-model
+
+```
+
 ### Requirements
 
 - Python >= 3.9
@@ -381,7 +391,7 @@ pip install numpy scipy matplotlib pandas
 
 ```
 
-### Run simulations
+### 3. Run simulations
 
 Liquid-only parcel:
 ```bash
