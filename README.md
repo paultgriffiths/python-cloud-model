@@ -3,7 +3,24 @@
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Status](https://img.shields.io/badge/status-research--prototype-orange.svg)
 
-# Python Cloud Parcel Model
+# 🌥️ Python Cloud Parcel Model
+
+## 🎬 Model Visualisations
+### Vapour competition (R vs time)
+  ![R demo](figures/R_transition_real.gif)
+
+Transition from liquid-dominated to ice-dominated regime:
+
+R < 1 → liquid-dominated
+R ≥ 1 → ice-dominated
+
+### Parameter space exploration (CCN–IN)
+  ![Heatmap demo](figures/Rmax_heatmap_animation.gif)
+
+Heatmap of maximum vapour competition across aerosol parameter space.
+The white boundary indicates the transition to an ice-dominated regime **(R ≥ 1)**.
+
+---
 
 This repository provides a physically interpretable framework for studying aerosol–cloud–ice interactions in a controlled parcel environment.
 
@@ -209,6 +226,14 @@ The results show that the transition to an ice-dominated regime occurs only when
 
 ---
 
+### Sensitivity of the ice-dominated regime
+
+![Rmax heatmap](figures/Rmax_heatmap_CCN_IN_boundary.png)
+
+*Figure: Heatmap of the maximum dominance ratio (R_max) across CCN and IN concentrations. The colour scale shows log10(R_max). The white contour line represents the transition boundary (R = 1), separating liquid-dominated (R < 1) from ice-dominated (R ≥ 1) vapour depletion regimes. The results show that the Bergeron–Findeisen process emerges only when ice-nucleating particle concentration exceeds a critical threshold.*
+
+---
+
 ## Results
 
 **Vapour competition and emergence of mixed-phase behaviour**
@@ -262,11 +287,12 @@ python-cloud-model/
 │   └── plot_Si_minus_Sw.py
 │
 ├── data/                # simulation outputs (CSV files)
-├── figures/             # generated figures
+├── figures/            # generated figures
 │   ├── maxwell_S_vs_T.png
 │   ├── maxwell_q_vs_T.png
 │   ├── R_vs_time.png
-│   └── Rmax_heatmap_CCN_IN.png
+│   ├── Si_minus_Sw_vs_T.png
+│   └── Rmax_heatmap_CCN_IN_boundary.png
 │
 ├── README.md
 ├── requirements.txt
@@ -338,6 +364,16 @@ Model → Simulation Output → Diagnostics → Figures
 
 ## Installation
 
+### ⚡ Quick Start
+
+Clone the repository and run a simulation in minutes:
+
+```bash
+git clone https://github.com/your-username/python-cloud-model.git
+cd python-cloud-model
+
+```
+
 ### Requirements
 
 - Python >= 3.9
@@ -372,7 +408,7 @@ pip install numpy scipy matplotlib pandas
 
 ```
 
-### Run simulations
+### 3. Run simulations
 
 Liquid-only parcel:
 ```bash
