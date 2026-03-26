@@ -3,7 +3,23 @@
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Status](https://img.shields.io/badge/status-research--prototype-orange.svg)
 
-# Python Cloud Parcel Model
+# 🌥️ Python Cloud Parcel Model
+
+## 🎬 Model Visualisations
+### Vapour competition (R vs time)
+![R demo](figures/R_transition_real.gif)
+Transition from liquid-dominated to ice-dominated regime:
+
+*R < 1 → liquid-dominated*
+*R ≥ 1 → ice-dominated*
+
+### Parameter space exploration (CCN–IN)
+![Heatmap demo](figures/Rmax_heatmap_animation.gif)
+
+Heatmap of maximum vapour competition across aerosol parameter space.
+The white boundary indicates the transition to an ice-dominated regime **(R ≥ 1)**.
+
+---
 
 This repository provides a physically interpretable framework for studying aerosol–cloud–ice interactions in a controlled parcel environment.
 
