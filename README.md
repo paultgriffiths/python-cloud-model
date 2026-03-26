@@ -7,14 +7,15 @@
 
 ## 🎬 Model Visualisations
 ### Vapour competition (R vs time)
-![R demo](figures/R_transition_real.gif)
+ ![R demo](figures/R_transition_real.gif)
+
 Transition from liquid-dominated to ice-dominated regime:
 
-*R < 1 → liquid-dominated*
-*R ≥ 1 → ice-dominated*
+R < 1 → liquid-dominated
+R ≥ 1 → ice-dominated
 
 ### Parameter space exploration (CCN–IN)
-![Heatmap demo](figures/Rmax_heatmap_animation.gif)
+ ![Heatmap demo](figures/Rmax_heatmap_animation.gif)
 
 Heatmap of maximum vapour competition across aerosol parameter space.
 The white boundary indicates the transition to an ice-dominated regime **(R ≥ 1)**.
