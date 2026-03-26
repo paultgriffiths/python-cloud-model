@@ -270,11 +270,12 @@ python-cloud-model/
 │   └── plot_Si_minus_Sw.py
 │
 ├── data/                # simulation outputs (CSV files)
-├── figures/             # generated figures
+├── figures/            # generated figures
 │   ├── maxwell_S_vs_T.png
 │   ├── maxwell_q_vs_T.png
 │   ├── R_vs_time.png
-│   └── Rmax_heatmap_CCN_IN.png
+│   ├── Si_minus_Sw_vs_T.png
+│   └── Rmax_heatmap_CCN_IN_boundary.png
 │
 ├── README.md
 ├── requirements.txt
