@@ -4,7 +4,7 @@
 ![Status](https://img.shields.io/badge/status-research--prototype-orange.svg)
 
 # 🌥️ Python Cloud Parcel Model
-
+A physically-based cloud parcel model revealing vapour competition between liquid droplets and ice crystals.
 ## 🎬 Model Visualisations
 ### Vapour competition (R vs time)
   ![R demo](figures/R_transition_real.gif)
@@ -27,6 +27,14 @@ It focuses on the emergence of mixed-phase microphysical processes from first-pr
 A physically based **cloud parcel model** implemented in Python to investigate aerosol activation, vapour competition, and mixed-phase cloud microphysics.
 
 The model is designed as a **transparent research framework** to explore how aerosol populations, liquid droplets, and ice crystals interact during the ascent of an air parcel.
+
+---
+
+## 🧠 Key Insight
+
+This model demonstrates that ice-dominated vapour depletion (R ≥ 1) emerges only when ice-nucleating particle concentration exceeds a critical threshold.
+
+This provides a physically interpretable explanation of the Bergeron–Findeisen transition.
 
 ---
 
@@ -415,7 +423,7 @@ python parcel_model/run_parcel_competition.py
 ```
 Biological ice nucleation onset:
 ```bash
-python run_bioIN_onset.py
+python parcel_model/run_bioIN_onset.py
 
 ```
 
