@@ -64,8 +64,11 @@ def run(
     pollen_N=3000.0,
     bio_N=5.0,
     bio_T50=263.15,
-    bio_width=2.0
+    bio_width=2.0,
+    r_cloud_init=1e-6,
+    r_ice_init=5e-6
 ):
+
     sulfate = AerosolPopulation("sulfate", N=sulfate_N, radius=30e-9, kappa=1.0, rho_p=1770.0)
     print("DEBUG sulfate_N =", sulfate_N, "bio_N =", bio_N, "w =", w)
     pollen  = AerosolPopulation("pollen",  N=pollen_N,  radius=5e-6,  kappa=0.1, rho_p=1000.0)
@@ -83,8 +86,9 @@ def run(
     cooling_rate = 0.01 * w  # K/s
 
     # Mean radii
-    r_cloud = 1e-6
-    r_ice   = 5e-6
+    r_cloud = r_cloud_init
+    r_ice   = r_ice_init
+
 
     ice_active = False
     ice_onset_t = None

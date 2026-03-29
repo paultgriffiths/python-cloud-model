@@ -3,7 +3,7 @@ import pandas as pd
 import os
 import sys
 
-# make sure Python can import from parcel_model
+# allow import from parcel_model
 sys.path.append(os.path.join(os.path.dirname(__file__), "..", "parcel_model"))
 
 from run_mixed_phase_maxwell import run
@@ -15,7 +15,8 @@ def check_stability(csv_file):
     if df.isna().any().any():
         return "UNSTABLE (NaN detected)"
 
-    if np.isinf(df.select_dtypes(include=[np.number]).values).any():
+    numeric_df = df.select_dtypes(include=[np.number])
+    if np.isinf(numeric_df.values).any():
         return "UNSTABLE (Inf detected)"
 
     if "Si" in df.columns and np.max(np.abs(df["Si"].values)) > 1.0:
@@ -28,15 +29,13 @@ def check_stability(csv_file):
 
 
 def main():
-    # test matrix
     w_list = [1.0, 5.0, 10.0]
     dt_list = [1.0, 0.5, 0.1]
     r_ice_list = [1e-6, 5e-7, 1e-7]   # 1 micron, 500 nm, 100 nm
 
-    results = []
-
-    # make sure output directory exists
     os.makedirs("data", exist_ok=True)
+
+    results = []
 
     for w in w_list:
         for dt in dt_list:
@@ -55,7 +54,6 @@ def main():
                         outfile=outfile,
                         r_ice_init=r_ice
                     )
-
                     status = check_stability(outfile)
 
                 except Exception as e:

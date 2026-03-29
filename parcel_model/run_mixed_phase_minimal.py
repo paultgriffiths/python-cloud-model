@@ -1,4 +1,4 @@
-from thermodynamics import saturation_vapor_pressure, supersaturation
+from thermodynamics import esat_water, esat_ice
 from aerosol import AerosolPopulation
 from activation import check_activation
 from biological_in import BiologicalIN, check_ice_nucleation
@@ -51,7 +51,7 @@ def run_case(label, w, include_ice=True, verbose=True):
 
     T = 273.15          # start at 0C
     RH0 = 0.95
-    e = RH0 * saturation_vapor_pressure(T)
+    e = RH0 * esat_water(T)
 
     # Updraft -> cooling-rate mapping (simple, consistent with earlier)
     cooling_rate = 0.01 * w  # K/s
@@ -88,8 +88,8 @@ def run_case(label, w, include_ice=True, verbose=True):
 
     t = 0.0
     while t <= t_end:
-        es = saturation_vapor_pressure(T)
-        S = supersaturation(e, es)
+        es = esat_water(T)
+        S = (e / es)- 1.0
 
         # Liquid activation
         check_activation(S, sulfate, T=T)
@@ -126,8 +126,8 @@ def run_case(label, w, include_ice=True, verbose=True):
             qi += qi_growth_coeff * S * es * dt
 
         # Recompute S after sinks
-        es2 = saturation_vapor_pressure(T)
-        S2 = supersaturation(e, es2)
+        es2 = esat_water(T)
+        S2 = (e / es2) - 1.0
 
         # Save time series
         times.append(t)
