@@ -270,23 +270,13 @@ The diagnostic ratio R shows the transition from liquid-dominated (R < 1) to ice
 To identify the conditions under which this transition occurs, a sensitivity analysis was performed across CCN and IN concentrations.
 The results show that the transition to an ice-dominated regime occurs only when IN concentration is sufficiently high. At low IN concentration, condensation remains the dominant vapour sink regardless of CCN concentration. This demonstrates that the Bergeron–Findeisen process emerges only within a specific region of CCN–IN parameter space.
 
+
+
 ---
 
 ## Numerical Stability Analysis
 
-### Stability Test Results
-
-| Updraft Velocity (m/s) | Timestep (s) | Initial Ice Radius (m) | Status  | Notes                         |
-|-----------------------|-------------|------------------------|---------|-------------------------------|
-| 1                     | 1.0         | 1e-6                   | Stable  | No onset within 600 s         |
-| 1                     | 1.0         | 5e-7                   | Stable  | No onset within 600 s         |
-| 1                     | 1.0         | 1e-7                   | Stable  | No onset within 600 s         |
-| 5                     | 1.0         | 1e-6                   | Stable  | Normal evolution              |
-| 5                     | 1.0         | 5e-7                   | Stable  | Normal evolution              |
-| 5                     | 1.0         | 1e-7                   | Stable  | Strong growth but stable      |
-| 10                    | 1.0         | 1e-6                   | Stable  | Normal evolution              |
-| 10                    | 1.0         | 5e-7                   | Stable  | Strong forcing               |
-| 10                    | 1.0         | 1e-7                   | Stable  | Extreme case, still stable    |
+### Stability Test Summary
 
 A numerical stability analysis was performed to assess the robustness of the forward Euler integration scheme under strong forcing conditions.
 
@@ -294,7 +284,21 @@ The model was tested across:
 
 - updraft velocities of 1, 5, and 10 m s^-1  
 - timesteps of 1.0, 0.5, and 0.1 s  
-- initial ice radii of 1 um, 500 nm, and 100 nm  
+- initial ice radii of 1 um, 500 nm, and 100 nm
+
+A total of 27 combinations were evaluated.
+
+### Representative Cases
+
+These cases illustrate representative conditions, including weak forcing, moderate growth, and extreme conditions with small ice radii and high updraft velocity.
+
+| w (m/s) | dt (s) | r_init (m) | Status | Notes                  |
+|--------|--------|-----------|--------|------------------------|
+| 1      | 1.0    | 1e-6      | Stable | No onset               |
+| 5      | 0.5    | 5e-7      | Stable | Normal growth          |
+| 10     | 0.1    | 1e-7      | Stable | Extreme but stable     |
+
+All cases remained numerically stable. No NaN values, infinite values, negative radii, or supersaturation blow-up were observed.
 
 These tests were designed to probe conditions under which the Maxwell growth tendency becomes large, particularly because ice growth scales inversely with particle radius.
 
