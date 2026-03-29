@@ -11,7 +11,7 @@ A physically-based cloud parcel model revealing vapour competition between liqui
   Evolution of vapour competition showing transition from liquid to ice-dominated regime.
   
   ![Heatmap demo](figures/Rmax_heatmap_animation.gif)
-  Parameter space exploration showing maximum vapour competition across CCN-IN conditions.
+  This figure shows the maximum vapour competition across CCN-IN conditions.
 
 Transition from liquid-dominated to ice-dominated regime:
 - **R < 1 → liquid-dominated**
