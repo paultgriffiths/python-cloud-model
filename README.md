@@ -269,6 +269,24 @@ The results show that the transition to an ice-dominated regime occurs only when
 
 ---
 
+## Numerical Stability Analysis
+
+A numerical stability analysis was performed to assess the robustness of the forward Euler integration scheme under strong forcing conditions.
+
+The model was tested across:
+
+- updraft velocities of 1, 5, and 10 m s^-1  
+- timesteps of 1.0, 0.5, and 0.1 s  
+- initial ice radii of 1 um, 500 nm, and 100 nm  
+
+These tests were designed to probe conditions under which the Maxwell growth tendency becomes large, particularly because ice growth scales inversely with particle radius.
+
+All tested cases remained numerically stable. No NaN values, infinite values, negative radii, or unphysical supersaturation blow-up were detected.
+
+This suggests that the forward Euler implementation is robust across the explored range of physically demanding conditions, including high updraft velocity and very small initial ice crystal radii.
+
+---
+
 ## Repository Structure
 
 The project is organised to clearly separate model physics, experiments, diagnostics, and outputs.
@@ -283,9 +301,10 @@ python-cloud-model/
 │   └── run_mixed_phase_maxwell.py   # main mixed-phase parcel model
 │
 ├── experiments/         # experiment scripts
-│   ├── run_R_sweep.py
-│   ├── run_R_w_sweep.py
-│   └── run_mixed_phase_updraft_sweep.py
+│   └── run_stability_test.py
+│
+├── data/                # simulation outputs and stability results
+│   └── stability_results.csv
 │
 ├── plotting/            # plotting and diagnostics
 │   ├── plot_R_ratio.py
