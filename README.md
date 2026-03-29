@@ -271,6 +271,20 @@ The results show that the transition to an ice-dominated regime occurs only when
 
 ## Numerical Stability Analysis
 
+### Stability Test Results
+
+| Updraft Velocity (m/s) | Timestep (s) | Initial Ice Radius (m) | Status  | Notes                         |
+|-----------------------|-------------|------------------------|---------|-------------------------------|
+| 1                     | 1.0         | 1e-6                   | Stable  | No onset within 600 s         |
+| 1                     | 1.0         | 5e-7                   | Stable  | No onset within 600 s         |
+| 1                     | 1.0         | 1e-7                   | Stable  | No onset within 600 s         |
+| 5                     | 1.0         | 1e-6                   | Stable  | Normal evolution              |
+| 5                     | 1.0         | 5e-7                   | Stable  | Normal evolution              |
+| 5                     | 1.0         | 1e-7                   | Stable  | Strong growth but stable      |
+| 10                    | 1.0         | 1e-6                   | Stable  | Normal evolution              |
+| 10                    | 1.0         | 5e-7                   | Stable  | Strong forcing               |
+| 10                    | 1.0         | 1e-7                   | Stable  | Extreme case, still stable    |
+
 A numerical stability analysis was performed to assess the robustness of the forward Euler integration scheme under strong forcing conditions.
 
 The model was tested across:
