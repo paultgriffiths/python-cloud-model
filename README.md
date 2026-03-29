@@ -297,7 +297,7 @@ These tests were designed to probe conditions under which the Maxwell growth ten
 
 All tested cases remained numerically stable. No NaN values, infinite values, negative radii, or unphysical supersaturation blow-up were detected.
 
-This suggests that the forward Euler implementation is robust across the explored range of physically demanding conditions, including high updraft velocity and very small initial ice crystal radii.
+This indicates that the forward Euler implementation is robust within the tested range of conditions, including high updraft velocity and very small initial ice crystal radii.
 
 ---
 
