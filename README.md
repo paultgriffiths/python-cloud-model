@@ -338,11 +338,10 @@ These results suggest that:
 - The model can be run with relatively large timesteps to reduce computational cost.  
 - A timestep of dt ≈ 0.1–1.0 s provides a good balance between accuracy and efficiency.  
 
-### Figure: Sensitivity to Timestep (dt)
-
-The figure below shows the variation of the final ice radius as a function of timestep size.
+### Sensitivity to Timestep (dt)
 
   ![Timestep sensitivity](figures/figure_dt_sensitivity.png)
+The figure below shows the variation of the final ice radius as a function of timestep size.
 
 This plot confirms that:
 
