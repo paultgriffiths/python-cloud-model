@@ -348,6 +348,14 @@ This plot confirms that:
 - The solution converges as dt decreases.
 - The variation in final ice radius remains small.
 - The model remains stable across the tested timestep range.
+  
+### Interpretation
+
+The results show that the final ice radius converges as the timestep decreases.
+
+For timesteps larger than 1 s, the solution becomes nearly constant, indicating numerical stability and low sensitivity to further increases in timestep.
+
+This suggests that using dt ≈ 1 s provides a good compromise between computational efficiency and accuracy.
 
 ---
 
