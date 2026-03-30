@@ -276,21 +276,23 @@ The results show that the transition to an ice-dominated regime occurs only when
 
 ## Numerical Stability Analysis
 
-### Stability Test Summary
+## Numerical Stability Analysis
 
-A numerical stability analysis was performed to assess the robustness of the forward Euler integration scheme under strong forcing conditions.
+### Stability Test Summary
 
 The model was tested across:
 
-- updraft velocities of 1, 5, and 10 m s^-1  
-- timesteps of 1.0, 0.5, and 0.1 s  
-- initial ice radii of 1 um, 500 nm, and 100 nm
+- Updraft velocities: 1, 5, 10 m/s  
+- Timesteps: 0.1, 0.5, 1.0 s  
+- Initial ice radii: 1e-6, 5e-7, 1e-7 m  
 
 A total of 27 combinations were evaluated.
 
-### Representative Cases
+All cases remained numerically stable. No NaN values, infinite values, negative radii, or supersaturation blow-up were observed.
 
-These cases illustrate representative conditions, including weak forcing, moderate growth, and extreme conditions with small ice radii and high updraft velocity.
+---
+
+### Representative Cases
 
 | w (m/s) | dt (s) | r_init (m) | Status | Notes                  |
 |--------|--------|-----------|--------|------------------------|
@@ -298,14 +300,54 @@ These cases illustrate representative conditions, including weak forcing, modera
 | 5      | 0.5    | 5e-7      | Stable | Normal growth          |
 | 10     | 0.1    | 1e-7      | Stable | Extreme but stable     |
 
-All cases remained numerically stable. No NaN values, infinite values, negative radii, or supersaturation blow-up were observed.
+---
 
-These tests were designed to probe conditions under which the Maxwell growth tendency becomes large, particularly because ice growth scales inversely with particle radius.
+### Detailed Analysis
 
-All tested cases remained numerically stable. No NaN values, infinite values, negative radii, or unphysical supersaturation blow-up were detected.
+To further investigate the effect of timestep size, additional simulations were performed using larger timestep values (dt = 2, 5, and 10 s).
 
-This indicates that the forward Euler implementation is robust within the tested range of conditions, including high updraft velocity and very small initial ice crystal radii.
+All simulations remained numerically stable, with no evidence of divergence, oscillations, or instability.
 
+---
+
+### Stability Behaviour
+
+- No oscillations or numerical blow-up were detected.  
+- Ice growth remained physically consistent across all simulations.  
+- The onset of ice formation occurred at similar times for different timestep values.  
+
+---
+
+### Accuracy Considerations
+
+While the model remains stable for large timesteps, small differences in the final ice radius were observed:
+
+- Smaller timesteps (dt ≤ 0.1) produce nearly identical results.  
+- Larger timesteps (dt ≥ 1.0) introduce slight deviations.  
+
+This indicates that:
+
+- The model is numerically stable across a wide range of dt.  
+- The solution is converging as dt → 0.  
+- Larger timesteps slightly reduce accuracy but do not affect overall behaviour.  
+
+---
+
+### Practical Implications
+
+These results suggest that:
+
+- The model can be run with relatively large timesteps to reduce computational cost.  
+- A timestep of dt ≈ 0.1–1.0 s provides a good balance between accuracy and efficiency.  
+
+---
+
+### Reproducibility
+
+All results can be reproduced by running:
+
+```bash
+python run_stability_test.py
 ---
 
 ## Repository Structure
