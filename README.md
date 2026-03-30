@@ -276,8 +276,6 @@ The results show that the transition to an ice-dominated regime occurs only when
 
 ## Numerical Stability Analysis
 
-## Numerical Stability Analysis
-
 ### Stability Test Summary
 
 The model was tested across:
