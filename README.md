@@ -359,6 +359,22 @@ This suggests that using dt ≈ 1 s provides a good compromise between computati
 
 ---
 
+### Breakdown at large timesteps
+
+To further investigate the robustness of the model, larger timestep values were tested (dt = 20, 50, and 100 s).
+
+The simulations failed for these cases:
+
+- dt = 20 s → Overflow error
+- dt = 50 s → Division by zero
+- dt = 100 s → Division by zero
+
+This indicates that the numerical scheme becomes unstable for sufficiently large timesteps. The failure is likely due to large temperature changes within a single timestep, leading to non-physical values and numerical breakdown.
+
+Therefore, while the model is stable for dt ≤ 10 s, there is a clear upper limit beyond which the results are no longer reliable.
+
+---
+
 ### Reproducibility
 
 All results can be reproduced by running:
