@@ -29,9 +29,9 @@ def check_stability(csv_file):
 
 
 def main():
-    w_list = [1.0, 5.0, 10.0]
-    dt_list = [1.0, 0.5, 0.1]
-    r_ice_list = [1e-6, 5e-7, 1e-7]   # 1 micron, 500 nm, 100 nm
+    w_list = [10.0]
+    dt_list = [2.0, 5.0, 10.0]
+    r_ice_list = [1e-7]   # 1 micron, 500 nm, 100 nm
 
     os.makedirs("data", exist_ok=True)
 
