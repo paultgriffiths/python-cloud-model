@@ -346,6 +346,15 @@ All results can be reproduced by running:
 
 ```bash
 python run_stability_test.py
+
+```
+The output summary is saved in:
+
+```bash
+data/stability_results.csv
+
+```
+
 ---
 
 ## Repository Structure
