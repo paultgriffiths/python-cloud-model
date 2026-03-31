@@ -294,6 +294,9 @@ The benchmark reproduces the expected qualitative behaviour of a warm-rain cloud
 
 This provides a controlled reference case for validating the liquid-phase microphysics before extending the analysis to mixed-phase vapour competition and ice processes.
 
+
+## Model Validation — KiD Case 1 Benchmark
+
 ### KiD Case 1 warm-rain benchmark
 
   ![KiD cloud mass](figures/kid_case1_cloud_mass.png)
