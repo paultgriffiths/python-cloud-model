@@ -485,10 +485,6 @@ python-cloud-model/
 
 - **parcel_model/run_mixed_phase_maxwell.py** — physically based mixed-phase parcel model with Maxwell growth and latent heat feedback
   
-- **experiments/run_kid_case1.py** — warm-rain benchmark inspired by KiD Case 1
-  
-- **plotting/plot_kid_case1.py** — diagnostic plots for KiD Case 1 benchmark  
-
 ---
 
 ### Experiments
@@ -497,8 +493,10 @@ python-cloud-model/
 
 - **experiments/run_R_w_sweep.py** — sensitivity of vapour competition to updraft velocity  
 
-- **experiments/run_mixed_phase_updraft_sweep.py** — mixed-phase evolution under varying dynamical forcing  
+- **experiments/run_mixed_phase_updraft_sweep.py** — mixed-phase evolution under varying dynamical forcing
 
+- **experiments/run_kid_case1.py** — warm-rain benchmark inspired by KiD Case 1
+  
 ---
 
 ### Diagnostics and plotting
@@ -507,7 +505,10 @@ python-cloud-model/
 
 - **plotting/plot_Si_minus_Sw.py** — thermodynamic driver of vapour transfer (Si − Sw)  
 
-- **plotting/plot_mixed_phase_growth.py** — evolution of liquid and ice mass  
+- **plotting/plot_mixed_phase_growth.py** — evolution of liquid and ice mass
+
+- **plotting/plot_kid_case1.py** — diagnostic plots for KiD Case 1 benchmark  
+
 
 ---
 
