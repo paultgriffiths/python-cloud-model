@@ -447,6 +447,10 @@ python-cloud-model/
 │   ├── biological_in.py       # biological ice nucleation parameterisation
 │   └── run_mixed_phase_maxwell.py   # main mixed-phase parcel model
 │
+├── cases/         # configuration files for different cases
+│    ├── case1_config.py
+│    └── kid_forcing.py
+│ 
 ├── experiments/         # experiment scripts
 │   ├── run_stability_test.py
 │   └── run_kid_case1.py   # KiD Case 1 warm-rain benchmark experiment
