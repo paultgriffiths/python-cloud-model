@@ -2,7 +2,7 @@
 # Simple kappa-Kohler critical supersaturation approximation
 
 import math
-from constants import R, Mw, rho_w
+from parcel_model.constants import R, Mw, rho_w
 
 def critical_supersaturation(Dp, kappa, sigma=0.072, T=298.15):
     """
