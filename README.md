@@ -270,6 +270,8 @@ The diagnostic ratio R shows the transition from liquid-dominated (R < 1) to ice
 To identify the conditions under which this transition occurs, a sensitivity analysis was performed across CCN and IN concentrations.
 The results show that the transition to an ice-dominated regime occurs only when IN concentration is sufficiently high. At low IN concentration, condensation remains the dominant vapour sink regardless of CCN concentration. This demonstrates that the Bergeron–Findeisen process emerges only within a specific region of CCN–IN parameter space.
 
+These results are enabled by the use of Maxwell-type diffusion-limited growth, which provides a physically consistent representation of droplet evolution.
+
 ---
 
 ## Benchmark Comparison with KiD Case 1
@@ -294,6 +296,7 @@ The benchmark reproduces the expected qualitative behaviour of a warm-rain cloud
 
 This provides a controlled reference case for validating the liquid-phase microphysics before extending the analysis to mixed-phase vapour competition and ice processes.
 
+Overall, the model reproduces the expected qualitative behaviour of the KiD Case 1 benchmark, confirming the consistency of the implemented warm-rain microphysics.
 
 ## Model Validation — KiD Case 1 Benchmark
 
