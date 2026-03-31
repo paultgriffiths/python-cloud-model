@@ -270,9 +270,45 @@ The diagnostic ratio R shows the transition from liquid-dominated (R < 1) to ice
 To identify the conditions under which this transition occurs, a sensitivity analysis was performed across CCN and IN concentrations.
 The results show that the transition to an ice-dominated regime occurs only when IN concentration is sufficiently high. At low IN concentration, condensation remains the dominant vapour sink regardless of CCN concentration. This demonstrates that the Bergeron–Findeisen process emerges only within a specific region of CCN–IN parameter space.
 
-
-
 ---
+
+## Benchmark Comparison with KiD Case 1
+
+To evaluate the physical consistency of the parcel model, a warm-rain benchmark inspired by **KiD Case 1** has been implemented.
+
+This benchmark uses:
+
+- prescribed sinusoidal updraught forcing
+- fixed temperature
+- Köhler-based aerosol activation
+- supersaturation over water from thermodynamic calculations
+- Maxwell-type droplet growth
+- warm-rain autoconversion and accretion
+
+The benchmark reproduces the expected qualitative behaviour of a warm-rain cloud system:
+
+- rapid cloud water growth during ascent
+- a peak in cloud water mass followed by decay
+- delayed rain formation after cloud development
+- gradual increase in surface rain rate
+
+This provides a controlled reference case for validating the liquid-phase microphysics before extending the analysis to mixed-phase vapour competition and ice processes.
+
+### KiD Case 1 warm-rain benchmark
+
+  ![KiD cloud mass](figures/kid_case1_cloud_mass.png)
+*Cloud water mass evolution for the KiD Case 1 warm-rain benchmark.*
+
+  ![KiD rain mass](figures/kid_case1_rain_mass.png)
+*Rain water mass evolution for the KiD Case 1 warm-rain benchmark.*
+
+  ![KiD rain rate](figures/kid_case1_surface_rain_rate.png)
+*Surface rain-rate evolution for the KiD Case 1 warm-rain benchmark.*
+
+  ![KiD LWP](figures/kid_case1_lwp.png)
+*Liquid water path evolution for the KiD Case 1 warm-rain benchmark.*
+---
+
 
 ## Numerical Stability Analysis
 
@@ -406,7 +442,8 @@ python-cloud-model/
 │   └── run_mixed_phase_maxwell.py   # main mixed-phase parcel model
 │
 ├── experiments/         # experiment scripts
-│   └── run_stability_test.py
+│   ├── run_stability_test.py
+│   └── run_kid_case1.py   # KiD Case 1 warm-rain benchmark experiment
 │
 ├── data/                # simulation outputs and stability results
 │   └── stability_results.csv
@@ -414,7 +451,8 @@ python-cloud-model/
 ├── plotting/            # plotting and diagnostics
 │   ├── plot_R_ratio.py
 │   ├── plot_mixed_phase_growth.py
-│   └── plot_Si_minus_Sw.py
+│   ├── plot_Si_minus_Sw.py
+│   └── plot_kid_case1.py  # plots for KiD Case 1 benchmark
 │
 ├── data/                # simulation outputs (CSV files)
 ├── figures/            # generated figures
@@ -445,7 +483,11 @@ python-cloud-model/
 
 - **parcel_model/biological_in.py** — temperature-dependent biological ice nucleation scheme  
 
-- **parcel_model/run_mixed_phase_maxwell.py** — physically based mixed-phase parcel model with Maxwell growth and latent heat feedback  
+- **parcel_model/run_mixed_phase_maxwell.py** — physically based mixed-phase parcel model with Maxwell growth and latent heat feedback
+  
+- **experiments/run_kid_case1.py** — warm-rain benchmark inspired by KiD Case 1
+  
+- **plotting/plot_kid_case1.py** — diagnostic plots for KiD Case 1 benchmark  
 
 ---
 
