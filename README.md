@@ -313,6 +313,7 @@ Overall, the model reproduces the expected qualitative behaviour of the KiD Case
 
   ![KiD LWP](figures/kid_case1_lwp.png)
 *Liquid water path evolution for the KiD Case 1 warm-rain benchmark.*
+
 ---
 
 
