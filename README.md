@@ -316,7 +316,7 @@ Overall, the model reproduces the expected qualitative behaviour of the KiD Case
 
 ---
 
-## Model Validation
+### Model Validation
 
 The model has been evaluated against the qualitative behaviour of the KiD Case 1 warm-rain benchmark.
 
