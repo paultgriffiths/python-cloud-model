@@ -316,6 +316,23 @@ Overall, the model reproduces the expected qualitative behaviour of the KiD Case
 
 ---
 
+## Model Validation
+
+The model has been evaluated against the qualitative behaviour of the KiD Case 1 warm-rain benchmark.
+
+Key features reproduced by the model include:
+
+- rapid increase in cloud water mass during parcel ascent  
+- peak cloud water followed by decay  
+- delayed onset of rain formation  
+- gradual increase in surface rain rate  
+
+These behaviours are consistent with established KiD intercomparison results, providing confidence in the physical consistency of the implemented microphysics.
+
+This comparison demonstrates that the model captures the essential dynamics of warm-rain cloud development.
+
+---
+
 
 ## Numerical Stability Analysis
 
