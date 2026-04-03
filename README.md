@@ -329,6 +329,26 @@ This comparison demonstrates that the model captures the essential dynamics of w
 
 ---
 
+## Case 2: Mixed-Phase Cloud (Maxwell Growth)
+
+A mixed-phase parcel experiment was performed using the Maxwell-growth model with coupled vapour, latent heating, and biological ice nucleation.
+
+### Diagnostic Figures
+
+![Liquid and Ice](figures/case2_from_maxwell_liquid_ice.png)
+*Evolution of liquid water and ice mass in the mixed-phase parcel.*
+
+![Supersaturation](figures/case2_from_maxwell_S.png)
+*Supersaturation with respect to water (Sw) and ice (Si).*
+
+![Vapour sinks](figures/case2_from_maxwell_sinks.png)
+*Comparison between condensation and deposition vapour sinks.*
+
+### Interpretation
+
+The simulation shows sustained coexistence of liquid water and ice, with supersaturation over ice remaining greater than supersaturation over water. This is consistent with conditions favorable to vapour competition in mixed-phase clouds.
+
+---
 
 ## Numerical Stability Analysis
 
