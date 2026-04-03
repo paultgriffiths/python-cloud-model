@@ -352,6 +352,52 @@ The simulation shows sustained coexistence of liquid water and ice, with supersa
 
 ---
 
+## Validation Summary
+
+### Case 1 — Warm Rain (KiD-inspired)
+
+| Metric | Value |
+|------|------|
+| Max cloud mass | 1.35 × 10⁻³ |
+| Time of max cloud | 296 s |
+| Max rain mass | 1.40 × 10⁻³ |
+| Rain onset time | 42 s |
+| Max rain rate | 6.99 × 10⁻³ |
+| Final cloud mass | ~0 |
+| Final rain mass | 1.40 × 10⁻³ |
+
+**Interpretation:**  
+The model reproduces the expected warm-rain evolution:
+- rapid cloud growth  
+- peak followed by depletion  
+- delayed rain formation  
+- rain dominates at late times  
+
+---
+
+### Case 2 — Mixed-Phase (Maxwell)
+
+| Metric | Value |
+|------|------|
+| Max liquid (qcloud) | 1.95 × 10⁻³ |
+| Max ice (qice) | 1.18 × 10⁻³ |
+| Ice onset | 0 s |
+| Max Si | 0.38 |
+| Max Sw | 0.011 |
+| Max condensation sink | 1.72 × 10⁻⁶ |
+| Max deposition sink | 4.29 × 10⁻⁷ |
+| Final R | 11.57 |
+
+**Interpretation:**  
+- Mixed-phase coexistence is maintained  
+- Supersaturation over ice (Si) >> water (Sw)  
+- Condensation dominates initially  
+- Ice becomes increasingly important  
+- Final state shows strong vapour competition  
+
+---
+---
+
 ## Numerical Stability Analysis
 
 ### Stability Test Summary
