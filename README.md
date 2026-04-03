@@ -335,13 +335,13 @@ A mixed-phase parcel experiment was performed using the Maxwell-growth model wit
 
 ### Diagnostic Figures
 
-![Liquid and Ice](figures/case2_from_maxwell_liquid_ice.png)
+   ![Liquid and Ice](figures/case2_from_maxwell_liquid_ice.png)
 *Evolution of liquid water and ice mass in the mixed-phase parcel.*
 
-![Supersaturation](figures/case2_from_maxwell_S.png)
+  ![Supersaturation](figures/case2_from_maxwell_S.png)
 *Supersaturation with respect to water (Sw) and ice (Si).*
 
-![Vapour sinks](figures/case2_from_maxwell_sinks.png)
+   ![Vapour sinks](figures/case2_from_maxwell_sinks.png)
 *Comparison between condensation and deposition vapour sinks.*
 
 ### Interpretation
