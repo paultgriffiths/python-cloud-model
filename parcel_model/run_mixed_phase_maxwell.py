@@ -1,10 +1,10 @@
 import csv
 import math
 
-from thermodynamics import esat_water, esat_ice, Sw, Si
-from aerosol import AerosolPopulation
-from activation import check_activation
-from biological_in import BiologicalIN, check_ice_nucleation
+from parcel_model.thermodynamics import esat_water, esat_ice, Sw, Si
+from parcel_model.aerosol import AerosolPopulation
+from parcel_model.activation import check_activation
+from parcel_model.biological_in import BiologicalIN, check_ice_nucleation
 
 # ---------------------------
 # Basic constants (SI)
@@ -12,13 +12,13 @@ from biological_in import BiologicalIN, check_ice_nucleation
 Rv = 461.5        # J/kg/K  (water vapour gas constant)
 rho_l = 1000.0    # kg/m^3  (liquid water density)
 rho_i = 917.0     # kg/m^3  (ice density)
-Lv = 2.5e6        # J/kg    (latent heat vap)
-Ls = 2.834e6      # J/kg    (latent heat subl, approx)
+Lv = 2.5e6        # J/kg    (latent heat of vaporization)
+Ls = 2.834e6      # J/kg    (latent heat of sublimation)
 P0 = 101325.0     # Pa
-cp = 1005.0       # J/kg/K (specific heat of air)
+cp = 1005.0       # J/kg/K  (specific heat of air)
 
 # ---------------------------
-# Diffusivity + thermal conductivity (simple T scalings)
+# Diffusivity + thermal conductivity
 # ---------------------------
 def diffusivity_water_vapour(T, P=P0):
     D0 = 2.11e-5  # m^2/s at ~273K, 1 atm
@@ -66,29 +66,47 @@ def run(
     bio_T50=263.15,
     bio_width=2.0,
     r_cloud_init=1e-6,
-    r_ice_init=5e-6
+    r_ice_init=5e-6,
+    T_init=273.15,
+    RH0=0.95,
+    R_eps=1e-20,
+    sink_threshold=1e-14
 ):
+    sulfate = AerosolPopulation(
+        "sulfate",
+        N=sulfate_N,
+        radius=30e-9,
+        kappa=1.0,
+        rho_p=1770.0
+    )
 
-    sulfate = AerosolPopulation("sulfate", N=sulfate_N, radius=30e-9, kappa=1.0, rho_p=1770.0)
-    print("DEBUG sulfate_N =", sulfate_N, "bio_N =", bio_N, "w =", w)
-    pollen  = AerosolPopulation("pollen",  N=pollen_N,  radius=5e-6,  kappa=0.1, rho_p=1000.0)
+    pollen = AerosolPopulation(
+        "pollen",
+        N=pollen_N,
+        radius=5e-6,
+        kappa=0.1,
+        rho_p=1000.0
+    )
 
-    bio = BiologicalIN(name="bioIN", N=bio_N, T50=bio_T50, width=bio_width)
+    bio = BiologicalIN(
+        name="bioIN",
+        N=bio_N,
+        T50=bio_T50,
+        width=bio_width
+    )
 
-
-
-    # Parcel state
-    T = 273.15
-    RH0 = 0.95
+    # ---------------------------
+    # Parcel initial state
+    # ---------------------------
+    T = T_init
     e = RH0 * esat_water(T)
 
-    # "Dynamics" (toy)
+    # Simple imposed cooling
     cooling_rate = 0.01 * w  # K/s
 
     # Mean radii
     r_cloud = r_cloud_init
-    r_ice   = r_ice_init
-
+    r_ice = r_ice_init
 
     ice_active = False
     ice_onset_t = None
@@ -101,35 +119,47 @@ def run(
     with open(outfile, "w", newline="") as f:
         wr = csv.writer(f)
         wr.writerow([
-            "t_s","T_K","e_Pa","Sw","Si",
-            "Ncloud","Nice",
-            "r_cloud_m","r_ice_m",
-            "drcloud_dt","drice_dt",
-            "qcloud","qice",
-            "cond_rate_kgm3s","dep_rate_kgm3s",
-            "latent_heating_Ks","dT_dt_Ks",
+            "t_s", "T_K", "e_Pa", "Sw", "Si",
+            "Ncloud", "Nice",
+            "r_cloud_m", "r_ice_m",
+            "drcloud_dt", "drice_dt",
+            "qcloud", "qice",
+            "cond_rate_kgm3s", "dep_rate_kgm3s",
+            "cond_sink_kgm3s", "dep_sink_kgm3s",
+            "R_BF",
+            "latent_heating_Ks", "dT_dt_Ks",
             "ice_active"
         ])
 
         t = 0.0
         while t <= t_end:
-            # --- phase-specific saturation pressures
+            # ---------------------------
+            # Saturation vapour pressures
+            # ---------------------------
             esw = esat_water(T)
             esi = esat_ice(T)
 
-            # --- separate supersaturations
+            # ---------------------------
+            # Supersaturation
+            # ---------------------------
             Sw_val = Sw(e, T)
             Si_val = Si(e, T)
 
-            # --- Liquid activation uses Sw (liquid)
+            # ---------------------------
+            # Liquid activation
+            # ---------------------------
             check_activation(Sw_val, sulfate, T=T)
-            check_activation(Sw_val, pollen,  T=T)
+            check_activation(Sw_val, pollen, T=T)
 
             Ncloud = 0.0
-            if sulfate.activated: Ncloud += sulfate.N
-            if pollen.activated:  Ncloud += pollen.N
+            if sulfate.activated:
+                Ncloud += sulfate.N
+            if pollen.activated:
+                Ncloud += pollen.N
 
-            # --- Ice nucleation (temperature-controlled)
+            # ---------------------------
+            # Ice nucleation
+            # ---------------------------
             Nice = 0.0
             if not ice_active:
                 nucleated, N_active = check_ice_nucleation(T, bio, N_threshold=1.0)
@@ -144,7 +174,9 @@ def run(
                 _, N_active = check_ice_nucleation(T, bio, N_threshold=0.0)
                 Nice = N_active
 
-            # --- Maxwell growth rates (mean-radius)
+            # ---------------------------
+            # Maxwell growth rates
+            # ---------------------------
             drcloud_dt = 0.0
             if Ncloud > 0.0:
                 Gc = G_liquid(T, esw, P0)
@@ -155,45 +187,63 @@ def run(
                 Gi = G_ice(T, esi, P0)
                 drice_dt = (Gi / max(r_ice, 1e-9)) * Si_val
 
-            # prevent radii going negative
+            # Prevent negative radii
             r_cloud = max(r_cloud + drcloud_dt * dt, 0.0)
-            r_ice   = max(r_ice   + drice_dt   * dt, 0.0)
+            r_ice = max(r_ice + drice_dt * dt, 0.0)
 
-            # --- Compute qcloud, qice
+            # ---------------------------
+            # Phase masses
+            # ---------------------------
             qcloud = q_from_N_r(Ncloud, r_cloud, rho_l) if Ncloud > 0 else 0.0
-            qice   = q_from_N_r(Nice,   r_ice,   rho_i) if Nice   > 0 else 0.0
+            qice = q_from_N_r(Nice, r_ice, rho_i) if Nice > 0 else 0.0
 
-            # --- Condensation/deposition rates as vapour sink
-            # dm/dt per particle = 4*pi*r^2*rho * dr/dt
+            # ---------------------------
+            # Condensation / deposition rates
+            # Positive = growth, negative = evaporation/sublimation
+            # ---------------------------
             cond_rate = 0.0
             if Ncloud > 0.0:
                 dm_dt_one = 4.0 * math.pi * r_cloud**2 * rho_l * drcloud_dt
-                cond_rate = Ncloud * dm_dt_one   # kg/m^3/s (can be negative)
+                cond_rate = Ncloud * dm_dt_one
 
             dep_rate = 0.0
             if ice_active and Nice > 0.0:
                 dm_dt_one = 4.0 * math.pi * r_ice**2 * rho_i * drice_dt
-                dep_rate  = Nice * dm_dt_one     # kg/m^3/s (can be negative)
+                dep_rate = Nice * dm_dt_one
+
+            # ---------------------------
+            # Positive sinks only for BF diagnostic
+            # ---------------------------
+            cond_sink = max(cond_rate, 0.0)
+            dep_sink = max(dep_rate, 0.0)
+
+            if (cond_sink + dep_sink) > sink_threshold:
+                R_val = dep_sink / (cond_sink + R_eps)
+            else:
+                R_val = 0.0
 
             # ---------------------------
             # Temperature tendency with latent heating
             # ---------------------------
-            latent_heating = (Lv * cond_rate + Ls * dep_rate) / cp  # K/s
+            latent_heating = (Lv * cond_rate + Ls * dep_rate) / cp
             dT_dt = -cooling_rate + latent_heating
 
             # ---------------------------
-            # Vapour density tendency -> e tendency
-            # ρv = e/(Rv*T)  =>  dρv/dt ≈ -(cond_rate + dep_rate)
-            # de/dt = Rv*T*dρv/dt + (e/T)*dT/dt
+            # Vapour density tendency -> vapour pressure tendency
+            # rho_v = e/(Rv*T)
+            # drho_v/dt = -(cond_rate + dep_rate)
+            # de/dt = Rv*T*drho_v/dt + (e/T)*dT_dt
             # ---------------------------
             drhov_dt = -(cond_rate + dep_rate)
             de_dt = Rv * T * drhov_dt + (e / T) * dT_dt
             e = max(e + de_dt * dt, 0.0)
 
             if int(t) % 60 == 0:
-                print(f"{int(t):4d}  {T:7.2f}  {Sw_val: .3e}  {Si_val: .3e}   "
-                      f"{1e6*r_cloud:8.3f}   {1e6*r_ice:7.3f}  "
-                      f"{Ncloud: .3e}  {Nice: .3e}  {qcloud: .3e}  {qice: .3e}")
+                print(
+                    f"{int(t):4d}  {T:7.2f}  {Sw_val: .3e}  {Si_val: .3e}   "
+                    f"{1e6*r_cloud:8.3f}   {1e6*r_ice:7.3f}  "
+                    f"{Ncloud: .3e}  {Nice: .3e}  {qcloud: .3e}  {qice: .3e}"
+                )
 
             wr.writerow([
                 t, T, e, Sw_val, Si_val,
@@ -202,11 +252,13 @@ def run(
                 drcloud_dt, drice_dt,
                 qcloud, qice,
                 cond_rate, dep_rate,
+                cond_sink, dep_sink,
+                R_val,
                 latent_heating, dT_dt,
                 int(ice_active)
             ])
 
-            # advance
+            # Advance
             T = T + dT_dt * dt
             t += dt
 
