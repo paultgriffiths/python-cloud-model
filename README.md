@@ -274,7 +274,7 @@ These results are enabled by the use of Maxwell-type diffusion-limited growth, w
 
 ---
 
-## Benchmark Comparison with KiD Case 1
+## Model Validation — KiD Case 1 Benchmark
 
 To evaluate the physical consistency of the parcel model, a warm-rain benchmark inspired by **KiD Case 1** has been implemented.
 
@@ -294,24 +294,20 @@ The benchmark reproduces the expected qualitative behaviour of a warm-rain cloud
 - delayed rain formation after cloud development
 - gradual increase in surface rain rate
 
-This provides a controlled reference case for validating the liquid-phase microphysics before extending the analysis to mixed-phase vapour competition and ice processes.
-
 Overall, the model reproduces the expected qualitative behaviour of the KiD Case 1 benchmark, confirming the consistency of the implemented warm-rain microphysics.
-
-## Model Validation — KiD Case 1 Benchmark
 
 ### KiD Case 1 warm-rain benchmark
 
-  ![KiD cloud mass](figures/kid_case1_cloud_mass.png)
+![KiD cloud mass](figures/kid_case1_cloud_mass.png)
 *Cloud water mass evolution for the KiD Case 1 warm-rain benchmark.*
 
-  ![KiD rain mass](figures/kid_case1_rain_mass.png)
+![KiD rain mass](figures/kid_case1_rain_mass.png)
 *Rain water mass evolution for the KiD Case 1 warm-rain benchmark.*
 
-  ![KiD rain rate](figures/kid_case1_surface_rain_rate.png)
+![KiD rain rate](figures/kid_case1_surface_rain_rate.png)
 *Surface rain-rate evolution for the KiD Case 1 warm-rain benchmark.*
 
-  ![KiD LWP](figures/kid_case1_lwp.png)
+![KiD LWP](figures/kid_case1_lwp.png)
 *Liquid water path evolution for the KiD Case 1 warm-rain benchmark.*
 
 ---
