@@ -68,9 +68,7 @@ def run(
     r_cloud_init=1e-6,
     r_ice_init=5e-6,
     T_init=273.15,
-    RH0=0.95,
-    R_eps=1e-20,
-    sink_threshold=1e-14
+    RH0=0.95
 ):
     sulfate = AerosolPopulation(
         "sulfate",
@@ -199,7 +197,8 @@ def run(
 
             # ---------------------------
             # Condensation / deposition rates
-            # Positive = growth, negative = evaporation/sublimation
+            # Positive = growth
+            # Negative = evaporation / sublimation
             # ---------------------------
             cond_rate = 0.0
             if Ncloud > 0.0:
@@ -212,15 +211,16 @@ def run(
                 dep_rate = Nice * dm_dt_one
 
             # ---------------------------
-            # Positive sinks only for BF diagnostic
+            # Clean positive sinks only
             # ---------------------------
             cond_sink = max(cond_rate, 0.0)
             dep_sink = max(dep_rate, 0.0)
 
-            if (cond_sink + dep_sink) > sink_threshold:
-                R_val = dep_sink / (cond_sink + R_eps)
-            else:
-                R_val = 0.0
+            # ---------------------------
+            # Clean Bergeron-Findeisen ratio
+            # ---------------------------
+            eps = 1e-12
+            R_BF = dep_sink / max(cond_sink, eps)
 
             # ---------------------------
             # Temperature tendency with latent heating
@@ -238,7 +238,7 @@ def run(
             de_dt = Rv * T * drhov_dt + (e / T) * dT_dt
             e = max(e + de_dt * dt, 0.0)
 
-            if int(t) % 60 == 0:
+            if abs(t % 60.0) < 1e-9:
                 print(
                     f"{int(t):4d}  {T:7.2f}  {Sw_val: .3e}  {Si_val: .3e}   "
                     f"{1e6*r_cloud:8.3f}   {1e6*r_ice:7.3f}  "
@@ -253,7 +253,7 @@ def run(
                 qcloud, qice,
                 cond_rate, dep_rate,
                 cond_sink, dep_sink,
-                R_val,
+                R_BF,
                 latent_heating, dT_dt,
                 int(ice_active)
             ])

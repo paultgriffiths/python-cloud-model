@@ -5,13 +5,13 @@ sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 
 from parcel_model.run_mixed_phase_maxwell import run
 
-os.makedirs("../data", exist_ok=True)
+os.makedirs("data", exist_ok=True)
 
 run(
     w=1.0,
     dt=0.5,
     t_end=3600.0,
-    outfile="../data/case2_from_maxwell.csv",
+    outfile="data/case2_from_maxwell.csv",
 
     sulfate_N=5e7,
     pollen_N=3000.0,
@@ -24,10 +24,7 @@ run(
     r_ice_init=5e-6,
 
     T_init=268.15,
-    RH0=0.999,
-
-    R_eps=1e-20,
-    sink_threshold=1e-14
+    RH0=0.999
 )
 
 print("Case 2 from Maxwell finished.")
