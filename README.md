@@ -5,6 +5,16 @@
 
 # 🌥️ Python Cloud Parcel Model
 A physically-based cloud parcel model revealing vapour competition between liquid droplets and ice crystals.
+⚠️ Research-grade prototype for physical insight, not operational forecasting.
+
+# 🚀 What this project does
+This model simulates the ascent of an air parcel and shows how:
+
+- **cloud droplets form (Köhler activation)**
+- **ice crystals nucleate (biological IN)**
+- **vapour is shared between liquid and ice**
+- **mixed-phase clouds emerge naturally**
+
 ## 🎬 Model Visualisations
 ### Vapour competition (R vs time)
   ![R demo](figures/R_transition_real.gif)
@@ -24,20 +34,21 @@ The white boundary indicates the transition to an ice-dominated regime **(R ≥ 
 ---
 
 This repository provides a physically interpretable framework for studying aerosol–cloud–ice interactions in a controlled parcel environment.
-
 It focuses on the emergence of mixed-phase microphysical processes from first-principles thermodynamics, rather than parameterised large-scale modelling.
-
 A physically based **cloud parcel model** implemented in Python to investigate aerosol activation, vapour competition, and mixed-phase cloud microphysics.
-
 The model is designed as a **transparent research framework** to explore how aerosol populations, liquid droplets, and ice crystals interact during the ascent of an air parcel.
 
 ---
 
 ## 🧠 Key Insight
 
-This model demonstrates that ice-dominated vapour depletion (R ≥ 1) emerges only when ice-nucleating particle concentration exceeds a critical threshold.
+Ice does not dominate automatically.
 
-This provides a physically interpretable explanation of the Bergeron–Findeisen transition.
+👉 Ice-dominated behaviour **(R ≥ 1)** only appears when:
+- ice nucleation is strong enough
+- vapour competition becomes significant
+  
+This provides a physical explanation of the Bergeron–Findeisen process.
 
 ---
 
@@ -60,15 +71,12 @@ This repository implements a **minimal but physically interpretable parcel model
 
 These processes are represented mathematically in the governing equations below.
 The parcel model simulates the ascent of an air parcel with prescribed updraft velocity.
-
 Key physical components include:
 
 - **Aerosol Activation**
-
 Cloud droplet formation follows **Köhler theory**, allowing aerosols to activate when supersaturation exceeds the critical value.
 
 - **Biological Ice Nucleation**
-
 Ice nucleation is represented through a temperature-dependent biological IN parameterisation based on a logistic activation curve.
 
 ---
@@ -140,25 +148,21 @@ This ensures thermodynamic consistency between microphysics and parcel evolution
 
 ---
 
+## 📊 Core Diagnostic
 
-## Bergeron–Findeisen Diagnostic
-
-To quantify the transition from liquid-dominated to ice-dominated vapour depletion, we define a diagnostic ratio:
+The key quantity is:
 ```
  R = |dep_rate| / |cond_rate|
 ```
-
 Interpretation:
 
-| Regime | Condition |
+| Regime | Meaning |
 |--------|-----------|
-| Liquid dominated | R < 1 |
-| Ice dominated | R >= 1 |
+| R < 1 | Liquid dominates |
+| R ≥ 1| Ice dominates |
 
 This provides a quantitative diagnostic for the onset of the **Bergeron–Findeisen process**.
-
 Under baseline aerosol and IN conditions, condensation remains the dominant vapour sink (**R < 1**).
-
 Sensitivity experiments demonstrate that:
 
 - increasing IN number  
@@ -273,224 +277,46 @@ The results show that the transition to an ice-dominated regime occurs only when
 These results are enabled by the use of Maxwell-type diffusion-limited growth, which provides a physically consistent representation of droplet evolution.
 
 ---
+# 🎬 Model Validation Results
 
-## Model Validation — KiD Case 1 Benchmark
+## Case 1 — Warm-Rain Benchmark (KiD-inspired)
 
-To evaluate the physical consistency of the parcel model, a warm-rain benchmark inspired by **KiD Case 1** has been implemented.
+To evaluate the physical consistency of the parcel model, a warm-rain benchmark inspired by KiD Case 1 has been implemented.
 
-This benchmark uses:
+This configuration includes:
 
-- prescribed sinusoidal updraught forcing
-- fixed temperature
-- Köhler-based aerosol activation
-- supersaturation over water from thermodynamic calculations
-- Maxwell-type droplet growth
-- warm-rain autoconversion and accretion
+- prescribed sinusoidal updraught forcing  
+- fixed temperature  
+- Köhler-based aerosol activation  
+- supersaturation over water from thermodynamic calculations  
+- Maxwell-type droplet growth  
+- warm-rain autoconversion and accretion  
 
-The benchmark reproduces the expected qualitative behaviour of a warm-rain cloud system:
+### Results
 
-- rapid cloud water growth during ascent
-- a peak in cloud water mass followed by decay
-- delayed rain formation after cloud development
-- gradual increase in surface rain rate
+![Cloud water mass](figures/kid_case1_cloud_mass.png)  
+*Cloud water mass evolution.*
 
-Overall, the model reproduces the expected qualitative behaviour of the KiD Case 1 benchmark, confirming the consistency of the implemented warm-rain microphysics.
+![Rain water mass](figures/kid_case1_rain_mass.png)  
+*Rain water mass evolution.*
 
-### KiD Case 1 warm-rain benchmark
+![Surface rain rate](figures/kid_case1_surface_rain_rate.png)  
+*Surface rain-rate evolution.*
 
-![KiD cloud mass](figures/kid_case1_cloud_mass.png)
-*Cloud water mass evolution for the KiD Case 1 warm-rain benchmark.*
+![Liquid water path](figures/kid_case1_lwp.png)  
+*Liquid water path evolution.*
 
-![KiD rain mass](figures/kid_case1_rain_mass.png)
-*Rain water mass evolution for the KiD Case 1 warm-rain benchmark.*
+The model reproduces the expected qualitative behaviour of a warm-rain cloud system:
 
-![KiD rain rate](figures/kid_case1_surface_rain_rate.png)
-*Surface rain-rate evolution for the KiD Case 1 warm-rain benchmark.*
-
-![KiD LWP](figures/kid_case1_lwp.png)
-*Liquid water path evolution for the KiD Case 1 warm-rain benchmark.*
-
----
-## Case 2: Mixed-Phase Cloud (Maxwell Growth)
-
-A mixed-phase parcel experiment was performed using the Maxwell-growth framework, including coupled vapour evolution, latent heating, and biological ice nucleation.
-
-This configuration represents a physically consistent mixed-phase system where liquid droplets and ice crystals compete for available water vapour.
-
-### Diagnostic Figures
-
-![Liquid and Ice](figures/case2_from_maxwell_liquid_ice.png)  
-*Evolution of liquid water and ice mass in the mixed-phase parcel.*
-
-![Supersaturation](figures/case2_from_maxwell_S.png)  
-*Supersaturation with respect to water (Sw) and ice (Si).*
-
-![Vapour sinks](figures/case2_from_maxwell_sinks.png)  
-*Comparison between condensation and deposition vapour sinks.*
-
-### Bergeron–Findeisen transition (Case 2)
-
-![BF ratio](figures/case2_from_maxwell_R.png)
-
-The model captures a clear transition from liquid-dominated (R < 1) 
-to ice-dominated vapour depletion (R ≥ 1), consistent with 
-the Bergeron–Findeisen process.
-
-This transition emerges naturally from Maxwell-type growth and thermodynamic coupling, without parameter tuning.
-
-As temperature decreases, saturation over ice becomes lower than over water.
-This creates a vapour pressure gradient favouring deposition onto ice.
-
-At the same time, droplet growth reduces supersaturation with respect to water.
-
-This leads to a transition from condensation-dominated (R < 1) to deposition-dominated (R ≥ 1) conditions.
-
-The transition to ice dominance occurs at approximately t ≈ 1800 s, with a final dominance ratio R ≈ 11.
-
----
-
-### Physical Interpretation
-
-The simulation shows sustained coexistence of liquid water and ice throughout the parcel evolution.
-
-Key features include:
-
-- supersaturation over ice (Si) remains significantly higher than supersaturation over water (Sw)
-- liquid water grows rapidly after activation
-- ice mass increases steadily due to vapour deposition
-- vapour sinks indicate simultaneous condensation and deposition processes
-
-This behaviour is consistent with mixed-phase cloud physics, where ice growth is thermodynamically favoured because the saturation vapour pressure over ice is lower than over liquid water.
-
-Although condensation remains the dominant vapour sink in this configuration, the system clearly demonstrates the conditions necessary for vapour competition.
-
----
-
-### Validation Metrics
-
-| Metric | Value |
-|--------|-------|
-| Max liquid mass (qcloud) | 1.95 × 10⁻³ |
-| Max ice mass (qice) | 1.18 × 10⁻³ |
-| Ice onset time | 0 s |
-| Max Sw | 1.14 × 10⁻² |
-| Max Si | 3.83 × 10⁻¹ |
-| Max condensation sink | 1.72 × 10⁻⁶ |
-| Max deposition sink | 4.29 × 10⁻⁷ |
-| Final R | 11.57 |
-
----
-
-### Note on the Bergeron–Findeisen ratio
-
-An initial spike in the diagnostic ratio \(R\) may occur at very early times due to extremely small condensation rates. This is a numerical artefact and does not affect the overall physical interpretation of the mixed-phase evolution.
-
----
-
-### Key Insight
-
-This case highlights that:
-
-- mixed-phase conditions emerge naturally from physically based thermodynamics
-- vapour competition is controlled by the difference between Si and Sw
-- ice growth can occur even when condensation dominates globally
-
-This provides a physically interpretable bridge between warm-rain microphysics (KiD Case 1) and fully coupled mixed-phase cloud processes.
-
----
-
-### Model Validation
-
-The model has been evaluated against the qualitative behaviour of the KiD Case 1 warm-rain benchmark.
-
-Key features reproduced by the model include:
-
-- rapid increase in cloud water mass during parcel ascent  
+- rapid cloud water growth during ascent  
 - peak cloud water followed by decay  
-- delayed onset of rain formation  
+- delayed rain formation  
 - gradual increase in surface rain rate  
 
-These behaviours are consistent with established KiD intercomparison results, providing confidence in the physical consistency of the implemented microphysics.
-
-This comparison demonstrates that the model captures the essential dynamics of warm-rain cloud development.
-
----
-
-## Case 2: Mixed-Phase Cloud (Maxwell Growth)
-
-A mixed-phase parcel experiment was performed using the Maxwell-growth framework, including coupled vapour evolution, latent heating, and biological ice nucleation.
-
-This configuration represents a physically consistent mixed-phase system where liquid droplets and ice crystals compete for available water vapour.
-
-### Diagnostic Figures
-
-![Liquid and Ice](figures/case2_from_maxwell_liquid_ice.png)  
-*Evolution of liquid water and ice mass in the mixed-phase parcel.*
-
-![Supersaturation](figures/case2_from_maxwell_S.png)  
-*Supersaturation with respect to water (Sw) and ice (Si).*
-
-![Vapour sinks](figures/case2_from_maxwell_sinks.png)  
-*Comparison between condensation and deposition vapour sinks.*
-
----
-
-### Physical Interpretation
-
-The simulation shows sustained coexistence of liquid water and ice throughout the parcel evolution.
-
-Key features include:
-
-- supersaturation over ice (Si) remains significantly higher than supersaturation over water (Sw)
-- liquid water grows rapidly after activation
-- ice mass increases steadily due to vapour deposition
-- vapour sinks indicate simultaneous condensation and deposition processes
-
-This behaviour is consistent with mixed-phase cloud physics, where ice growth is thermodynamically favoured because the saturation vapour pressure over ice is lower than over liquid water.
-
-Although condensation remains the dominant vapour sink in this configuration, the system clearly demonstrates the conditions necessary for vapour competition.
-
----
-
 ### Validation Metrics
 
 | Metric | Value |
-|--------|-------|
-| Max liquid mass (qcloud) | 1.95 × 10⁻³ |
-| Max ice mass (qice) | 1.18 × 10⁻³ |
-| Ice onset time | 0 s |
-| Max Sw | 1.14 × 10⁻² |
-| Max Si | 3.83 × 10⁻¹ |
-| Max condensation sink | 1.72 × 10⁻⁶ |
-| Max deposition sink | 4.29 × 10⁻⁷ |
-| Final R | 11.57 |
-
----
-
-### Note on the Bergeron–Findeisen ratio
-
-An initial spike in the diagnostic ratio \(R\) may occur at very early times due to extremely small condensation rates. This is a numerical artefact and does not affect the overall physical interpretation of the mixed-phase evolution.
-
----
-
-### Key Insight
-
-This case highlights that:
-
-- mixed-phase conditions emerge naturally from physically based thermodynamics
-- vapour competition is controlled by the difference between Si and Sw
-- ice growth can occur even when condensation dominates globally
-
-This provides a physically interpretable bridge between warm-rain microphysics (KiD Case 1) and fully coupled mixed-phase cloud processes.
-
----
-
-## Validation Summary
-
-### Case 1 — Warm Rain (KiD-inspired)
-
-| Metric | Value |
-|------|------|
+|--------|------|
 | Max cloud mass | 1.35 × 10⁻³ |
 | Time of max cloud | 296 s |
 | Max rain mass | 1.40 × 10⁻³ |
@@ -499,42 +325,124 @@ This provides a physically interpretable bridge between warm-rain microphysics (
 | Final cloud mass | ~0 |
 | Final rain mass | 1.40 × 10⁻³ |
 
-**Interpretation:**  
-The model reproduces the expected warm-rain evolution:
-- rapid cloud growth  
-- peak followed by depletion  
-- delayed rain formation  
-- rain dominates at late times  
+### Interpretation
+
+The model captures the essential warm-rain evolution:
+
+- rapid cloud development followed by depletion  
+- conversion of cloud water into rain  
+- rain dominance at late times  
+
+These results are consistent with KiD intercomparison behaviour.
 
 ---
 
-### Case 2 — Mixed-Phase (Maxwell)
+## Case 2 — Mixed-Phase Cloud (Maxwell Growth)
+
+A mixed-phase parcel experiment was performed using the Maxwell-growth framework, including:
+
+- coupled vapour evolution  
+- latent heating  
+- biological ice nucleation  
+
+This setup represents a system where liquid droplets and ice crystals compete for water vapour.
+
+### Results
+
+![Liquid and ice mass](figures/case2_from_maxwell_liquid_ice.png)  
+*Evolution of liquid water and ice mass.*
+
+![Supersaturation](figures/case2_from_maxwell_S.png)  
+*Supersaturation over water (Sw) and ice (Si).*
+
+![Vapour sinks](figures/case2_from_maxwell_sinks.png)  
+*Condensation vs deposition sinks.*
+
+![BF ratio](figures/case2_from_maxwell_R.png)  
+*Bergeron–Findeisen ratio.*
+
+---
+
+### Physical Interpretation
+
+The simulation shows coexistence of liquid and ice:
+
+- supersaturation over ice (Si) > supersaturation over water (Sw)  
+- liquid grows rapidly after activation  
+- ice increases steadily via deposition  
+- condensation and deposition occur simultaneously  
+
+Ice growth is favoured because saturation vapour pressure over ice is lower than over liquid water.
+
+---
+
+### Bergeron–Findeisen Transition
+
+The model captures a transition from:
+
+- liquid-dominated regime (R < 1)  
+- to ice-dominated regime (R ≥ 1)  
+
+This transition emerges naturally without parameter tuning.
+
+- transition time ≈ 1800 s  
+- final ratio R ≈ 11.57  
+
+As temperature decreases:
+
+- saturation over ice becomes lower  
+- vapour deposits onto ice  
+- droplet growth reduces Sw  
+
+---
+
+### Validation Metrics
 
 | Metric | Value |
-|------|------|
-| Max liquid (qcloud) | 1.95 × 10⁻³ |
-| Max ice (qice) | 1.18 × 10⁻³ |
-| Ice onset | 0 s |
-| Max Si | 0.38 |
-| Max Sw | 0.011 |
+|--------|-------|
+| Max liquid mass (qcloud) | 1.95 × 10⁻³ |
+| Max ice mass (qice) | 1.18 × 10⁻³ |
+| Ice onset time | 0 s |
+| Max Sw | 1.14 × 10⁻² |
+| Max Si | 3.83 × 10⁻¹ |
 | Max condensation sink | 1.72 × 10⁻⁶ |
 | Max deposition sink | 4.29 × 10⁻⁷ |
 | Final R | 11.57 |
 
-**Interpretation:**  
-- Mixed-phase coexistence is maintained  
-- Supersaturation over ice (Si) >> water (Sw)  
-- Condensation dominates initially  
-- Ice becomes increasingly important  
-- Final state shows strong vapour competition  
+---
+
+### Note
+
+An initial spike in the ratio R may occur due to very small condensation rates.  
+This is a numerical artefact and does not affect interpretation.
 
 ---
+
+### Key Insights
+
+- mixed-phase behaviour emerges naturally from thermodynamics  
+- vapour competition depends on Si vs Sw  
+- ice growth can occur even when condensation dominates  
+
+---
+
+## Final Scientific Conclusion
+
+This model demonstrates that:
+
+- mixed-phase cloud behaviour emerges from physical principles  
+- vapour competition is controlled by Si and Sw  
+- ice growth is thermodynamically favoured at lower temperatures  
+- transition to ice-dominated regimes does not require tuning  
+
+The model provides a consistent bridge between:
+
+warm-rain microphysics → mixed-phase processes → ice-dominated regimes
 ---
 
 ## Numerical Stability Analysis
 
 ### Stability Test Summary
-
 The model was tested across:
 
 - Updraft velocities: 1, 5, 10 m/s  
@@ -542,7 +450,6 @@ The model was tested across:
 - Initial ice radii: 1e-6, 5e-7, 1e-7 m  
 
 A total of 27 combinations were evaluated.
-
 All cases remained numerically stable. No NaN values, infinite values, negative radii, or supersaturation blow-up were observed.
 
 ---
@@ -668,7 +575,9 @@ python-cloud-model/
 │ 
 ├── experiments/         # experiment scripts
 │   ├── run_stability_test.py
-│   └── run_kid_case1.py   # KiD Case 1 warm-rain benchmark experiment
+│   ├── run_kid_case1.py   # KiD Case 1 warm-rain benchmark experiment
+│   ├── run_case2_from_maxwell.py
+│   └── extract_validation_metrics.py
 │
 ├── data/                # simulation outputs and stability results
 │   └── stability_results.csv
@@ -677,7 +586,8 @@ python-cloud-model/
 │   ├── plot_R_ratio.py
 │   ├── plot_mixed_phase_growth.py
 │   ├── plot_Si_minus_Sw.py
-│   └── plot_kid_case1.py  # plots for KiD Case 1 benchmark
+│   ├── plot_kid_case1.py            # plots for KiD Case 1 benchmark
+│   └── plot_case2_from_maxwell.py   #  plots Case 2 Bergeron-Findeisen transition reproduced
 │
 ├── data/                # simulation outputs (CSV files)
 ├── figures/            # generated figures
@@ -685,7 +595,15 @@ python-cloud-model/
 │   ├── maxwell_q_vs_T.png
 │   ├── R_vs_time.png
 │   ├── Si_minus_Sw_vs_T.png
-│   └── Rmax_heatmap_CCN_IN_boundary.png
+│   ├── Rmax_heatmap_CCN_IN_boundary.png
+│   ├── kid_case1_cloud_mass.png
+│   ├── kid_case1_rain_mass.png
+│   ├── kid_case1_surface_rain_rate.png
+│   ├── kid_case1_lwp.png
+│   ├── case2_from_maxwell_liquid_ice.png
+│   ├── case2_from_maxwell_S.png
+│   ├── case2_from_maxwell_sinks.png
+│   └── case2_from_maxwell_R.png
 │
 ├── README.md
 ├── requirements.txt
@@ -873,15 +791,13 @@ Future extensions of the model include:
 ## Status
 
 This repository contains a **research prototype** developed for physical process exploration and hypothesis generation.
-
 It is not intended for operational forecasting or climate prediction applications.
 
 ---
 
 ## Citation
 
-If you use this code in research, please cite the repository.
-A DOI wil be provided upon Zenodo release.
+If you use this code in research, please cite the repository. A DOI wil be provided upon Zenodo release.
 
 
 
