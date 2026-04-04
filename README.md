@@ -338,6 +338,13 @@ the Bergeron–Findeisen process.
 
 This transition emerges naturally from Maxwell-type growth and thermodynamic coupling, without parameter tuning.
 
+As temperature decreases, saturation over ice becomes lower than over water.
+This creates a vapour pressure gradient favouring deposition onto ice.
+
+At the same time, droplet growth reduces supersaturation with respect to water.
+
+This leads to a transition from condensation-dominated (R < 1) to deposition-dominated (R ≥ 1) conditions.
+
 ---
 
 ### Physical Interpretation
