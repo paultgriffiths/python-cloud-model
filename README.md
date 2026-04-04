@@ -330,7 +330,7 @@ This configuration represents a physically consistent mixed-phase system where l
 
 ### Bergeron–Findeisen transition (Case 2)
 
-![BF ratio](figures/case2_from_maxwell_R_v2.png)
+![BF ratio](figures/case2_from_maxwell_R.png)
 
 The model captures a clear transition from liquid-dominated (R < 1) 
 to ice-dominated vapour depletion (R ≥ 1), consistent with 
