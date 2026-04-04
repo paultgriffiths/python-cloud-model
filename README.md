@@ -345,6 +345,8 @@ At the same time, droplet growth reduces supersaturation with respect to water.
 
 This leads to a transition from condensation-dominated (R < 1) to deposition-dominated (R ≥ 1) conditions.
 
+The transition to ice dominance occurs at approximately t ≈ 1800 s, with a final dominance ratio R ≈ 11.
+
 ---
 
 ### Physical Interpretation
