@@ -315,6 +315,74 @@ Overall, the model reproduces the expected qualitative behaviour of the KiD Case
 *Liquid water path evolution for the KiD Case 1 warm-rain benchmark.*
 
 ---
+## Case 2: Mixed-Phase Cloud (Maxwell Growth)
+
+A mixed-phase parcel experiment was performed using the Maxwell-growth framework, including coupled vapour evolution, latent heating, and biological ice nucleation.
+
+This configuration represents a physically consistent mixed-phase system where liquid droplets and ice crystals compete for available water vapour.
+
+### Diagnostic Figures
+
+![Liquid and Ice](figures/case2_from_maxwell_liquid_ice.png)  
+*Evolution of liquid water and ice mass in the mixed-phase parcel.*
+
+![Supersaturation](figures/case2_from_maxwell_S.png)  
+*Supersaturation with respect to water (Sw) and ice (Si).*
+
+![Vapour sinks](figures/case2_from_maxwell_sinks.png)  
+*Comparison between condensation and deposition vapour sinks.*
+
+---
+
+### Physical Interpretation
+
+The simulation shows sustained coexistence of liquid water and ice throughout the parcel evolution.
+
+Key features include:
+
+- supersaturation over ice (Si) remains significantly higher than supersaturation over water (Sw)
+- liquid water grows rapidly after activation
+- ice mass increases steadily due to vapour deposition
+- vapour sinks indicate simultaneous condensation and deposition processes
+
+This behaviour is consistent with mixed-phase cloud physics, where ice growth is thermodynamically favoured because the saturation vapour pressure over ice is lower than over liquid water.
+
+Although condensation remains the dominant vapour sink in this configuration, the system clearly demonstrates the conditions necessary for vapour competition.
+
+---
+
+### Validation Metrics
+
+| Metric | Value |
+|--------|-------|
+| Max liquid mass (qcloud) | 1.95 × 10⁻³ |
+| Max ice mass (qice) | 1.18 × 10⁻³ |
+| Ice onset time | 0 s |
+| Max Sw | 1.14 × 10⁻² |
+| Max Si | 3.83 × 10⁻¹ |
+| Max condensation sink | 1.72 × 10⁻⁶ |
+| Max deposition sink | 4.29 × 10⁻⁷ |
+| Final R | 11.57 |
+
+---
+
+### Note on the Bergeron–Findeisen ratio
+
+An initial spike in the diagnostic ratio \(R\) may occur at very early times due to extremely small condensation rates. This is a numerical artefact and does not affect the overall physical interpretation of the mixed-phase evolution.
+
+---
+
+### Key Insight
+
+This case highlights that:
+
+- mixed-phase conditions emerge naturally from physically based thermodynamics
+- vapour competition is controlled by the difference between Si and Sw
+- ice growth can occur even when condensation dominates globally
+
+This provides a physically interpretable bridge between warm-rain microphysics (KiD Case 1) and fully coupled mixed-phase cloud processes.
+
+---
 
 
 ## Numerical Stability Analysis
