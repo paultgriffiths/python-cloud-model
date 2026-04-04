@@ -328,6 +328,16 @@ This configuration represents a physically consistent mixed-phase system where l
 ![Vapour sinks](figures/case2_from_maxwell_sinks.png)  
 *Comparison between condensation and deposition vapour sinks.*
 
+### Bergeron–Findeisen transition (Case 2)
+
+![BF ratio](figures/case2_from_maxwell_R.png)
+
+The model captures a clear transition from liquid-dominated (R < 1) 
+to ice-dominated vapour depletion (R ≥ 1), consistent with 
+the Bergeron–Findeisen process.
+
+This transition emerges naturally from Maxwell-type growth and thermodynamic coupling, without parameter tuning.
+
 ---
 
 ### Physical Interpretation
