@@ -53,7 +53,7 @@ This provides a physical explanation of the Bergeron–Findeisen process.
 
 ---
 
-## Scientific Context
+## 📖 Scientific Context
 
 Mixed-phase clouds remain a major source of uncertainty in atmospheric science and climate modelling.
 Key unresolved processes include:
@@ -68,7 +68,7 @@ This repository implements a **minimal but physically interpretable parcel model
 
 ---
 
-## Physical Framework
+## ⚙️ Physical Framework
 
 These processes are represented mathematically in the governing equations below.
 The parcel model simulates the ascent of an air parcel with prescribed updraft velocity.
@@ -338,7 +338,7 @@ These results are consistent with KiD intercomparison behaviour.
 
 ---
 
-## Case 2 — Mixed-Phase Cloud (Maxwell Growth)
+## ❄️ Case 2 — Mixed-Phase Cloud (Maxwell Growth)
 
 A mixed-phase parcel experiment was performed using the Maxwell-growth framework, including:
 
@@ -427,18 +427,17 @@ This is a numerical artefact and does not affect interpretation.
 
 ---
 
-## Final Scientific Conclusion
+### 🔬 Final Scientific Conclusion
 
-This model demonstrates that:
+- Warm-rain behaviour is correctly reproduced
+- Mixed-phase coexistence emerges naturally
+- Vapour competition is governed by Si vs Sw
+- Ice growth is thermodynamically favoured
+- No parameter tuning is required for BF transition
 
-- mixed-phase cloud behaviour emerges from physical principles  
-- vapour competition is controlled by Si and Sw  
-- ice growth is thermodynamically favoured at lower temperatures  
-- transition to ice-dominated regimes does not require tuning  
+This model provides a consistent bridge between:
 
-The model provides a consistent bridge between:
-
-warm-rain microphysics → mixed-phase processes → ice-dominated regimes
+warm-rain → mixed-phase → ice-dominated regimes
 ---
 
 ## Numerical Stability Analysis
@@ -554,10 +553,17 @@ The output summary is saved in:
 data/stability_results.csv
 
 ```
+---
+## ⚠️ Limitations
+
+- Zero-dimensional parcel (no spatial variability)
+- No turbulence or entrainment
+- Simplified ice nucleation parameterisation
+- Single-moment microphysics
 
 ---
 
-## Repository Structure
+## 📁 Repository Structure
 
 The project is organised to clearly separate model physics, experiments, diagnostics, and outputs.
 
