@@ -687,7 +687,6 @@ Model → Simulation Output → Diagnostics → Figures
 
 ## ⚙️ Installation
 
-```markdown
 ## ⚡ Quick Example
 
 Run a simple simulation:
@@ -706,10 +705,7 @@ results = run_simulation(config)
 
 print(results["R"])
 
-```markdown
-This example runs a basic parcel simulation and outputs the vapour competition ratio R.
-
-```
+This example runs a basic parcel simulation and outputs the vapour competition ratio (R).
 
 ---
 
