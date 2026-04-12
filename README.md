@@ -685,7 +685,73 @@ Model → Simulation Output → Diagnostics → Figures
   
 ---
 
-## Installation
+## ⚙️ Installation
+
+## ⚡ Quick Example
+
+Run a simple simulation:
+
+```python
+from parcel_model.config import ParcelConfig
+from parcel_model.model import run_simulation
+
+config = ParcelConfig(
+    w=1.0,
+    dt=0.1,
+    t_end=2000.0
+)
+
+results = run_simulation(config)
+
+print(results["R"])
+
+```markdown
+This example runs a basic parcel simulation and outputs the vapour competition ratio R.
+---
+
+## 📏 Units
+
+All variables in this model use **SI units** to ensure physical consistency.
+
+### Thermodynamic variables
+- Temperature: **Kelvin (K)**
+- Pressure: **Pascal (Pa)**
+- Water vapour mixing ratio: **kg/kg**
+
+### Microphysical variables
+- Droplet / ice radius: **meters (m)**
+- Liquid water content: **kg/kg**
+- Ice water content: **kg/kg**
+
+### Dynamical variables
+- Vertical velocity (updraft): **m/s**
+- Time: **seconds (s)**
+
+### Aerosol properties
+- CCN concentration: **m⁻³**
+- IN concentration: **m⁻³**
+
+### Diagnostic quantities
+- Supersaturation (Sw, Si): **dimensionless**
+- Vapour competition ratio (R): **dimensionless**
+        
+## ⚠️ Assumptions
+
+- Zero-dimensional parcel (no spatial variability)
+- Adiabatic ascent
+- No turbulence or entrainment
+- Single-moment microphysics
+- Simplified ice nucleation parameterisation
+
+## ⚙️ Numerical Method
+
+- Time integration: explicit time stepping
+- Fixed timestep (dt)
+- Coupled evolution of temperature, vapour, liquid, and ice
+- Latent heat feedback included
+- Numerical stability controlled via timestep selection
+
+---
 
 ### ⚡ Quick Start
 
