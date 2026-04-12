@@ -687,6 +687,7 @@ Model → Simulation Output → Diagnostics → Figures
 
 ## ⚙️ Installation
 
+```markdown
 ## ⚡ Quick Example
 
 Run a simple simulation:
@@ -707,6 +708,7 @@ print(results["R"])
 
 ```markdown
 This example runs a basic parcel simulation and outputs the vapour competition ratio R.
+
 ```
 
 ---
