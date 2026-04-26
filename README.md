@@ -348,6 +348,10 @@ These results are consistent with KiD intercomparison behaviour.
 | Final cloud mass | ~0 | cloud water depleted by rain conversion |
 | Surface rain rate | increases gradually | rain rate increases after rain onset |
 
+The comparison confirms that the model captures the expected sequence of warm-rain processes observed in KiD intercomparison studies. While the agreement is primarily qualitative, the results provide confidence that the model reproduces the key physical behaviour of cloud water growth, delayed rain formation, and subsequent rain development.
+
+A fully quantitative comparison would require using the exact KiD reference setup and comparing against published KiD model outputs.
+
 ---
 
 ## ❄️ Case 2 — Mixed-Phase Cloud (Maxwell Growth)
