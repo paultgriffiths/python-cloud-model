@@ -427,7 +427,8 @@ This is a numerical artefact and does not affect interpretation.
 
 ---
 
-###📌 Comparison between Case 1 and Case 2
+### 📌 Comparison between Case 1 and Case 2
+
 
 | Feature | Case 1: Warm-rain benchmark | Case 2: Mixed-phase Maxwell case |
 |---|---|---|
