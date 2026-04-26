@@ -343,7 +343,7 @@ These results are consistent with KiD intercomparison behaviour.
 | Diagnostic | Present model | Expected qualitative KiD behaviour |
 |---|---:|---|
 | Cloud water evolution | rises then decays | rises during ascent then decays |
-| Rain formation | delayed onset at ~42 s | delayed rain formation |
+| Rain formation | ~42 s in this configuration | delayed rain formation |
 | Peak cloud mass | 1.35 × 10⁻³ kg/kg | comparable warm-rain peak behaviour |
 | Final cloud mass | ~0 | cloud water depleted by rain conversion |
 | Surface rain rate | increases gradually | rain rate increases after rain onset |
