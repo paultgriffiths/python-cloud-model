@@ -427,6 +427,21 @@ This is a numerical artefact and does not affect interpretation.
 
 ---
 
+###📌 Comparison between Case 1 and Case 2
+
+| Feature | Case 1: Warm-rain benchmark | Case 2: Mixed-phase Maxwell case |
+|---|---|---|
+| Main process | Liquid cloud growth and rain formation | Competition between liquid droplets and ice crystals |
+| Phase included | Liquid only | Liquid + ice |
+| Key behaviour | Cloud water increases, then decreases as rain forms | Liquid and ice coexist, then ice growth becomes increasingly important |
+| Vapour sink | Condensation dominates | Condensation initially dominates, then deposition becomes stronger |
+| Main diagnostic | Cloud mass, rain mass, rain rate | Supersaturation, vapour sinks, Bergeron–Findeisen ratio |
+| Scientific meaning | Reproduces warm-rain qualitative behaviour | Captures mixed-phase transition and vapour competition |
+
+This comparison shows that the model can reproduce two distinct cloud regimes. Case 1 captures the expected warm-rain evolution, while Case 2 extends the framework to mixed-phase conditions where liquid droplets and ice crystals compete for water vapour. The transition from condensation-dominated to deposition-dominated behaviour demonstrates that the model can represent the emergence of Bergeron–Findeisen-type behaviour without additional tuning.
+
+---
+
 
 ### 🔬 Final Scientific Conclusion
 
