@@ -4,7 +4,8 @@
 ![Status](https://img.shields.io/badge/status-research--prototype-orange.svg)
 
 # 🌥️ Python Cloud Parcel Model
-A physically-based cloud parcel model revealing vapour competition between liquid droplets and ice crystals.
+A physically-based cloud parcel model designed to investigate vapour competition between liquid droplets and ice crystals.
+
 ⚠️ Research-grade prototype for physical insight, not operational forecasting.
 
 ## 🚀 What this project does
@@ -394,7 +395,7 @@ This comparison shows that the model can reproduce two distinct cloud regimes. C
 - Mixed-phase coexistence emerges naturally
 - Vapour competition is governed by Si vs Sw
 - Ice growth is thermodynamically favoured
-- No parameter tuning is required for BF transition
+- No explicit parameter tuning is required for BF transition
 
 This model provides a consistent bridge between:
 
@@ -647,8 +648,6 @@ Model → Simulation Output → Diagnostics → Figures
 
 ## ⚙️ Installation
 
----
-
 ## 📏 Units
 
 All variables in this model use **SI units** to ensure physical consistency.
@@ -675,13 +674,6 @@ All variables in this model use **SI units** to ensure physical consistency.
 - Supersaturation (Sw, Si): **dimensionless**
 - Vapour competition ratio (R): **dimensionless**
         
-## ⚠️ Assumptions
-
-- Zero-dimensional parcel (no spatial variability)
-- Adiabatic ascent
-- No turbulence or entrainment
-- Single-moment microphysics
-- Simplified ice nucleation parameterisation
 
 ## ⚙️ Numerical Method
 
@@ -810,7 +802,7 @@ It is not intended for operational forecasting or climate prediction application
 
 ## Citation
 
-If you use this code in research, please cite the repository. A DOI wil be provided upon Zenodo release.
+If you use this code in research, please cite the repository. A DOI will be provided upon Zenodo release.
 
 
 
