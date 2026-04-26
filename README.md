@@ -646,8 +646,6 @@ Model → Simulation Output → Diagnostics → Figures
   
 ---
 
-## ⚙️ Installation
-
 ## 📏 Units
 
 All variables in this model use **SI units** to ensure physical consistency.
@@ -731,53 +729,49 @@ pip install numpy scipy matplotlib pandas
 
 ### 3. Run simulations
 
-Liquid-only parcel:
+Run the main validated experiments:
+
+#### Warm-rain benchmark (KiD-inspired)
 ```bash
+python experiments/run_kid_case1.py
+
+```
+
+#### Mixed-phase cloud (Maxwell growth)
+```bash
+python experiments/run_case2_from_maxwell.py
+
+```
+
+Additional scripts
+
+Other exploratory simulations are available:
 python parcel_model/run_parcel_competition.py
-
-```
-Biological ice nucleation onset:
-```bash
 python parcel_model/run_bioIN_onset.py
-
-```
-
-Minimal mixed-phase parcel (liquid + ice growth):
-```bash
-python run_mixed_phase_minimal.py
-
-```
-Physically based mixed-phase parcel model
-```bash
 python parcel_model/run_mixed_phase_maxwell.py
-
-```
-
-Mixed-phase updraft sweep:
-```bash
+python run_mixed_phase_minimal.py
 python run_mixed_phase_updraft_sweep.py
-
-```
 
 ---
 
 ## Generating Diagnostics
 
-The following scripts generate diagnostic figures used to analyse mixed-phase cloud behaviour:
+Generate diagnostic figures using:
 
 ```bash
+python plotting/plot_kid_case1.py
+python plotting/plot_case2_from_maxwell.py
 python plotting/plot_R_ratio.py
-python plotting/plot_mixed_phase_growth.py
-python plotting/plot_mixed_phase_updraft_sweep.py
+python plotting/plot_Si_minus_Sw.py
 
 ```
 
 These diagnostics illustrate :
 
 supersaturation evolution (Sw and Si)
-liquid droplet and ice crystal growth
-vapour competition between condensation and deposition
-sensitivity of mixed-phase processes to updraft velocity:
+liquid and ice growth
+vapour competition (condensation vs deposition)
+warm-rain and mixed-phase cloud behaviour
 
 ---
 
