@@ -315,7 +315,7 @@ These results are consistent with KiD intercomparison behaviour.
 
 ---
 
-### Quantitative comparison with KiD-inspired benchmark
+### Qualitative comparison with KiD-inspired benchmark
 
 | Diagnostic | Present model | Expected qualitative KiD behaviour |
 |---|---:|---|
