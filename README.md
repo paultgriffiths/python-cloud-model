@@ -5,39 +5,15 @@
 
 # 🌥️ Python Cloud Parcel Model
 A physically-based cloud parcel model revealing vapour competition between liquid droplets and ice crystals.
-
 ⚠️ Research-grade prototype for physical insight, not operational forecasting.
 
-# 🚀 What this project does
+## 🚀 What this project does
 This model simulates the ascent of an air parcel and shows how:
 
 - **cloud droplets form (Köhler activation)**
 - **ice crystals nucleate (biological IN)**
 - **vapour is shared between liquid and ice**
 - **mixed-phase clouds emerge naturally**
-
-## 🎬 Model Visualisations
-### Vapour competition (R vs time)
-  ![R demo](figures/R_transition_real.gif)
-  Evolution of vapour competition showing transition from liquid to ice-dominated regime.
-
-  ![Heatmap demo](figures/Rmax_heatmap_animation.gif)
-  This figure shows the maximum vapour competition across CCN-IN conditions.
-
-Transition from liquid-dominated to ice-dominated regime:
-- **R < 1 → liquid-dominated**
-- **R ≥ 1 → ice-dominated**
-
-### Parameter space exploration (CCN–IN)
-Heatmap of maximum vapour competition across aerosol parameter space.
-The white boundary indicates the transition to an ice-dominated regime **(R ≥ 1)**.
-
----
-
-This repository provides a physically interpretable framework for studying aerosol–cloud–ice interactions in a controlled parcel environment.
-It focuses on the emergence of mixed-phase microphysical processes from first-principles thermodynamics, rather than parameterised large-scale modelling.
-A physically based **cloud parcel model** implemented in Python to investigate aerosol activation, vapour competition, and mixed-phase cloud microphysics.
-The model is designed as a **transparent research framework** to explore how aerosol populations, liquid droplets, and ice crystals interact during the ascent of an air parcel.
 
 ---
 
@@ -82,7 +58,7 @@ Ice nucleation is represented through a temperature-dependent biological IN para
 
 ---
 
-## Governing Equations
+## ⚙️ Governing Equations
 
 The parcel model is based on a physically consistent representation of vapour, liquid, and ice interactions in a rising air parcel.
 
@@ -278,6 +254,7 @@ The results show that the transition to an ice-dominated regime occurs only when
 These results are enabled by the use of Maxwell-type diffusion-limited growth, which provides a physically consistent representation of droplet evolution.
 
 ---
+
 # 🎬 Model Validation Results
 
 ## Case 1 — Warm-Rain Benchmark (KiD-inspired)
@@ -443,7 +420,7 @@ This is a numerical artefact and does not affect interpretation.
 
 ---
 
-### 📌 Comparison between Case 1 and Case 2
+## 📌 Comparison between Case 1 and Case 2
 
 
 | Feature | Case 1: Warm-rain benchmark | Case 2: Mixed-phase Maxwell case |
@@ -460,7 +437,7 @@ This comparison shows that the model can reproduce two distinct cloud regimes. C
 ---
 
 
-### 🔬 Final Scientific Conclusion
+## 🔬 Final Scientific Conclusion
 
 - Warm-rain behaviour is correctly reproduced
 - Mixed-phase coexistence emerges naturally
@@ -500,7 +477,6 @@ All cases remained numerically stable. No NaN values, infinite values, negative 
 ### Detailed Analysis
 
 To further investigate the effect of timestep size, additional simulations were performed using larger timestep values (dt = 2, 5, and 10 s).
-
 All simulations remained numerically stable, with no evidence of divergence, oscillations, or instability.
 
 ---
@@ -720,27 +696,6 @@ Model → Simulation Output → Diagnostics → Figures
 
 ## ⚙️ Installation
 
-## ⚡ Quick Example
-
-Run a simple simulation:
-
-```python
-from parcel_model.config import ParcelConfig
-from parcel_model.model import run_simulation
-
-config = ParcelConfig(
-    w=1.0,
-    dt=0.1,
-    t_end=2000.0
-)
-
-results = run_simulation(config)
-
-print(results["R"])
-
-This example runs a basic parcel simulation and outputs the vapour competition ratio (R).
-
-```
 ---
 
 ## 📏 Units
@@ -787,12 +742,12 @@ All variables in this model use **SI units** to ensure physical consistency.
 
 ---
 
-### ⚡ Quick Start
+## ⚡ Quick Start
 
 Clone the repository and run a simulation in minutes:
 
 ```bash
-git clone https://github.com/your-username/python-cloud-model.git
+git clone https://github.com/paultgriffiths/python-cloud-model.git
 cd python-cloud-model
 
 ```
@@ -883,7 +838,7 @@ sensitivity of mixed-phase processes to updraft velocity:
 
 ---
 
-# Planned Developments
+## Planned Developments
 
 Future extensions of the model include:
 
