@@ -746,11 +746,16 @@ python experiments/run_case2_from_maxwell.py
 Additional scripts
 
 Other exploratory simulations are available:
-python parcel_model/run_parcel_competition.py
-python parcel_model/run_bioIN_onset.py
-python parcel_model/run_mixed_phase_maxwell.py
-python run_mixed_phase_minimal.py
-python run_mixed_phase_updraft_sweep.py
+
+- python parcel_model/run_parcel_competition.py
+
+- python parcel_model/run_bioIN_onset.py
+
+- python parcel_model/run_mixed_phase_maxwell.py
+
+- python run_mixed_phase_minimal.py
+
+- python run_mixed_phase_updraft_sweep.py
 
 ---
 
@@ -768,10 +773,10 @@ python plotting/plot_Si_minus_Sw.py
 
 These diagnostics illustrate :
 
-supersaturation evolution (Sw and Si)
-liquid and ice growth
-vapour competition (condensation vs deposition)
-warm-rain and mixed-phase cloud behaviour
+- supersaturation evolution (Sw and Si)
+- liquid and ice growth
+- vapour competition (condensation vs deposition)
+- warm-rain and mixed-phase cloud behaviour
 
 ---
 
