@@ -4,9 +4,15 @@
 ![Status](https://img.shields.io/badge/status-research--prototype-orange.svg)
 
 # 🌥️ Python Cloud Parcel Model
+
+<p align="center">
+  <img src="cloud_parcel_animation.gif" width="700">
+</p>
+
 A physically-based cloud parcel model designed to investigate vapour competition between liquid droplets and ice crystals.
 
 ⚠️ Research-grade prototype for physical insight, not operational forecasting.
+
 
 ## 🚀 What this project does
 This model simulates the ascent of an air parcel and shows how:
