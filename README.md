@@ -740,6 +740,15 @@ These results show that the emergence of Bergeron–Findeisen conditions depends
 
 *Figure: Timing of the Bergeron–Findeisen transition under different forcing configurations. Under constant forcing, the parcel transitions toward an ice-dominated vapour sink after approximately 1782 s. Under transient KiD-inspired forcing, no transition occurs within the simulation period, indicating suppressed vapour competition and reduced ice dominance.*
 
+Overall, these forcing experiments show that the temporal structure of parcel ascent controls supersaturation evolution, vapour competition, phase partitioning, and the timing of the Bergeron–Findeisen transition.
+
+### Comparison of forcing configurations
+
+| Case | Forcing type | BF transition | Ice dominance | Main behaviour |
+|---|---|---|---|---|
+| Constant forcing | Constant updraft (`w = 1.0 m/s`) | Yes | Strong | Sustained vapour competition and strong ice growth |
+| KiD-inspired forcing | Transient prescribed forcing | No | Weak | Reduced vapour competition and delayed ice growth |
+
 ---
 
 ## 📏 Units
