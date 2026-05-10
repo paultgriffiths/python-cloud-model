@@ -759,7 +759,19 @@ Overall, these forcing experiments show that the temporal structure of parcel as
 - Phase partitioning depends on both thermodynamics and parcel dynamics.
 - Mixed-phase cloud behaviour emerges naturally from physically based thermodynamics and diffusion-limited growth.
 
+
+## 📚 References
+
+- Pruppacher, H. R., and Klett, J. D. (1997). *Microphysics of Clouds and Precipitation*. Springer.
+
+- Rogers, R. R., and Yau, M. K. (1989). *A Short Course in Cloud Physics*. Pergamon Press.
+
+- Grabowski, W. W. (2015). *Untangling microphysical impacts on deep convection applying a novel modeling methodology*. Journal of the Atmospheric Sciences.
+
+- KiD (Kinematic Driver) intercomparison framework for cloud microphysics studies.
+  
 ---
+
 
 ## 📏 Units
 
