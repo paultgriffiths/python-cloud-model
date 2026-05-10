@@ -559,13 +559,15 @@ python-cloud-model/
 │
 ├── cases/         # configuration files for different cases
 │    ├── case1_config.py
-│    └── kid_forcing.py
+│    ├──  kid_forcing.py
+│    └──  kid_inspired_forcing.py
 │ 
 ├── experiments/         # experiment scripts
 │   ├── run_stability_test.py
 │   ├── run_kid_case1.py   # KiD Case 1 warm-rain benchmark experiment
 │   ├── run_case2_from_maxwell.py
-│   └── extract_validation_metrics.py
+│   ├── extract_validation_metrics.py
+│   └── run_kid_inspired_alignment.py
 │
 ├── data/                # simulation outputs and stability results
 │   └── stability_results.csv
@@ -575,7 +577,8 @@ python-cloud-model/
 │   ├── plot_mixed_phase_growth.py
 │   ├── plot_Si_minus_Sw.py
 │   ├── plot_kid_case1.py            # plots for KiD Case 1 benchmark
-│   └── plot_case2_from_maxwell.py   #  plots Case 2 Bergeron-Findeisen transition reproduced
+│   ├──  plot_case2_from_maxwell.py   #  plots Case 2 Bergeron-Findeisen transition reproduced
+│   └── plot_kid_inspired_alignment.py
 │
 ├── data/                # simulation outputs (CSV files)
 ├── figures/            # generated figures
