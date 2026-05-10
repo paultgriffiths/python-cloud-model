@@ -1,14 +1,24 @@
 import os
 import sys
 
-sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
+from cases.kid_inspired_forcing import kid_inspired_updraft
 from parcel_model.run_mixed_phase_maxwell import run
+
 
 os.makedirs("data", exist_ok=True)
 
+# KiD-inspired forcing settings
+w_max = 2.0
+t_forcing = 600.0
+
+# Current model expects a constant updraft value.
+# For now, we use the maximum KiD-inspired updraft as an aligned forcing case.
+w_effective = w_max
+
 run(
-    w=1.0,
+    w=w_effective,
     dt=0.5,
     t_end=3600.0,
     outfile="data/case2_from_maxwell.csv",
@@ -28,3 +38,4 @@ run(
 )
 
 print("Case 2 from Maxwell finished.")
+print(f"KiD-inspired alignment case used w_effective = {w_effective} m/s.")
