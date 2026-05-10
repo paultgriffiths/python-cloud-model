@@ -395,6 +395,19 @@ This comparison shows that the model can reproduce two distinct cloud regimes. C
 
 ---
 
+## Comparison with KiD-inspired setup
+
+| Component | Formal KiD / KiD-inspired setup | Current model | Next action |
+|---|---|---|---|
+| Model type | 1D kinematic cloud model used for microphysics intercomparison | 0D parcel model | State clearly that this is a simplified parcel analogue |
+| Updraft forcing | Prescribed kinematic forcing, often sinusoidal or time-dependent | Prescribed parcel updraft / cooling rate | Add a KiD-inspired time-dependent updraft option |
+| Warm-rain focus | Cloud water, rain water, rain rate, LWP | Warm-rain benchmark already included | Compare the same diagnostics |
+| Aerosol / droplet number | Fixed or prescribed aerosol/droplet number, e.g. warm-rain intercomparison cases | CCN activation and prescribed CCN sensitivity | Document CCN values clearly |
+| Microphysics | Warm-rain microphysics schemes compared under same forcing | Köhler activation, Maxwell growth, warm-rain process, mixed-phase extension | Separate warm-rain validation from mixed-phase extension |
+| Outputs | Cloud water, rain water, precipitation/rain rate, LWP | qcloud, qrain, rain rate, LWP, qice, R | Use common output names and figures |
+
+---
+
 
 ## 🔬 Final Scientific Conclusion
 
