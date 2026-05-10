@@ -694,6 +694,23 @@ This configuration provides a more realistic transient parcel ascent compared wi
 
 ---
 
+## 🧪 Effect of KiD-Inspired Forcing
+
+A first alignment experiment using a KiD-inspired effective updraft forcing (`w_effective = 2.0 m/s`) was performed.
+
+Compared with constant updraft simulations:
+
+- vapour competition was reduced
+- the Bergeron–Findeisen transition weakened
+- liquid water remained dominant for a longer period
+- ice growth became less aggressive
+
+These results demonstrate that transient dynamical forcing can significantly modify mixed-phase cloud evolution and vapour competition.
+
+This behaviour is physically consistent with the shorter ascent duration associated with transient forcing.
+
+---
+
 ## 📏 Units
 
 All variables in this model use **SI units** to ensure physical consistency.
