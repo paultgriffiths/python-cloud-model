@@ -668,7 +668,7 @@ Model → Simulation Output → Diagnostics → Figures
 - **Figures**: visualisations are generated to interpret physical behaviour
   
 - ## 🧭 Scientific Workflow Summary
-  ![Scientific workflow](figures/scientific_workflow_summary.png)
+![Scientific workflow](figures/scientific_workflow_summary.png)
 *Figure: Scientific workflow of the mixed-phase parcel model. The simulations connect parcel dynamics, supersaturation evolution, vapour competition, phase partitioning, and the emergence of Bergeron–Findeisen conditions in mixed-phase clouds.*
 
 ## ✅ Scientific Workflow
