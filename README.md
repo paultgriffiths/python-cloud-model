@@ -666,6 +666,31 @@ Model → Simulation Output → Diagnostics → Figures
   
 ---
 
+## 🌊 KiD-Inspired Dynamical Forcing
+
+To improve consistency with parcel-model intercomparison frameworks, a time-dependent KiD-inspired updraft forcing has been implemented.
+
+The prescribed vertical velocity follows a sinusoidal evolution:
+
+```math
+w(t) = w_{max} \sin\left(\frac{\pi t}{t_{forcing}}\right)
+```
+
+where:
+
+- \(w_{max}\) is the maximum updraft velocity
+- \(t_{forcing}\) is the forcing duration
+
+This configuration provides a more realistic transient parcel ascent compared with constant updraft forcing.
+
+### Example forcing evolution
+
+![KiD-inspired forcing](figures/kid_inspired_updraft.png)
+
+*Figure: Time-dependent KiD-inspired prescribed updraft forcing used for parcel simulations.*
+
+---
+
 ## 📏 Units
 
 All variables in this model use **SI units** to ensure physical consistency.
@@ -703,7 +728,9 @@ All variables in this model use **SI units** to ensure physical consistency.
 
 ---
 
-## ⚡ Quick Start
+## ⚙️ Installation
+
+### ⚡ Quick Start
 
 Clone the repository and run a simulation in minutes:
 
