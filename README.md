@@ -728,6 +728,10 @@ In contrast, the transient KiD-inspired forcing limits the duration of sustained
 
 These results show that the emergence of Bergeron–Findeisen conditions depends not only on thermodynamics and aerosol properties, but also on the temporal structure of dynamical forcing.
 
+![Constant vs KiD liquid and ice](figures/constant_vs_kid_liquid_ice.png)
+
+*Figure: Comparison of liquid water and ice water evolution under constant updraft forcing and KiD-inspired effective forcing. Under transient forcing, liquid water remains dominant for a longer period while ice growth is significantly reduced. This demonstrates that the temporal structure of dynamical forcing strongly influences phase partitioning in mixed-phase clouds.*
+
 ---
 
 ## 📏 Units
