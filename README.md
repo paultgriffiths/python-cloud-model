@@ -749,6 +749,16 @@ Overall, these forcing experiments show that the temporal structure of parcel as
 | Constant forcing | Constant updraft (`w = 1.0 m/s`) | Yes | Strong | Sustained vapour competition and strong ice growth |
 | KiD-inspired forcing | Transient prescribed forcing | No | Weak | Reduced vapour competition and delayed ice growth |
 
+
+## 🔬 Key Scientific Findings
+
+- Ice dominance does not emerge automatically.
+- Vapour competition depends strongly on forcing structure.
+- Transient KiD-inspired forcing suppresses the Bergeron–Findeisen transition.
+- Supersaturation evolution alone does not determine ice dominance.
+- Phase partitioning depends on both thermodynamics and parcel dynamics.
+- Mixed-phase cloud behaviour emerges naturally from physically based thermodynamics and diffusion-limited growth.
+
 ---
 
 ## 📏 Units
