@@ -736,6 +736,10 @@ These results show that the emergence of Bergeron–Findeisen conditions depends
 
 *Figure: Comparison of supersaturation evolution under constant updraft forcing and KiD-inspired effective forcing. The simulations show distinct evolution of supersaturation with respect to water (\(Sw\)) and ice (\(Si\)). Although \(Si\) increases substantially under transient forcing, the reduced duration of sustained ascent weakens vapour competition and limits the transition toward an ice-dominated regime.*
 
+![BF transition timing](figures/BF_transition_timing.png)
+
+*Figure: Timing of the Bergeron–Findeisen transition under different forcing configurations. Under constant forcing, the parcel transitions toward an ice-dominated vapour sink after approximately 1782 s. Under transient KiD-inspired forcing, no transition occurs within the simulation period, indicating suppressed vapour competition and reduced ice dominance.*
+
 ---
 
 ## 📏 Units
