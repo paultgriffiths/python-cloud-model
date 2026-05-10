@@ -247,7 +247,8 @@ The model reproduces the expected qualitative behaviour of a warm-rain cloud sys
 - rapid cloud water growth during ascent  
 - peak cloud water followed by decay  
 - delayed rain formation  
-- gradual increase in surface rain rate  
+- gradual increase in surface rain rate
+  
 
 ### Validation Metrics
 
