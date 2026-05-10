@@ -732,6 +732,10 @@ These results show that the emergence of Bergeron–Findeisen conditions depends
 
 *Figure: Comparison of liquid water and ice water evolution under constant updraft forcing and KiD-inspired effective forcing. Under transient forcing, liquid water remains dominant for a longer period while ice growth is significantly reduced. This demonstrates that the temporal structure of dynamical forcing strongly influences phase partitioning in mixed-phase clouds.*
 
+![Constant vs KiD supersaturation](figures/constant_vs_kid_supersaturation.png)
+
+*Figure: Comparison of supersaturation evolution under constant updraft forcing and KiD-inspired effective forcing. The simulations show distinct evolution of supersaturation with respect to water (\(Sw\)) and ice (\(Si\)). Although \(Si\) increases substantially under transient forcing, the reduced duration of sustained ascent weakens vapour competition and limits the transition toward an ice-dominated regime.*
+
 ---
 
 ## 📏 Units
