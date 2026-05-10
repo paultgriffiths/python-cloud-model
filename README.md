@@ -696,6 +696,8 @@ This configuration provides a more realistic transient parcel ascent compared wi
 
 ## 🧪 Effect of KiD-Inspired Forcing
 
+## 🧪 Effect of KiD-Inspired Forcing
+
 A first alignment experiment using a KiD-inspired effective updraft forcing (`w_effective = 2.0 m/s`) was performed.
 
 Compared with constant updraft simulations:
@@ -709,6 +711,24 @@ These results demonstrate that transient dynamical forcing can significantly mod
 
 This behaviour is physically consistent with the shorter ascent duration associated with transient forcing.
 
+![Constant vs KiD forcing](figures/constant_vs_kid_R.png)
+
+*Figure: Comparison of the Bergeron–Findeisen ratio \(R\) under constant updraft forcing and KiD-inspired effective forcing. Under constant forcing, the parcel transitions toward an ice-dominated regime \((R \geq 1)\). In contrast, the transient KiD-inspired forcing suppresses the transition and maintains a liquid-dominated regime.*
+
+### Physical Interpretation
+
+The comparison demonstrates that parcel dynamics strongly influence mixed-phase cloud evolution.
+
+Under constant forcing, continuous ascent sustains supersaturation and strengthens vapour deposition onto ice crystals. As a result, the Bergeron–Findeisen ratio increases rapidly and eventually exceeds the ice-dominance threshold:
+
+```math
+R \geq 1
+
+```
+
+In contrast, the transient KiD-inspired forcing limits the duration of sustained ascent. This weakens vapour competition, reduces ice growth efficiency, and delays or suppresses the transition toward an ice-dominated regime.
+
+These results show that the emergence of Bergeron–Findeisen conditions depends not only on thermodynamics and aerosol properties, but also on the temporal structure of dynamical forcing.
 ---
 
 ## 📏 Units
