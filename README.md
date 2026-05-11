@@ -797,6 +797,20 @@ These results provide an initial step toward literature-inspired model validatio
 
 *Figure: Bergeron–Findeisen vapour competition diagnostic for the benchmark starter case.*
 
+### Comparison with Mixed-Phase Literature Behaviour
+
+The simulated benchmark behaviour is qualitatively consistent with mixed-phase parcel-model studies reported in the literature.
+
+In particular, the simulations reproduce several physically expected behaviours commonly reported in transient mixed-phase cloud studies:
+
+- persistent liquid water during transient ascent
+- gradual ice growth by vapour deposition
+- delayed Bergeron–Findeisen transition
+- weak vapour competition during short forcing periods
+- supersaturation with respect to ice remaining larger than supersaturation with respect to liquid water
+
+These trends are physically consistent with previous mixed-phase parcel-model and KiD-style intercomparison studies, where transient dynamical forcing suppresses rapid ice dominance and prolongs liquid persistence.
+
 ---
 
 ## 🔬 Key Scientific Findings
