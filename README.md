@@ -765,6 +765,39 @@ Overall, these forcing experiments show that the temporal structure of parcel as
 | Constant forcing | Constant updraft (`w = 1.0 m/s`) | Yes | Strong | Sustained vapour competition and strong ice growth |
 | KiD-inspired forcing | Transient prescribed forcing | No | Weak | Reduced vapour competition and delayed ice growth |
 
+---
+
+## 🥇 Literature-Inspired Benchmark Starter Case
+
+A literature-inspired mixed-phase benchmark starter case was performed as an initial step toward model validation and future KiD-style comparisons.
+
+This case uses mixed-phase conditions representative of parcel-model intercomparison studies, including transient ascent, supersaturation evolution, vapour competition, and liquid–ice phase partitioning.
+
+The simulation shows:
+
+- persistent supersaturation with respect to ice (`Si`)
+- liquid cloud water remaining dominant during the simulation
+- gradual ice growth by deposition
+- weak Bergeron–Findeisen vapour competition during short transient ascent
+- no strong ice-dominated transition within the simulated period
+
+The benchmark-style experiments demonstrate that the model is capable of reproducing physically consistent mixed-phase cloud behaviour, including supersaturation evolution, vapour competition, delayed ice growth, and persistent liquid water under transient ascent conditions.
+
+These results provide an initial step toward literature-inspired model validation and future KiD-style benchmark comparisons.
+
+![Case 3 supersaturation](figures/case3_literature_benchmark_supersaturation.png)
+
+*Figure: Supersaturation evolution in the literature-inspired benchmark starter case.*
+
+![Case 3 liquid and ice](figures/case3_literature_benchmark_liquid_ice.png)
+
+*Figure: Liquid and ice mass evolution in the benchmark starter case.*
+
+![Case 3 Bergeron–Findeisen ratio](figures/case3_literature_benchmark_R.png)
+
+*Figure: Bergeron–Findeisen vapour competition diagnostic for the benchmark starter case.*
+
+---
 
 ## 🔬 Key Scientific Findings
 
