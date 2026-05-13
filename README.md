@@ -889,11 +889,15 @@ These results demonstrate that the parcel model can reproduce benchmark-aligned 
 
 - Pruppacher, H. R., and Klett, J. D. (1997). *Microphysics of Clouds and Precipitation*. Springer.
 
+- Morrison, H., Curry, J. A., and Khvorostyanov, V. I. (2005). *A New Double-Moment Microphysics Parameterization for Application in Cloud and Climate Models. Part I: Description*. Journal of the Atmospheric Sciences, 62(6), 1665–1677.
+
+- Grabowski, W. W. (2015). *Untangling microphysical impacts on deep convection applying a novel modeling methodology*. Journal of the Atmospheric Sciences, 72(6), 2446–2467.
+
 - Rogers, R. R., and Yau, M. K. (1989). *A Short Course in Cloud Physics*. Pergamon Press.
 
-- Grabowski, W. W. (2015). *Untangling microphysical impacts on deep convection applying a novel modeling methodology*. Journal of the Atmospheric Sciences.
+- Köhler, H. (1936). *The nucleus in and the growth of hygroscopic droplets*. Transactions of the Faraday Society, 32, 1152–1161.
 
-- KiD (Kinematic Driver) intercomparison framework for cloud microphysics studies.
+- KiD (Kinematic Driver) intercomparison framework for cloud microphysics studies: https://github.com/Adehill/KiD-A.
   
 ---
 
