@@ -716,13 +716,17 @@ Model → Simulation Output → Diagnostics → Figures
 - **Diagnostics**: derived quantities (e.g. R ratio, Si − Sw) are computed  
 - **Figures**: visualisations are generated to interpret physical behaviour
   
-- ## 🧭 Scientific Workflow Summary
+## 🧭 Scientific Workflow Summary
+
 ![Scientific workflow](figures/scientific_workflow_summary.png)
+
 *Figure: Scientific workflow of the mixed-phase parcel model. The simulations connect parcel dynamics, supersaturation evolution, vapour competition, phase partitioning, and the emergence of Bergeron–Findeisen conditions in mixed-phase clouds.*
+
+---
 
 ## ✅ Scientific Workflow
 
-The model framework follows a physically connected workflow linking parcel dynamics, thermodynamics, and mixed-phase cloud microphysics:
+The modelling framework follows a physically connected workflow linking parcel dynamics, thermodynamics, and mixed-phase cloud microphysics:
 
 Parcel ascent and dynamical forcing  
 → supersaturation evolution (`Sw`, `Si`)  
@@ -730,8 +734,8 @@ Parcel ascent and dynamical forcing
 → liquid and ice phase partitioning  
 → Bergeron–Findeisen transition analysis
 
-This workflow enables investigation of how transient parcel dynamics influence vapour competition, phase evolution, and ice dominance in mixed-phase clouds.
-  
+This framework enables investigation of how transient parcel dynamics influence vapour competition, phase evolution, and ice dominance in mixed-phase cloud systems.
+
 ---
 
 ## 🌊 KiD-Inspired Dynamical Forcing
@@ -1074,15 +1078,12 @@ python run_mixed_phase_updraft_sweep.py
 
 These scripts investigate:
 
-```bash
 - vapour competition between liquid and ice
 - biological ice nucleation onset
 - mixed-phase cloud evolution
 - sensitivity to updraft velocity
 - Maxwellian condensational growth
   
-```
-
 ---
 
 ## Generating Diagnostics
@@ -1099,14 +1100,11 @@ python plotting/plot_Si_minus_Sw.py
 
 These diagnostics illustrate:
 
-```bash
 - supersaturation evolution (`Sw` and `Si`)
 - liquid and ice condensational growth
 - vapour competition between condensation and deposition
 - warm-rain and mixed-phase cloud evolution
 - thermodynamic phase transitions
-  
-```
 
 ---
 
@@ -1124,15 +1122,17 @@ Future extensions of the model include:
 
 ## Status
 
-This repository contains a **research prototype** developed for physical process exploration and hypothesis generation.
-It is not intended for operational forecasting or climate prediction applications.
+This repository contains a research-oriented prototype developed for physical process exploration, conceptual modelling, and hypothesis generation.
+
+It is not intended for operational weather forecasting or climate prediction applications.
 
 ---
 
 ## Citation
 
-If you use this code in research, please cite the repository. A DOI will be provided upon Zenodo release.
+If you use this repository in research or educational work, please cite the project appropriately.
 
+A DOI and formal citation entry will be provided following a future Zenodo release.
 
 
 
