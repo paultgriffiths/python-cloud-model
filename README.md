@@ -842,6 +842,24 @@ These results demonstrate that the parcel model can reproduce benchmark-aligned 
 
 ---
 
+## 🌧️ Official KiD Warm Benchmark Test
+
+The official KiD 1-D warm-cloud benchmark case (`warm1.nml`) was successfully compiled and executed under Ubuntu/WSL using `gfortran`, `build-essential`, and NetCDF libraries.
+
+The simulation produced an official KiD NetCDF output file:
+
+`output/warm1_output.nc`
+
+The benchmark output shows realistic warm-cloud evolution, with rapid cloud-water growth followed by rain-water formation and gradual decay.
+
+This provides the first official KiD benchmark reference output for future direct comparison with the Python cloud parcel model.
+
+![KiD Warm Benchmark](figures/kid_warm1_comparison.png)
+
+*Figure: Official KiD warm-cloud benchmark showing cloud-water and rain-water evolution over time.*
+
+---
+
 ## 🔬 Key Scientific Findings
 
 - Ice dominance does not emerge automatically.
