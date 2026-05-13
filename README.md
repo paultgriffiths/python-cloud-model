@@ -813,6 +813,35 @@ These trends are physically consistent with previous mixed-phase parcel-model an
 
 ---
 
+## 🧪 Case 4: KiD Mixed1 Alignment Experiment
+
+This experiment represents an initial direct-alignment test with the KiD mixed-phase benchmark framework.
+
+The setup was configured using parameters inspired by the official KiD `mixed1.nml` case, including:
+
+- `dt = 1 s`
+- aerosol concentration ≈ `50 × 10^6 m^-3`
+- weak mixed-phase ascent forcing
+
+The simulation reproduces physically consistent mixed-phase behaviour:
+
+- gradual ice growth
+- persistent liquid water during early ascent
+- rapid liquid depletion during the Bergeron–Findeisen transition
+- strong vapour competition at later times
+
+These results demonstrate that the parcel model can reproduce benchmark-aligned mixed-phase cloud evolution and provide a foundation for future direct intercomparison studies with KiD.
+
+### Liquid and Ice Evolution
+
+![Case 4 Liquid and Ice](figures/case4_kid_mixed1_alignment_liquid_ice.png)
+
+### Supersaturation Evolution
+
+![Case 4 Supersaturation](figures/case4_kid_mixed1_alignment_supersaturation.png)
+
+---
+
 ## 🔬 Key Scientific Findings
 
 - Ice dominance does not emerge automatically.
