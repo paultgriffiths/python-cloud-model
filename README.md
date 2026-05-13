@@ -8,15 +8,41 @@
 ## Overview
 
 This project explores warm cloud parcel microphysics using the KiD-A cloud parcel model.
+
 The simulations investigate the temporal evolution of cloud water and rain water during warm cloud development.
+
 The model was compiled and executed on Ubuntu WSL using Fortran and NetCDF libraries.
 
 <p align="center">
   <img src="cloud_parcel_animation.gif" width="700">
 </p>
 
+## Results
+
+### Warm cloud parcel simulation
+
+Cloud water and rain water evolution during the warm1 simulation:
+
+![Warm cloud comparison](figures/kid_warm1_comparison.png)
 A physically-based cloud parcel model designed to investigate vapour competition between liquid droplets and ice crystals.
 
+## Technologies
+
+- Python
+- Fortran
+- NetCDF4
+- Matplotlib
+- Ubuntu WSL
+- Git/GitHub
+
+## Future Work
+
+- Mixed-phase cloud simulations
+- Comparison with laboratory observations
+- Sensitivity analysis of microphysics schemes
+- Automated visualization workflows
+
+  
 ⚠️ Research-grade prototype for physical insight, not operational forecasting.
 
 
