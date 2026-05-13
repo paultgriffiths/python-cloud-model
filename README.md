@@ -875,6 +875,26 @@ These results demonstrate that the parcel model can reproduce benchmark-aligned 
 
 ---
 
+### Quantitative Comparison Summary
+
+| Metric | KiD Benchmark | Python Parcel Model |
+|---|---|---|
+| Cloud-water peak | 1.4334 | 1.1829 |
+| Rain-water peak | 0.4519 | 0.8320 |
+| Cloud peak time (s) | 570 | 1170 |
+| Rain peak time (s) | 930 | 3600 |
+
+The simplified Python parcel model reproduces the general warm-cloud evolution observed in the KiD benchmark, but important quantitative differences remain.
+
+In particular:
+- rain formation is delayed in the simplified model
+- rain-water production is overestimated
+- cloud evolution is temporally smoother than in the KiD simulation
+
+These differences are expected because the Python framework currently uses simplified warm-rain parameterisations compared with the full KiD microphysics scheme.
+
+---
+
 ## 🔬 Key Scientific Findings
 
 - Ice dominance does not emerge automatically.
