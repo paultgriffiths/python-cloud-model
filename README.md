@@ -5,6 +5,12 @@
 
 # 🌥️ Python Cloud Parcel Model
 
+## Overview
+
+This project explores warm cloud parcel microphysics using the KiD-A cloud parcel model.
+The simulations investigate the temporal evolution of cloud water and rain water during warm cloud development.
+The model was compiled and executed on Ubuntu WSL using Fortran and NetCDF libraries.
+
 <p align="center">
   <img src="cloud_parcel_animation.gif" width="700">
 </p>
