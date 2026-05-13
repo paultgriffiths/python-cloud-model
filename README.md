@@ -910,6 +910,27 @@ The larger rain-related errors are expected because the simplified framework cur
 
 ---
 
+## Threshold-Based Autoconversion Improvement
+
+A physically motivated threshold-based rain autoconversion scheme was introduced to improve alignment between the simplified Python parcel model and the KiD warm-cloud benchmark.
+
+The updated framework delays rain formation until cloud water exceeds a critical threshold, producing more realistic warm-rain evolution.
+
+### Error Reduction
+
+| Metric | Previous Model | Threshold-Based Model |
+|---|---|---|
+| Cloud RMSE | 0.3303 | 0.2399 |
+| Rain RMSE | 0.5378 | 0.3579 |
+| Cloud MAE | 0.2844 | 0.2058 |
+| Rain MAE | 0.4531 | 0.3031 |
+
+The introduction of threshold-based autoconversion significantly improves the agreement with the KiD benchmark, particularly for rain-water timing and overall cloud evolution.
+
+![Threshold Autoconversion](figures/case10_threshold_autoconversion.png)
+
+---
+
 ## 🔬 Key Scientific Findings
 
 - Ice dominance does not emerge automatically.
