@@ -431,6 +431,26 @@ This comparison shows that the model can reproduce two distinct cloud regimes. C
 
 ---
 
+## Direct KiD Benchmark Alignment
+
+An improved warm-cloud alignment experiment was developed to directly compare the simplified Python parcel model against the official KiD warm-cloud benchmark.
+
+The alignment reproduces several key qualitative behaviours observed in the KiD reference simulation, including:
+
+- rapid cloud-water growth
+- delayed rain-water onset
+- gradual post-peak decay
+- realistic timing differences between cloud and rain evolution
+
+The comparison demonstrates that simplified parcel-model physics can qualitatively reproduce important warm-cloud microphysical behaviour under KiD-inspired forcing conditions.
+
+This provides an initial framework for future quantitative benchmarking between simplified parcel models and established cloud microphysics schemes.
+
+![Improved KiD Alignment](figures/case7_improved_warm_alignment.png)
+
+
+---
+
 
 ## 🔬 Final Scientific Conclusion
 
@@ -1002,18 +1022,21 @@ The official KiD-A warm cloud benchmark was compiled and executed under Ubuntu W
 
 ```bash
 make COMPILER=gfortran CASE=1D all
+
 ```
 
 ### Run the warm cloud benchmark
 
 ```bash
 ./bin/KiD_1D.exe namelists/warm1.nml output/warm1_output.nc
+
 ```
 
 The simulation generates:
 
 ```text
 output/warm1_output.nc
+
 ```
 
 which can be analysed using Python and NetCDF4.
@@ -1046,9 +1069,12 @@ python parcel_model/run_bioIN_onset.py
 python parcel_model/run_mixed_phase_maxwell.py
 python run_mixed_phase_minimal.py
 python run_mixed_phase_updraft_sweep.py
+
 ```
 
 These scripts investigate:
+
+```bash
 - vapour competition between liquid and ice
 - biological ice nucleation onset
 - mixed-phase cloud evolution
@@ -1073,6 +1099,7 @@ python plotting/plot_Si_minus_Sw.py
 
 These diagnostics illustrate:
 
+```bash
 - supersaturation evolution (`Sw` and `Si`)
 - liquid and ice condensational growth
 - vapour competition between condensation and deposition
