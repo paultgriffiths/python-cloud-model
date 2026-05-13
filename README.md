@@ -573,12 +573,12 @@ The project is organised to clearly separate model physics, experiments, diagnos
 
 ```text
 python-cloud-model/
-├── parcel_model/         # core model components
-│   ├── aerosol.py         # aerosol population definitions
-│   ├── activation.py       # Köhler-based activation
-│   ├── thermodynamics.py    # saturation and supersaturation calculations
-│   ├── biological_in.py       # biological ice nucleation parameterisation
-│   └── run_mixed_phase_maxwell.py   # main mixed-phase parcel model
+├── parcel_model/                    # core parcel microphysics modules
+│   ├── aerosol.py                   # aerosol population definitions
+│   ├── activation.py                # Köhler-based droplet activation
+│   ├── thermodynamics.py            # saturation and supersaturation calculations
+│   ├── biological_in.py             # biological ice nucleation parameterisation
+│   └── run_mixed_phase_maxwell.py   # mixed-phase parcel model driver
 │
 ├── cases/         # configuration files for different cases
 │    ├── case1_config.py
@@ -592,16 +592,18 @@ python-cloud-model/
 │   ├── extract_validation_metrics.py
 │   └── run_kid_inspired_alignment.py
 │
-├── data/                # simulation outputs and stability results
-│   └── stability_results.csv
 │
 ├── plotting/            # plotting and diagnostics
 │   ├── plot_R_ratio.py
 │   ├── plot_mixed_phase_growth.py
 │   ├── plot_Si_minus_Sw.py
 │   ├── plot_kid_case1.py            # plots for KiD Case 1 benchmark
-│   ├──  plot_case2_from_maxwell.py   #  plots Case 2 Bergeron-Findeisen transition reproduced
+│   ├── plot_case2_from_maxwell.py   #  plots Case 2 Bergeron-Findeisen transition reproduced
 │   └── plot_kid_inspired_alignment.py
+│
+│
+├── data/                # simulation outputs and stability results
+│   └── stability_results.csv
 │
 ├── data/                # simulation outputs (CSV files)
 ├── figures/            # generated figures
@@ -617,7 +619,11 @@ python-cloud-model/
 │   ├── case2_from_maxwell_liquid_ice.png
 │   ├── case2_from_maxwell_S.png
 │   ├── case2_from_maxwell_sinks.png
-│   └── case2_from_maxwell_R.png
+│   ├── case2_from_maxwell_R.png
+│   └── kid_warm1_comparison.png
+│
+│
+├── KiD-A/                           # official KiD benchmark model (Fortran)
 │
 ├── README.md
 ├── requirements.txt
@@ -865,24 +871,6 @@ These results demonstrate that the parcel model can reproduce benchmark-aligned 
 
 ---
 
-## 🌧️ Official KiD Warm Benchmark Test
-
-The official KiD 1-D warm-cloud benchmark case (`warm1.nml`) was successfully compiled and executed under Ubuntu/WSL using `gfortran`, `build-essential`, and NetCDF libraries.
-
-The simulation produced an official KiD NetCDF output file:
-
-`output/warm1_output.nc`
-
-The benchmark output shows realistic warm-cloud evolution, with rapid cloud-water growth followed by rain-water formation and gradual decay.
-
-This provides the first official KiD benchmark reference output for future direct comparison with the Python cloud parcel model.
-
-![KiD Warm Benchmark](figures/kid_warm1_comparison.png)
-
-*Figure: Official KiD warm-cloud benchmark showing cloud-water and rain-water evolution over time.*
-
----
-
 ## 🔬 Key Scientific Findings
 
 - Ice dominance does not emerge automatically.
@@ -1004,10 +992,53 @@ python experiments/run_kid_case1.py
 python experiments/run_case2_from_maxwell.py
 
 ```
+---
+
+## 🔬 KiD-A Warm Cloud Benchmark (Fortran)
+
+The official KiD-A warm cloud benchmark was compiled and executed under Ubuntu WSL using Fortran and NetCDF libraries.
+
+### Compile the KiD-A model
+
+```bash
+make COMPILER=gfortran CASE=1D all
+```
+
+### Run the warm cloud benchmark
+
+```bash
+./bin/KiD_1D.exe namelists/warm1.nml output/warm1_output.nc
+```
+
+The simulation generates:
+
+```text
+output/warm1_output.nc
+```
+
+which can be analysed using Python and NetCDF4.
+
+
+## 🌧️ Official KiD Warm Benchmark Test
+
+The official KiD 1-D warm-cloud benchmark case (`warm1.nml`) was successfully compiled and executed under Ubuntu/WSL using `gfortran`, `build-essential`, and NetCDF libraries.
+
+The simulation produced an official KiD NetCDF output file:
+
+`output/warm1_output.nc`
+
+The benchmark output shows realistic warm-cloud evolution, with rapid cloud-water growth followed by rain-water formation and gradual decay.
+
+This provides the first official KiD benchmark reference output for future direct comparison with the Python cloud parcel model.
+
+![KiD Warm Benchmark](figures/kid_warm1_comparison.png)
+
+*Figure: Official KiD warm-cloud benchmark showing cloud-water and rain-water evolution over time.*
+
 
 ### Additional scripts
 
-Other exploratory simulations are available:
+Additional exploratory and sensitivity experiments are available:
 
 ```bash
 python parcel_model/run_parcel_competition.py
@@ -1015,7 +1046,15 @@ python parcel_model/run_bioIN_onset.py
 python parcel_model/run_mixed_phase_maxwell.py
 python run_mixed_phase_minimal.py
 python run_mixed_phase_updraft_sweep.py
+```
 
+These scripts investigate:
+- vapour competition between liquid and ice
+- biological ice nucleation onset
+- mixed-phase cloud evolution
+- sensitivity to updraft velocity
+- Maxwellian condensational growth
+  
 ```
 
 ---
@@ -1032,12 +1071,15 @@ python plotting/plot_Si_minus_Sw.py
 
 ```
 
-These diagnostics illustrate :
+These diagnostics illustrate:
 
-- supersaturation evolution (Sw and Si)
-- liquid and ice growth
-- vapour competition (condensation vs deposition)
-- warm-rain and mixed-phase cloud behaviour
+- supersaturation evolution (`Sw` and `Si`)
+- liquid and ice condensational growth
+- vapour competition between condensation and deposition
+- warm-rain and mixed-phase cloud evolution
+- thermodynamic phase transitions
+  
+```
 
 ---
 
