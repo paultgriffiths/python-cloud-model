@@ -895,6 +895,21 @@ These differences are expected because the Python framework currently uses simpl
 
 ---
 
+### Error Metrics
+
+| Metric | Value |
+|---|---|
+| Cloud RMSE | 0.3303 |
+| Rain RMSE | 0.5378 |
+| Cloud MAE | 0.2844 |
+| Rain MAE | 0.4531 |
+
+The quantitative comparison indicates that the simplified Python parcel model captures the general warm-cloud evolution observed in the KiD benchmark, although significant differences remain in rain formation timing and precipitation intensity.
+
+The larger rain-related errors are expected because the simplified framework currently lacks detailed collision–coalescence and sedimentation physics.
+
+---
+
 ## 🔬 Key Scientific Findings
 
 - Ice dominance does not emerge automatically.
