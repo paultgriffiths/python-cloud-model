@@ -17,15 +17,6 @@ The model was compiled and executed on Ubuntu WSL using Fortran and NetCDF libra
   <img src="cloud_parcel_animation.gif" width="700">
 </p>
 
-## Results
-
-### Warm cloud parcel simulation
-
-Cloud water and rain water evolution during the warm1 simulation:
-
-![Warm cloud comparison](figures/kid_warm1_comparison.png)
-A physically-based cloud parcel model designed to investigate vapour competition between liquid droplets and ice crystals.
-
 ## Technologies
 
 - Python
