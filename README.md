@@ -431,26 +431,6 @@ This comparison shows that the model can reproduce two distinct cloud regimes. C
 
 ---
 
-## Direct KiD Benchmark Alignment
-
-An improved warm-cloud alignment experiment was developed to directly compare the simplified Python parcel model against the official KiD warm-cloud benchmark.
-
-The alignment reproduces several key qualitative behaviours observed in the KiD reference simulation, including:
-
-- rapid cloud-water growth
-- delayed rain-water onset
-- gradual post-peak decay
-- realistic timing differences between cloud and rain evolution
-
-The comparison demonstrates that simplified parcel-model physics can qualitatively reproduce important warm-cloud microphysical behaviour under KiD-inspired forcing conditions.
-
-This provides an initial framework for future quantitative benchmarking between simplified parcel models and established cloud microphysics schemes.
-
-![Improved KiD Alignment](figures/case7_improved_warm_alignment.png)
-
-
----
-
 
 ## 🔬 Final Scientific Conclusion
 
@@ -1045,6 +1025,7 @@ output/warm1_output.nc
 
 which can be analysed using Python and NetCDF4.
 
+---
 
 ## 🌧️ Official KiD Warm Benchmark Test
 
@@ -1062,6 +1043,26 @@ This provides the first official KiD benchmark reference output for future direc
 
 *Figure: Official KiD warm-cloud benchmark showing cloud-water and rain-water evolution over time.*
 
+---
+
+## Direct KiD Benchmark Alignment
+
+An improved warm-cloud alignment experiment was developed to directly compare the simplified Python parcel model against the official KiD warm-cloud benchmark.
+
+The alignment reproduces several key qualitative behaviours observed in the KiD reference simulation, including:
+
+- rapid cloud-water growth
+- delayed rain-water onset
+- gradual post-peak decay
+- realistic timing differences between cloud and rain evolution
+
+The comparison demonstrates that simplified parcel-model physics can qualitatively reproduce important warm-cloud microphysical behaviour under KiD-inspired forcing conditions.
+
+This provides an initial framework for future quantitative benchmarking between simplified parcel models and established cloud microphysics schemes.
+
+![Improved KiD Alignment](figures/case7_improved_warm_alignment.png)
+
+---
 
 ### Additional scripts
 
