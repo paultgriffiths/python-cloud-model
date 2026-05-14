@@ -931,6 +931,31 @@ The introduction of threshold-based autoconversion significantly improves the ag
 
 ---
 
+## Threshold Sensitivity Study
+
+A sensitivity analysis was performed to investigate how the rain autoconversion threshold influences warm-cloud evolution and agreement with the KiD benchmark.
+
+Three threshold values were tested:
+
+- 0.35
+- 0.55
+- 0.75
+
+The results demonstrate that the autoconversion threshold strongly controls:
+
+- cloud-water persistence
+- timing of rain formation
+- post-peak cloud decay
+- overall benchmark agreement
+
+Lower thresholds trigger earlier rain conversion and more rapid cloud depletion, while larger thresholds delay rain formation and preserve cloud water for longer periods.
+
+The intermediate threshold (`0.55`) produced the closest qualitative agreement with the KiD warm-cloud benchmark.
+
+![Threshold Sensitivity](figures/case12_threshold_sensitivity.png)
+
+---
+
 ## 🔬 Key Scientific Findings
 
 - Ice dominance does not emerge automatically.
