@@ -1074,6 +1074,26 @@ Nevertheless, the experiments demonstrate that simplified physically motivated p
 
 ---
 
+## Boundary-Condition Alignment
+
+The warm-cloud comparison was designed to align the simplified Python parcel model with the official KiD `warm1.nml` benchmark as closely as possible.
+
+The KiD benchmark uses:
+
+| Parameter | KiD warm1 setup | Python alignment |
+|---|---|---|
+| Case type | Warm cloud | Warm cloud |
+| Microphysics | Thompson09 | Simplified threshold autoconversion |
+| Updraft forcing | `wctrl(1) = 2.0 m/s` | Tuned around `w = 2.0 m/s` |
+| Aerosol concentration | `50 × 10^6 m^-3` | Normalised aerosol factor = `1.0` |
+| Simulation duration | `3600 s` | `3600 s` |
+| Output interval | `30 s` | KiD output time grid |
+| Rain conversion | Full KiD microphysics | Threshold-based autoconversion |
+
+This alignment does not imply identical microphysics. Instead, it provides a controlled comparison framework in which the simplified Python parcel model is evaluated against an established KiD benchmark under closely matched forcing and timing conditions.
+
+---
+
 ## 🔬 Key Scientific Findings
 
 - Ice dominance does not emerge automatically.
