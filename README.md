@@ -981,6 +981,31 @@ The intermediate forcing (`w = 2.0 m/s`) produced the closest agreement with the
 
 ---
 
+## Aerosol Sensitivity Study
+
+A sensitivity analysis was performed to investigate how aerosol loading influences warm-cloud development and benchmark agreement.
+
+Three aerosol scaling factors were tested:
+
+- 0.5
+- 1.0
+- 2.0
+
+The simulations show that aerosol concentration strongly affects cloud-water evolution.
+
+Larger aerosol loading produces:
+
+- enhanced cloud-water growth
+- larger cloud-water peaks
+- delayed cloud depletion
+- stronger persistence of condensate
+
+The intermediate aerosol factor (`1.0`) produced the closest agreement with the KiD warm-cloud benchmark.
+
+![Aerosol Sensitivity](figures/case14_aerosol_sensitivity.png)
+
+---
+
 ## 🔬 Key Scientific Findings
 
 - Ice dominance does not emerge automatically.
