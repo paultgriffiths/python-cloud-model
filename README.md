@@ -956,6 +956,31 @@ The intermediate threshold (`0.55`) produced the closest qualitative agreement w
 
 ---
 
+## Updraft Sensitivity Study
+
+A sensitivity analysis was performed to investigate how vertical velocity (`w`) influences warm-cloud evolution and benchmark agreement.
+
+Three updraft velocities were tested:
+
+- 1.0 m/s
+- 2.0 m/s
+- 4.0 m/s
+
+The simulations show that cloud-water growth is strongly controlled by parcel ascent rate.
+
+Stronger updrafts produce:
+
+- faster supersaturation generation
+- enhanced cloud-water growth
+- larger cloud-water peaks
+- delayed cloud depletion
+
+The intermediate forcing (`w = 2.0 m/s`) produced the closest agreement with the KiD warm-cloud benchmark.
+
+![Updraft Sensitivity](figures/case13_updraft_sensitivity.png)
+
+---
+
 ## 🔬 Key Scientific Findings
 
 - Ice dominance does not emerge automatically.
