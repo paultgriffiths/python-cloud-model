@@ -1031,6 +1031,24 @@ The experiments qualitatively reproduce the expected behaviour associated with v
 
 ---
 
+## Vapour Competition Diagnostic
+
+A vapour competition diagnostic (`R_BF`) was introduced to investigate the transition from liquid-dominated to ice-dominated mixed-phase evolution.
+
+The diagnostic is defined as:
+
+```text
+R_BF = Ice Mass / Liquid Mass
+```
+
+Values exceeding unity (`R_BF > 1`) indicate the emergence of ice-dominated behaviour associated with Bergeron–Findeisen-type vapour competition.
+
+The simulations show a gradual transition toward ice dominance during the later stages of mixed-phase evolution.
+
+![Vapour Competition](figures/case16_vapour_competition.png)
+
+---
+
 ## 🔬 Key Scientific Findings
 
 - Ice dominance does not emerge automatically.
