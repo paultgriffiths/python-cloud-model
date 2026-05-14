@@ -1049,6 +1049,31 @@ The simulations show a gradual transition toward ice dominance during the later 
 
 ---
 
+## Discussion of Remaining Differences
+
+Although the simplified Python parcel model reproduces several key qualitative features of the KiD warm-cloud benchmark, important quantitative differences remain.
+
+The largest discrepancies are associated with:
+
+- delayed rain formation
+- smoother cloud evolution
+- overestimation or underestimation of condensate peaks
+- simplified temporal variability
+
+These differences are expected because the current framework intentionally uses simplified process representations.
+
+In contrast to the KiD benchmark microphysics scheme, the Python parcel model currently does not include:
+
+- detailed collision–coalescence physics
+- sedimentation feedbacks
+- turbulence coupling
+- spectral-bin microphysics
+- fully coupled thermodynamic feedbacks
+
+Nevertheless, the experiments demonstrate that simplified physically motivated parameterisations can reproduce important qualitative aspects of warm-cloud and mixed-phase evolution under KiD-inspired forcing conditions.
+
+---
+
 ## 🔬 Key Scientific Findings
 
 - Ice dominance does not emerge automatically.
