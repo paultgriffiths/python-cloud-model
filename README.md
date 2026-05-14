@@ -1006,6 +1006,31 @@ The intermediate aerosol factor (`1.0`) produced the closest agreement with the 
 
 ---
 
+## Ice Nucleation Sensitivity Study
+
+A mixed-phase sensitivity analysis was performed to investigate how ice nucleation strength influences liquid-water depletion and ice growth.
+
+Three ice nucleation scaling factors were tested:
+
+- 0.5
+- 1.0
+- 2.0
+
+The simulations demonstrate strong sensitivity of mixed-phase evolution to ice nucleation intensity.
+
+Larger ice nucleation strength produces:
+
+- faster ice growth
+- enhanced liquid-water depletion
+- earlier phase transition
+- stronger ice dominance
+
+The experiments qualitatively reproduce the expected behaviour associated with vapour competition and Bergeron–Findeisen-type mixed-phase evolution.
+
+![Ice Sensitivity](figures/case15_ice_sensitivity.png)
+
+---
+
 ## 🔬 Key Scientific Findings
 
 - Ice dominance does not emerge automatically.
