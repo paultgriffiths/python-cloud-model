@@ -17,6 +17,10 @@ The model was compiled and executed on Ubuntu WSL using Fortran and NetCDF libra
   <img src="cloud_parcel_animation.gif" width="700">
 </p>
 
+## Abstract
+
+This repository presents a physically based Python parcel model for investigating warm-cloud and mixed-phase microphysics. The framework combines Köhler activation, Maxwell-type condensational growth, biological ice nucleation, and vapour competition diagnostics to study the emergence of Bergeron–Findeisen behaviour. Direct comparison experiments with KiD benchmark simulations demonstrate that simplified physically motivated parameterisations can qualitatively reproduce key cloud microphysical behaviour under controlled forcing conditions.
+
 ### Future Work
 
 - Mixed-phase cloud simulations
@@ -125,8 +129,20 @@ warm-rain → mixed-phase → ice-dominated regimes
   
 ---
 
-## 🧭 Scientific Objectives
+## 🎯 Scientific Objectives
 
+The objectives of this project are:
+
+- to investigate warm-cloud and mixed-phase parcel evolution
+- to study vapour competition between liquid droplets and ice crystals
+- to analyse the emergence of Bergeron–Findeisen behaviour
+- to compare simplified parcel-model physics against KiD benchmark experiments
+- to evaluate sensitivity to aerosol loading, updraft forcing, and ice nucleation
+
+---
+
+  ## 🧭 Scientific Workflow Summary
+  
 The overall workflow of the model is illustrated below:
   ![Workflow](figures/workflow_diagram.png)
 *Figure: Workflow of the parcel model from simulation to diagnostics and visualisation.*
@@ -660,7 +676,6 @@ This comparison shows that the model can reproduce two distinct cloud regimes. C
 | Aerosol / droplet number | Fixed or prescribed aerosol/droplet number, e.g. warm-rain intercomparison cases | CCN activation and prescribed CCN sensitivity | Document CCN values clearly |
 | Microphysics | Warm-rain microphysics schemes compared under same forcing | Köhler activation, Maxwell growth, warm-rain process, mixed-phase extension | Separate warm-rain validation from mixed-phase extension |
 | Outputs | Cloud water, rain water, precipitation/rain rate, LWP | qcloud, qrain, rain rate, LWP, qice, R | Use common output names and figures |
-
 
 ---
 
