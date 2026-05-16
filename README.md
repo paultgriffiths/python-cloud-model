@@ -31,8 +31,8 @@ This repository presents a physically based Python parcel model for investigatin
 ⚠️ Research-grade prototype for physical insight, not operational forecasting.
 
 ### 🚀 What this project does
-This model simulates the ascent of an air parcel and shows how:
 
+This model simulates the ascent of an air parcel and shows how:
 - **cloud droplets form (Köhler activation)**
 - **ice crystals nucleate (biological IN)**
 - **vapour is shared between liquid and ice**
@@ -75,19 +75,8 @@ Cloud droplet formation follows **Köhler theory**, allowing aerosols to activat
 - **Biological Ice Nucleation**
 Ice nucleation is represented through a temperature-dependent biological IN parameterisation based on a logistic activation curve.
 
-### 🔬 Final Scientific Conclusion
-
-- Warm-rain behaviour is correctly reproduced
-- Mixed-phase coexistence emerges naturally
-- Vapour competition is governed by Si vs Sw
-- Ice growth is thermodynamically favoured
-- No explicit parameter tuning is required for BF transition
-
-This model provides a consistent bridge between:
-
-warm-rain → mixed-phase → ice-dominated regimes
-
-###  Key Files
+---
+##  Key Files
 
 ### Core model (parcel physics)
 
@@ -141,7 +130,7 @@ The objectives of this project are:
 
 ---
 
-  ## 🧭 Scientific Workflow Summary
+## 🧭 Scientific Workflow Summary
   
 The overall workflow of the model is illustrated below:
   ![Workflow](figures/workflow_diagram.png)
@@ -933,13 +922,16 @@ Nevertheless, the experiments demonstrate that simplified physically motivated p
 
 ## 🔬 Key Scientific Findings
 
-- Ice dominance does not emerge automatically.
-- Vapour competition depends strongly on forcing structure.
-- Transient KiD-inspired forcing suppresses the Bergeron–Findeisen transition.
+- Warm-rain evolution is qualitatively reproduced under KiD-inspired forcing conditions.
+- Mixed-phase coexistence emerges naturally from coupled thermodynamics and vapour competition.
+- Vapour competition is strongly controlled by the relationship between supersaturation over water (`Sw`) and supersaturation over ice (`Si`).
+- Ice growth is thermodynamically favoured during mixed-phase evolution.
+- Bergeron–Findeisen-type behaviour emerges without explicit transition tuning.
+- Dynamical forcing strongly influences vapour competition and phase partitioning.
+- Transient KiD-inspired forcing suppresses or delays the emergence of ice-dominated behaviour.
 - Supersaturation evolution alone does not determine ice dominance.
-- Phase partitioning depends on both thermodynamics and parcel dynamics.
 - Mixed-phase cloud behaviour emerges naturally from physically based thermodynamics and diffusion-limited growth.
-  
+
 ---
 
 ## Numerical Stability Analysis
