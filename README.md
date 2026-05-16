@@ -322,8 +322,6 @@ The introduction of threshold-based autoconversion significantly improves the ag
 
 ![Threshold Autoconversion](figures/case10_threshold_autoconversion.png)
 
-
-
 ### 🔬 KiD-A Warm Cloud Benchmark (Fortran)
 
 The official KiD-A warm cloud benchmark was compiled and executed under Ubuntu WSL using Fortran and NetCDF libraries.
@@ -418,7 +416,9 @@ dT/dt = − cooling_rate + latent_heating
 
 This ensures thermodynamic consistency between microphysics and parcel evolution.
 
-### 📊 Core Diagnostic
+---
+
+## 📊 Core Diagnostic
 
 The key quantity is:
 ```
@@ -441,9 +441,7 @@ Sensitivity experiments demonstrate that:
 
 can significantly increase **R**, strengthening vapour competition between droplets and ice.
 
----
-
-## Key Diagnostics
+### Key Diagnostics
 
 These diagnostics illustrate vapour competition between liquid droplets and ice crystals in the parcel.
 
@@ -486,7 +484,6 @@ The maximum value of \(R\) depends on CCN and IN concentrations. Ice-dominated b
 The transition boundary (\(R = 1\)) separates liquid-dominated and ice-dominated regimes across the CCN–IN parameter space.
 
 ---
----
 
 ## 🎬  Scientific Workflow Summary
 
@@ -524,7 +521,6 @@ The model reproduces the expected qualitative behaviour of a warm-rain cloud sys
 - delayed rain formation  
 - gradual increase in surface rain rate
   
-
 ### Validation Metrics
 
 | Metric | Value |
@@ -598,7 +594,6 @@ The simulation shows coexistence of liquid and ice:
 
 Ice growth is favoured because saturation vapour pressure over ice is lower than over liquid water.
 
-
 ### Bergeron–Findeisen Transition
 
 The model captures a transition from:
@@ -616,7 +611,6 @@ As temperature decreases:
 - saturation over ice becomes lower  
 - vapour deposits onto ice  
 - droplet growth reduces Sw  
-
 
 ### Validation Metrics
 
@@ -748,7 +742,9 @@ This alignment does not imply identical microphysics. Instead, it provides a con
 
 ---
 
-## Quantitative Comparison Summary
+## Model Improvements
+
+### Quantitative Comparison Summary
 
 | Metric | KiD Benchmark | Python Parcel Model |
 |---|---|---|
