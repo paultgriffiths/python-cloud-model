@@ -21,7 +21,7 @@ The model was compiled and executed on Ubuntu WSL using Fortran and NetCDF libra
 
 This repository presents a physically based Python parcel model for investigating warm-cloud and mixed-phase microphysics. The framework combines Köhler activation, Maxwell-type condensational growth, biological ice nucleation, and vapour competition diagnostics to study the emergence of Bergeron–Findeisen behaviour. Direct comparison experiments with KiD benchmark simulations demonstrate that simplified physically motivated parameterisations can qualitatively reproduce key cloud microphysical behaviour under controlled forcing conditions.
 
-### Future Work
+## Future Work
 
 - Mixed-phase cloud simulations
 - Comparison with laboratory observations
@@ -30,7 +30,7 @@ This repository presents a physically based Python parcel model for investigatin
   
 ⚠️ Research-grade prototype for physical insight, not operational forecasting.
 
-### 🚀 What this project does
+## 🚀 What this project does
 
 This model simulates the ascent of an air parcel and shows how:
 - **cloud droplets form (Köhler activation)**
@@ -38,7 +38,7 @@ This model simulates the ascent of an air parcel and shows how:
 - **vapour is shared between liquid and ice**
 - **mixed-phase clouds emerge naturally**
 
-### 🧠 Key Insight
+## 🧠 Key Insight
 
 Ice does not dominate automatically.
 
