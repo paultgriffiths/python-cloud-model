@@ -133,13 +133,15 @@ The objectives of this project are:
 ## 🧭 Scientific Workflow Summary
   
 The overall workflow of the model is illustrated below:
-  ![Workflow](figures/workflow_diagram.png)
+
+![Workflow](figures/workflow_diagram.png)
 *Figure: Workflow of the parcel model from simulation to diagnostics and visualisation.*
 Model → Simulation Output → Diagnostics → Figures
 - **Model**: core parcel model computes thermodynamic and microphysical evolution  
 - **Simulation Output**: results are saved as time series (CSV files)  
 - **Diagnostics**: derived quantities (e.g. R ratio, Si − Sw) are computed  
 - **Figures**: visualisations are generated to interpret physical behaviour
+
 ![Scientific workflow](figures/scientific_workflow_summary.png)
 *Figure: Scientific workflow of the mixed-phase parcel model. The simulations connect parcel dynamics, supersaturation evolution, vapour competition, phase partitioning, and the emergence of Bergeron–Findeisen conditions in mixed-phase clouds.*
 The modelling framework follows a physically connected workflow linking parcel dynamics, thermodynamics, and mixed-phase cloud microphysics:
@@ -148,6 +150,7 @@ Parcel ascent and dynamical forcing
 → vapour competition diagnostics (`R_BF`)  
 → liquid and ice phase partitioning  
 → Bergeron–Findeisen transition analysis
+
 This framework enables investigation of how transient parcel dynamics influence vapour competition, phase evolution, and ice dominance in mixed-phase cloud systems.
 
 ### 🌊 KiD-Inspired Dynamical Forcing
