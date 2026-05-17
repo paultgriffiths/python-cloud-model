@@ -184,35 +184,6 @@ These experiments demonstrate that the temporal structure of dynamical forcing s
 
 ---
 
-## 🧪 KiD Mixed-Phase Alignment Experiment
-
-An initial direct-alignment experiment was performed using parameters inspired by the official KiD `mixed1.nml` configuration.
-
-The setup includes:
-
-- `dt = 1 s`
-- aerosol concentration ≈ `50 × 10^6 m^-3`
-- weak mixed-phase ascent forcing
-
-The simulations reproduce:
-
-- gradual ice growth
-- persistent liquid water during early ascent
-- strong vapour competition at later times
-- rapid liquid depletion during the Bergeron–Findeisen transition
-
-![Case 4 Liquid and Ice](figures/case4_kid_mixed1_alignment_liquid_ice.png)
-
-*Figure: Liquid-water and ice-water evolution in the KiD-aligned mixed-phase experiment.*
-
-![Case 4 Supersaturation](figures/case4_kid_mixed1_alignment_supersaturation.png)
-
-*Figure: Supersaturation evolution in the KiD-aligned mixed-phase experiment.*
-
-These experiments provide an initial framework for future direct intercomparison studies between simplified parcel models and established KiD benchmark configurations.
-
----
-
 ## 🥇 Literature-Inspired Benchmark Starter Case
 
 A literature-inspired mixed-phase benchmark starter case was performed as an initial step toward future KiD-style validation experiments.
