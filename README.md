@@ -213,6 +213,53 @@ These experiments demonstrate that the temporal structure of parcel ascent stron
 
 ---
 
+## 🧪 Effect of KiD-Inspired Forcing 
+
+A first alignment experiment using a KiD-inspired transient updraft forcing (`w_effective = 2.0 m/s`) was performed.
+
+Compared with constant updraft forcing:
+
+- vapour competition was reduced
+- liquid water persisted for longer periods
+- ice growth weakened
+- the Bergeron–Findeisen transition was delayed or suppressed
+
+These results demonstrate that transient parcel dynamics strongly influence mixed-phase cloud evolution.
+
+![Constant vs KiD forcing](figures/constant_vs_kid_R.png)
+
+*Figure: Comparison of the Bergeron–Findeisen ratio \(R\) under constant and KiD-inspired forcing configurations.*
+
+![Constant vs KiD liquid and ice](figures/constant_vs_kid_liquid_ice.png)
+
+*Figure: Evolution of liquid-water and ice-water mass under constant and transient forcing.*
+
+![Constant vs KiD supersaturation](figures/constant_vs_kid_supersaturation.png)
+
+*Figure: Supersaturation evolution under constant and KiD-inspired forcing.*
+
+![BF transition timing](figures/BF_transition_timing.png)
+
+*Figure: Timing of the Bergeron–Findeisen transition for different forcing structures.*
+
+### Physical Interpretation
+
+Under constant forcing, continuous ascent sustains supersaturation and enhances vapour deposition onto ice crystals, producing strong vapour competition and eventual ice dominance (\(R \geq 1\)).
+
+In contrast, transient KiD-inspired forcing limits the duration of sustained ascent, reducing vapour competition and suppressing rapid ice growth.
+
+These experiments demonstrate that the temporal structure of dynamical forcing strongly controls supersaturation evolution, phase partitioning, and the emergence of Bergeron–Findeisen conditions.
+
+### Comparison of forcing configurations
+
+| Case | Forcing type | BF transition | Ice dominance | Main behaviour |
+|---|---|---|---|---|
+| Constant forcing | Constant updraft (`w = 1.0 m/s`) | Yes | Strong | Sustained vapour competition and strong ice growth |
+| KiD-inspired forcing | Transient prescribed forcing | No | Weak | Reduced vapour competition and delayed ice growth |
+
+
+---
+
 ## 🥇 Literature-Inspired Benchmark Starter Case
 
 A literature-inspired mixed-phase benchmark starter case was performed as an initial step toward future KiD-style validation experiments.
@@ -266,64 +313,6 @@ The simulations reproduce:
 *Figure: Supersaturation evolution in the KiD-aligned mixed-phase experiment.*
 
 These experiments provide an initial framework for future direct intercomparison studies between simplified parcel models and established KiD benchmark configurations.
-
----
-## 🧪 Effect of KiD-Inspired Forcing 
-
-A first alignment experiment using a KiD-inspired effective updraft forcing (`w_effective = 2.0 m/s`) was performed.
-
-Compared with constant updraft simulations:
-
-- vapour competition was reduced
-- the Bergeron–Findeisen transition weakened
-- liquid water remained dominant for a longer period
-- ice growth became less aggressive
-
-These results demonstrate that transient dynamical forcing can significantly modify mixed-phase cloud evolution and vapour competition.
-
-This behaviour is physically consistent with the shorter ascent duration associated with transient forcing.
-
-  ![Constant vs KiD forcing](figures/constant_vs_kid_R.png)
-
-*Figure: Comparison of the Bergeron–Findeisen ratio \(R\) under constant updraft forcing and KiD-inspired effective forcing. Under constant forcing, the parcel transitions toward an ice-dominated regime \((R \geq 1)\). In contrast, the transient KiD-inspired forcing suppresses the transition and maintains a liquid-dominated regime.*
-
----
-
-## Physical Interpretation
-
-The comparison demonstrates that parcel dynamics strongly influence mixed-phase cloud evolution.
-
-Under constant forcing, continuous ascent sustains supersaturation and strengthens vapour deposition onto ice crystals. As a result, the Bergeron–Findeisen ratio increases rapidly and eventually exceeds the ice-dominance threshold:
-
-```math
-R \geq 1
-
-```
-
-In contrast, the transient KiD-inspired forcing limits the duration of sustained ascent. This weakens vapour competition, reduces ice growth efficiency, and delays or suppresses the transition toward an ice-dominated regime.
-
-These results show that the emergence of Bergeron–Findeisen conditions depends not only on thermodynamics and aerosol properties, but also on the temporal structure of dynamical forcing.
-
-![Constant vs KiD liquid and ice](figures/constant_vs_kid_liquid_ice.png)
-
-*Figure: Comparison of liquid water and ice water evolution under constant updraft forcing and KiD-inspired effective forcing. Under transient forcing, liquid water remains dominant for a longer period while ice growth is significantly reduced. This demonstrates that the temporal structure of dynamical forcing strongly influences phase partitioning in mixed-phase clouds.*
-
-![Constant vs KiD supersaturation](figures/constant_vs_kid_supersaturation.png)
-
-*Figure: Comparison of supersaturation evolution under constant updraft forcing and KiD-inspired effective forcing. The simulations show distinct evolution of supersaturation with respect to water (\(Sw\)) and ice (\(Si\)). Although \(Si\) increases substantially under transient forcing, the reduced duration of sustained ascent weakens vapour competition and limits the transition toward an ice-dominated regime.*
-
-![BF transition timing](figures/BF_transition_timing.png)
-
-*Figure: Timing of the Bergeron–Findeisen transition under different forcing configurations. Under constant forcing, the parcel transitions toward an ice-dominated vapour sink after approximately 1782 s. Under transient KiD-inspired forcing, no transition occurs within the simulation period, indicating suppressed vapour competition and reduced ice dominance.*
-
-Overall, these forcing experiments show that the temporal structure of parcel ascent controls supersaturation evolution, vapour competition, phase partitioning, and the timing of the Bergeron–Findeisen transition.
-
-### Comparison of forcing configurations
-
-| Case | Forcing type | BF transition | Ice dominance | Main behaviour |
-|---|---|---|---|---|
-| Constant forcing | Constant updraft (`w = 1.0 m/s`) | Yes | Strong | Sustained vapour competition and strong ice growth |
-| KiD-inspired forcing | Transient prescribed forcing | No | Weak | Reduced vapour competition and delayed ice growth |
 
 ---
 ## 🥇 Literature-Inspired Benchmark Starter Case
