@@ -129,33 +129,41 @@ The objectives of this project are:
 - to evaluate sensitivity to aerosol loading, updraft forcing, and ice nucleation
 
 ---
-
-## 🧭 Scientific Workflow Summary
   
-The overall workflow of the model is illustrated below:
+## 🧭 Scientific Workflow Summary
+
+The overall workflow of the parcel model is illustrated below.
 
 ![Workflow](figures/workflow_diagram.png)
+
 *Figure: Workflow of the parcel model from simulation to diagnostics and visualisation.*
+
 Model → Simulation Output → Diagnostics → Figures
-- **Model**: core parcel model computes thermodynamic and microphysical evolution  
-- **Simulation Output**: results are saved as time series (CSV files)  
-- **Diagnostics**: derived quantities (e.g. R ratio, Si − Sw) are computed  
-- **Figures**: visualisations are generated to interpret physical behaviour
+
+- **Model**: computes parcel thermodynamics and microphysical evolution  
+- **Simulation Output**: results are saved as time-series data  
+- **Diagnostics**: derived quantities (e.g. supersaturation and vapour competition) are analysed  
+- **Figures**: visualisations are generated to interpret cloud evolution  
 
 ![Scientific workflow](figures/scientific_workflow_summary.png)
-*Figure: Scientific workflow of the mixed-phase parcel model. The simulations connect parcel dynamics, supersaturation evolution, vapour competition, phase partitioning, and the emergence of Bergeron–Findeisen conditions in mixed-phase clouds.*
-The modelling framework follows a physically connected workflow linking parcel dynamics, thermodynamics, and mixed-phase cloud microphysics:
+
+*Figure: Scientific workflow linking parcel ascent, supersaturation evolution, vapour competition, phase partitioning, and Bergeron–Findeisen transition analysis.*
+
+The modelling framework follows a physically connected sequence:
+
 Parcel ascent and dynamical forcing  
 → supersaturation evolution (`Sw`, `Si`)  
 → vapour competition diagnostics (`R_BF`)  
 → liquid and ice phase partitioning  
 → Bergeron–Findeisen transition analysis
 
-This framework enables investigation of how transient parcel dynamics influence vapour competition, phase evolution, and ice dominance in mixed-phase cloud systems.
+This framework enables investigation of how transient parcel dynamics influence vapour competition, mixed-phase evolution, and the emergence of ice-dominated behaviour in clouds.
 
-### 🌊 KiD-Inspired Dynamical Forcing
+---
 
-To improve consistency with parcel-model intercomparison frameworks, a time-dependent KiD-inspired updraft forcing has been implemented.
+## 🌊 KiD-Inspired Dynamical Forcing
+
+To improve consistency with parcel-model intercomparison frameworks, a time-dependent KiD-inspired updraft forcing was implemented.
 
 The prescribed vertical velocity follows a sinusoidal evolution:
 
@@ -168,15 +176,99 @@ where:
 - \(w_{max}\) is the maximum updraft velocity
 - \(t_{forcing}\) is the forcing duration
 
-This configuration provides a more realistic transient parcel ascent compared with constant updraft forcing.
+This configuration provides a more realistic transient parcel ascent compared with constant forcing.
 
 ### Example forcing evolution
 
 ![KiD-inspired forcing](figures/kid_inspired_updraft.png)
 
-*Figure: Time-dependent KiD-inspired prescribed updraft forcing used for parcel simulations.*
+*Figure: Time-dependent KiD-inspired prescribed updraft forcing.*
 
-### 🧪 Effect of KiD-Inspired Forcing 
+### Effect of transient forcing
+
+Compared with constant updraft simulations:
+
+- vapour competition is reduced
+- ice growth becomes weaker
+- liquid water persists for longer periods
+- Bergeron–Findeisen transition is delayed or suppressed
+
+![Constant vs KiD forcing](figures/constant_vs_kid_R.png)
+
+*Figure: Comparison of the Bergeron–Findeisen ratio under constant and transient forcing.*
+
+![Constant vs KiD liquid and ice](figures/constant_vs_kid_liquid_ice.png)
+
+*Figure: Comparison of liquid-water and ice-water evolution under different forcing structures.*
+
+![Constant vs KiD supersaturation](figures/constant_vs_kid_supersaturation.png)
+
+*Figure: Comparison of supersaturation evolution under constant and transient forcing.*
+
+![BF transition timing](figures/BF_transition_timing.png)
+
+*Figure: Timing of the Bergeron–Findeisen transition under different forcing configurations.*
+
+These experiments demonstrate that the temporal structure of parcel ascent strongly influences supersaturation evolution, vapour competition, and mixed-phase cloud behaviour.
+
+---
+
+## 🥇 Literature-Inspired Benchmark Starter Case
+
+A literature-inspired mixed-phase benchmark starter case was performed as an initial step toward future KiD-style validation experiments.
+
+The simulation reproduces physically consistent mixed-phase behaviour, including:
+
+- persistent supersaturation with respect to ice
+- gradual ice growth by vapour deposition
+- delayed Bergeron–Findeisen transition
+- persistent liquid water during transient ascent
+
+![Case 3 supersaturation](figures/case3_literature_benchmark_supersaturation.png)
+
+*Figure: Supersaturation evolution in the benchmark starter case.*
+
+![Case 3 liquid and ice](figures/case3_literature_benchmark_liquid_ice.png)
+
+*Figure: Liquid and ice mass evolution in the benchmark starter case.*
+
+![Case 3 Bergeron–Findeisen ratio](figures/case3_literature_benchmark_R.png)
+
+*Figure: Vapour competition diagnostic for the benchmark starter case.*
+
+The simulations are qualitatively consistent with transient mixed-phase parcel-model behaviour reported in the literature.
+
+---
+
+## 🧪 KiD Mixed-Phase Alignment Experiment
+
+An initial direct-alignment experiment was performed using parameters inspired by the official KiD `mixed1.nml` configuration.
+
+The setup includes:
+
+- `dt = 1 s`
+- aerosol concentration ≈ `50 × 10^6 m^-3`
+- weak mixed-phase ascent forcing
+
+The simulations reproduce:
+
+- gradual ice growth
+- persistent liquid water during early ascent
+- strong vapour competition at later times
+- rapid liquid depletion during the Bergeron–Findeisen transition
+
+![Case 4 Liquid and Ice](figures/case4_kid_mixed1_alignment_liquid_ice.png)
+
+*Figure: Liquid-water and ice-water evolution in the KiD-aligned mixed-phase experiment.*
+
+![Case 4 Supersaturation](figures/case4_kid_mixed1_alignment_supersaturation.png)
+
+*Figure: Supersaturation evolution in the KiD-aligned mixed-phase experiment.*
+
+These experiments provide an initial framework for future direct intercomparison studies between simplified parcel models and established KiD benchmark configurations.
+
+---
+## 🧪 Effect of KiD-Inspired Forcing 
 
 A first alignment experiment using a KiD-inspired effective updraft forcing (`w_effective = 2.0 m/s`) was performed.
 
@@ -195,7 +287,9 @@ This behaviour is physically consistent with the shorter ascent duration associa
 
 *Figure: Comparison of the Bergeron–Findeisen ratio \(R\) under constant updraft forcing and KiD-inspired effective forcing. Under constant forcing, the parcel transitions toward an ice-dominated regime \((R \geq 1)\). In contrast, the transient KiD-inspired forcing suppresses the transition and maintains a liquid-dominated regime.*
 
-### Physical Interpretation
+---
+
+## Physical Interpretation
 
 The comparison demonstrates that parcel dynamics strongly influence mixed-phase cloud evolution.
 
@@ -231,8 +325,8 @@ Overall, these forcing experiments show that the temporal structure of parcel as
 | Constant forcing | Constant updraft (`w = 1.0 m/s`) | Yes | Strong | Sustained vapour competition and strong ice growth |
 | KiD-inspired forcing | Transient prescribed forcing | No | Weak | Reduced vapour competition and delayed ice growth |
 
-
-### 🥇 Literature-Inspired Benchmark Starter Case
+---
+## 🥇 Literature-Inspired Benchmark Starter Case
 
 A literature-inspired mixed-phase benchmark starter case was performed as an initial step toward model validation and future KiD-style comparisons.
 
@@ -276,7 +370,9 @@ In particular, the simulations reproduce several physically expected behaviours 
 
 These trends are physically consistent with previous mixed-phase parcel-model and KiD-style intercomparison studies, where transient dynamical forcing suppresses rapid ice dominance and prolongs liquid persistence.
 
-### 🧪  Direct-alignment test with the KiD mixed-phase benchmark
+---
+
+## 🧪 KiD Mixed-Phase Alignment Experiment
 
 This experiment represents an initial direct-alignment test with the KiD mixed-phase benchmark framework.
 
@@ -322,7 +418,8 @@ The introduction of threshold-based autoconversion significantly improves the ag
 
 ![Threshold Autoconversion](figures/case10_threshold_autoconversion.png)
 
-### 🔬 KiD-A Warm Cloud Benchmark (Fortran)
+---
+## 🔬 KiD-A Warm Cloud Benchmark (Fortran)
 
 The official KiD-A warm cloud benchmark was compiled and executed under Ubuntu WSL using Fortran and NetCDF libraries.
 
