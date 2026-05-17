@@ -21,16 +21,7 @@ The model was compiled and executed on Ubuntu WSL using Fortran and NetCDF libra
 
 This repository presents a physically based Python parcel model for investigating warm-cloud and mixed-phase microphysics. The framework combines Köhler activation, Maxwell-type condensational growth, biological ice nucleation, and vapour competition diagnostics to study the emergence of Bergeron–Findeisen behaviour. Direct comparison experiments with KiD benchmark simulations demonstrate that simplified physically motivated parameterisations can qualitatively reproduce key cloud microphysical behaviour under controlled forcing conditions.
 
-## Future Work
-
-- Mixed-phase cloud simulations
-- Comparison with laboratory observations
-- Sensitivity analysis of microphysics schemes
-- Automated visualization workflows
-  
-⚠️ Research-grade prototype for physical insight, not operational forecasting.
-
-## 🚀 What this project does
+## What this project does
 
 This model simulates the ascent of an air parcel and shows how:
 - **cloud droplets form (Köhler activation)**
@@ -38,11 +29,11 @@ This model simulates the ascent of an air parcel and shows how:
 - **vapour is shared between liquid and ice**
 - **mixed-phase clouds emerge naturally**
 
-## 🧠 Key Insight
+## Key Insight
 
 Ice does not dominate automatically.
 
-👉 Ice-dominated behaviour **(R ≥ 1)** only appears when:
+- Ice-dominated behaviour **(R ≥ 1)** only appears when:
 - ice nucleation is strong enough
 - vapour competition becomes significant
   
@@ -63,7 +54,9 @@ Key unresolved processes include:
 Parcel models provide a controlled framework to isolate these processes while maintaining physically consistent thermodynamics.
 This repository implements a **minimal but physically interpretable parcel model** that allows these interactions to emerge naturally.
 
-### ⚙️ Physical Framework
+---
+
+## ⚙️ Physical Framework
 
 These processes are represented mathematically in the governing equations below.
 The parcel model simulates the ascent of an air parcel with prescribed updraft velocity.
@@ -76,47 +69,6 @@ Cloud droplet formation follows **Köhler theory**, allowing aerosols to activat
 Ice nucleation is represented through a temperature-dependent biological IN parameterisation based on a logistic activation curve.
 
 ---
-##  Key Files
-
-### Core model (parcel physics)
-
-- **parcel_model/aerosol.py** — aerosol population definitions  
-
-- **parcel_model/activation.py** — Köhler-based aerosol activation  
-
-- **parcel_model/thermodynamics.py** — saturation vapour pressure and supersaturation calculations (Sw, Si)  
-
-- **parcel_model/biological_in.py** — temperature-dependent biological ice nucleation scheme  
-
-- **parcel_model/run_mixed_phase_maxwell.py** — physically based mixed-phase parcel model with Maxwell growth and latent heat feedback
-
-### Experiments
-
-- **experiments/run_R_sweep.py** — sensitivity of vapour competition across parameter space  
-
-- **experiments/run_R_w_sweep.py** — sensitivity of vapour competition to updraft velocity  
-
-- **experiments/run_mixed_phase_updraft_sweep.py** — mixed-phase evolution under varying dynamical forcing
-
-- **experiments/run_kid_case1.py** — warm-rain benchmark inspired by KiD Case 1
-
-### Diagnostics and plotting
-
-- **plotting/plot_R_ratio.py** — Bergeron–Findeisen diagnostic \(R = |dep\_rate| / |cond\_rate|\)  
-
-- **plotting/plot_Si_minus_Sw.py** — thermodynamic driver of vapour transfer (Si − Sw)  
-
-- **plotting/plot_mixed_phase_growth.py** — evolution of liquid and ice mass
-
-- **plotting/plot_kid_case1.py** — diagnostic plots for KiD Case 1 benchmark  
-
-### Outputs
-
-- **data/** — simulation outputs (CSV time series)  
-
-- **figures/** — generated figures for diagnostics and analysis
-  
----
 
 ## 🎯 Scientific Objectives
 
@@ -128,7 +80,7 @@ The objectives of this project are:
 - to compare simplified parcel-model physics against KiD benchmark experiments
 - to evaluate sensitivity to aerosol loading, updraft forcing, and ice nucleation
 
----
+===
   
 ## 🧭 Scientific Workflow Summary
 
@@ -186,7 +138,7 @@ This configuration provides a more realistic transient parcel ascent compared wi
 
 ---
 
-## 🧪 Effect of KiD-Inspired Forcing 
+## 🧪 Effect of KiD-Inspired Forcing
 
 A first alignment experiment using a KiD-inspired transient updraft forcing (`w_effective = 2.0 m/s`) was performed.
 
@@ -230,34 +182,6 @@ These experiments demonstrate that the temporal structure of dynamical forcing s
 | Constant forcing | Constant updraft (`w = 1.0 m/s`) | Yes | Strong | Sustained vapour competition and strong ice growth |
 | KiD-inspired forcing | Transient prescribed forcing | No | Weak | Reduced vapour competition and delayed ice growth |
 
-
----
-
-## 🥇 Literature-Inspired Benchmark Starter Case
-
-A literature-inspired mixed-phase benchmark starter case was performed as an initial step toward future KiD-style validation experiments.
-
-The simulation reproduces physically consistent mixed-phase behaviour, including:
-
-- persistent supersaturation with respect to ice
-- gradual ice growth by vapour deposition
-- delayed Bergeron–Findeisen transition
-- persistent liquid water during transient ascent
-
-![Case 3 supersaturation](figures/case3_literature_benchmark_supersaturation.png)
-
-*Figure: Supersaturation evolution in the benchmark starter case.*
-
-![Case 3 liquid and ice](figures/case3_literature_benchmark_liquid_ice.png)
-
-*Figure: Liquid and ice mass evolution in the benchmark starter case.*
-
-![Case 3 Bergeron–Findeisen ratio](figures/case3_literature_benchmark_R.png)
-
-*Figure: Vapour competition diagnostic for the benchmark starter case.*
-
-The simulations are qualitatively consistent with transient mixed-phase parcel-model behaviour reported in the literature.
-
 ---
 
 ## 🧪 KiD Mixed-Phase Alignment Experiment
@@ -288,23 +212,17 @@ The simulations reproduce:
 These experiments provide an initial framework for future direct intercomparison studies between simplified parcel models and established KiD benchmark configurations.
 
 ---
+
 ## 🥇 Literature-Inspired Benchmark Starter Case
 
-A literature-inspired mixed-phase benchmark starter case was performed as an initial step toward model validation and future KiD-style comparisons.
+A literature-inspired mixed-phase benchmark starter case was performed as an initial step toward future KiD-style validation experiments.
 
-This case uses mixed-phase conditions representative of parcel-model intercomparison studies, including transient ascent, supersaturation evolution, vapour competition, and liquid–ice phase partitioning.
+The simulation reproduces physically consistent mixed-phase behaviour, including:
 
-The simulation shows:
-
-- persistent supersaturation with respect to ice (`Si`)
-- liquid cloud water remaining dominant during the simulation
-- gradual ice growth by deposition
-- weak Bergeron–Findeisen vapour competition during short transient ascent
-- no strong ice-dominated transition within the simulated period
-
-The benchmark-style experiments demonstrate that the model is capable of reproducing physically consistent mixed-phase cloud behaviour, including supersaturation evolution, vapour competition, delayed ice growth, and persistent liquid water under transient ascent conditions.
-
-These results provide an initial step toward literature-inspired model validation and future KiD-style benchmark comparisons.
+- persistent supersaturation with respect to ice
+- gradual ice growth by vapour deposition
+- delayed Bergeron–Findeisen transition
+- persistent liquid water during transient ascent
 
 ![Case 3 supersaturation](figures/case3_literature_benchmark_supersaturation.png)
 
@@ -312,25 +230,23 @@ These results provide an initial step toward literature-inspired model validatio
 
 ![Case 3 liquid and ice](figures/case3_literature_benchmark_liquid_ice.png)
 
-*Figure: Liquid and ice mass evolution in the benchmark starter case.*
+*Figure: Liquid-water and ice-water evolution in the benchmark starter case.*
 
 ![Case 3 Bergeron–Findeisen ratio](figures/case3_literature_benchmark_R.png)
 
 *Figure: Bergeron–Findeisen vapour competition diagnostic for the benchmark starter case.*
 
-### Comparison with Mixed-Phase Literature Behaviour
+The simulations are qualitatively consistent with transient mixed-phase parcel-model behaviour reported in the literature.
 
-The simulated benchmark behaviour is qualitatively consistent with mixed-phase parcel-model studies reported in the literature.
-
-In particular, the simulations reproduce several physically expected behaviours commonly reported in transient mixed-phase cloud studies:
+In particular, the experiments reproduce:
 
 - persistent liquid water during transient ascent
 - gradual ice growth by vapour deposition
 - delayed Bergeron–Findeisen transition
 - weak vapour competition during short forcing periods
-- supersaturation with respect to ice remaining larger than supersaturation with respect to liquid water
+- supersaturation over ice remaining larger than supersaturation over water
 
-These trends are physically consistent with previous mixed-phase parcel-model and KiD-style intercomparison studies, where transient dynamical forcing suppresses rapid ice dominance and prolongs liquid persistence.
+These behaviours are physically consistent with previous mixed-phase parcel-model and KiD-style intercomparison studies, where transient dynamical forcing suppresses rapid ice dominance and prolongs liquid persistence.
 
 ---
 
@@ -380,8 +296,7 @@ The introduction of threshold-based autoconversion significantly improves the ag
 
 ![Threshold Autoconversion](figures/case10_threshold_autoconversion.png)
 
----
-## 🔬 KiD-A Warm Cloud Benchmark (Fortran)
+###  KiD-A Warm Cloud Benchmark (Fortran)
 
 The official KiD-A warm cloud benchmark was compiled and executed under Ubuntu WSL using Fortran and NetCDF libraries.
 
@@ -408,7 +323,7 @@ output/warm1_output.nc
 
 which can be analysed using Python and NetCDF4.
 
----
+===
 
 ## ⚙️ Governing Equations
 
@@ -500,7 +415,9 @@ Sensitivity experiments demonstrate that:
 
 can significantly increase **R**, strengthening vapour competition between droplets and ice.
 
-### Key Diagnostics
+---
+
+## Key Diagnostics
 
 These diagnostics illustrate vapour competition between liquid droplets and ice crystals in the parcel.
 
@@ -542,9 +459,7 @@ The maximum value of \(R\) depends on CCN and IN concentrations. Ice-dominated b
 
 The transition boundary (\(R = 1\)) separates liquid-dominated and ice-dominated regimes across the CCN–IN parameter space.
 
----
-
-## 🎬  Scientific Workflow Summary
+===
 
 ## Case 1 — Warm-Rain Benchmark
 
@@ -720,7 +635,7 @@ This comparison shows that the model can reproduce two distinct cloud regimes. C
 | Microphysics | Warm-rain microphysics schemes compared under same forcing | Köhler activation, Maxwell growth, warm-rain process, mixed-phase extension | Separate warm-rain validation from mixed-phase extension |
 | Outputs | Cloud water, rain water, precipitation/rain rate, LWP | qcloud, qrain, rain rate, LWP, qice, R | Use common output names and figures |
 
----
+===
 
 ## 🌧️ Official KiD Warm Benchmark Test
 
@@ -740,7 +655,7 @@ This provides the first official KiD benchmark reference output for future direc
 
 ---
 
-## 🌧️ Direct KiD Benchmark Alignment
+## 🌧️ Direct KiD Warm-Cloud Benchmark Alignment
 
 An improved warm-cloud alignment experiment was developed to directly compare the simplified Python parcel model against the official KiD warm-cloud benchmark.
 
@@ -800,7 +715,7 @@ This alignment does not imply identical microphysics. Instead, it provides a con
 
 ---
 
-## Model Improvements
+## Warm-Rain Model Improvements
 
 ### Quantitative Comparison Summary
 
@@ -833,7 +748,7 @@ The quantitative comparison indicates that the simplified Python parcel model ca
 
 The larger rain-related errors are expected because the simplified framework currently lacks detailed collision–coalescence and sedimentation physics.
 
----
+===
 
 ## Sensitivity Studies
 
@@ -929,9 +844,9 @@ The experiments qualitatively reproduce the expected behaviour associated with v
 
 ![Ice Sensitivity](figures/case15_ice_sensitivity.png)
 
----
+===
 
-## Vapour Competition Diagnostic
+## Mixed-Phase Vapour Competition Diagnostic
 
 A vapour competition diagnostic (`R_BF`) was introduced to investigate the transition from liquid-dominated to ice-dominated mixed-phase evolution.
 
@@ -986,7 +901,8 @@ Nevertheless, the experiments demonstrate that simplified physically motivated p
 - Supersaturation evolution alone does not determine ice dominance.
 - Mixed-phase cloud behaviour emerges naturally from physically based thermodynamics and diffusion-limited growth.
 
----
+
+===
 
 ## Numerical Stability Analysis
 
@@ -1200,6 +1116,48 @@ python-cloud-model/
 ```
 ---
 
+##  Key Insight
+
+### Core model (parcel physics)
+
+- **parcel_model/aerosol.py** — aerosol population definitions  
+
+- **parcel_model/activation.py** — Köhler-based aerosol activation  
+
+- **parcel_model/thermodynamics.py** — saturation vapour pressure and supersaturation calculations (Sw, Si)  
+
+- **parcel_model/biological_in.py** — temperature-dependent biological ice nucleation scheme  
+
+- **parcel_model/run_mixed_phase_maxwell.py** — physically based mixed-phase parcel model with Maxwell growth and latent heat feedback
+
+### Experiments
+
+- **experiments/run_R_sweep.py** — sensitivity of vapour competition across parameter space  
+
+- **experiments/run_R_w_sweep.py** — sensitivity of vapour competition to updraft velocity  
+
+- **experiments/run_mixed_phase_updraft_sweep.py** — mixed-phase evolution under varying dynamical forcing
+
+- **experiments/run_kid_case1.py** — warm-rain benchmark inspired by KiD Case 1
+
+### Diagnostics and plotting
+
+- **plotting/plot_R_ratio.py** — Bergeron–Findeisen diagnostic \(R = |dep\_rate| / |cond\_rate|\)  
+
+- **plotting/plot_Si_minus_Sw.py** — thermodynamic driver of vapour transfer (Si − Sw)  
+
+- **plotting/plot_mixed_phase_growth.py** — evolution of liquid and ice mass
+
+- **plotting/plot_kid_case1.py** — diagnostic plots for KiD Case 1 benchmark  
+
+### Outputs
+
+- **data/** — simulation outputs (CSV time series)  
+
+- **figures/** — generated figures for diagnostics and analysis
+  
+---
+---
 ## ⚙️ Installation
 
 ### ⚡ Quick Start
@@ -1244,6 +1202,7 @@ pip install numpy scipy matplotlib pandas
 
 ```
 ---
+
 ##  Run simulations
 
 Run the main validated experiments:
@@ -1261,7 +1220,7 @@ python experiments/run_case2_from_maxwell.py
 ```
 ---
 
-## Generating Diagnostics
+## Generating Diagnostic Figures
 
 Generate diagnostic figures using:
 
@@ -1298,11 +1257,14 @@ These diagnostics illustrate:
 
 Future extensions of the model include:
 
-- fully coupled buoyancy–updraft feedback
-- pressure evolution along parcel ascent
-- multi-bin droplet and ice size distributions
-- sensitivity studies across aerosol populations
-- comparison with laboratory and field observations
+- mixed-phase cloud simulations
+- comparison with laboratory observations
+- sensitivity analysis of microphysics schemes
+- automated visualisation workflows
+
+---
+
+⚠️ This repository is a research-oriented prototype intended for physical insight and conceptual exploration rather than operational forecasting.
 
 ---
 
@@ -1322,7 +1284,7 @@ Future extensions of the model include:
   
 ---
 
-## Status
+## Project Status
 
 This repository contains a research-oriented prototype developed for physical process exploration, conceptual modelling, and hypothesis generation.
 
