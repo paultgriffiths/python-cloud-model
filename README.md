@@ -80,7 +80,7 @@ The objectives of this project are:
 - to compare simplified parcel-model physics against KiD benchmark experiments
 - to evaluate sensitivity to aerosol loading, updraft forcing, and ice nucleation
 
-=======
+---
   
 ## 🧭 Scientific Workflow Summary
 
@@ -294,7 +294,7 @@ output/warm1_output.nc
 
 which can be analysed using Python and NetCDF4.
 
-===
+---
 
 ## ⚙️ Governing Equations
 
@@ -430,7 +430,7 @@ The maximum value of \(R\) depends on CCN and IN concentrations. Ice-dominated b
 
 The transition boundary (\(R = 1\)) separates liquid-dominated and ice-dominated regimes across the CCN–IN parameter space.
 
-===
+---
 
 ## Case 1 — Warm-Rain Benchmark
 
@@ -583,7 +583,6 @@ This is a numerical artefact and does not affect interpretation.
 
 ### 📌 Comparison between Case 1 and Case 2
 
-
 | Feature | Case 1: Warm-rain benchmark | Case 2: Mixed-phase Maxwell case |
 |---|---|---|
 | Main process | Liquid cloud growth and rain formation | Competition between liquid droplets and ice crystals |
@@ -606,7 +605,7 @@ This comparison shows that the model can reproduce two distinct cloud regimes. C
 | Microphysics | Warm-rain microphysics schemes compared under same forcing | Köhler activation, Maxwell growth, warm-rain process, mixed-phase extension | Separate warm-rain validation from mixed-phase extension |
 | Outputs | Cloud water, rain water, precipitation/rain rate, LWP | qcloud, qrain, rain rate, LWP, qice, R | Use common output names and figures |
 
-===
+---
 
 ## 🌧️ Official KiD Warm Benchmark Test
 
@@ -719,7 +718,7 @@ The quantitative comparison indicates that the simplified Python parcel model ca
 
 The larger rain-related errors are expected because the simplified framework currently lacks detailed collision–coalescence and sedimentation physics.
 
-===
+---
 
 ## Sensitivity Studies
 
@@ -815,7 +814,7 @@ The experiments qualitatively reproduce the expected behaviour associated with v
 
 ![Ice Sensitivity](figures/case15_ice_sensitivity.png)
 
-===
+---
 
 ## Mixed-Phase Vapour Competition Diagnostic
 
@@ -872,8 +871,7 @@ Nevertheless, the experiments demonstrate that simplified physically motivated p
 - Supersaturation evolution alone does not determine ice dominance.
 - Mixed-phase cloud behaviour emerges naturally from physically based thermodynamics and diffusion-limited growth.
 
-
-===
+---
 
 ## Numerical Stability Analysis
 
@@ -1128,7 +1126,7 @@ python-cloud-model/
 - **figures/** — generated figures for diagnostics and analysis
   
 ---
----
+
 ## ⚙️ Installation
 
 ### ⚡ Quick Start
