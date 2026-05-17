@@ -80,7 +80,7 @@ The objectives of this project are:
 - to compare simplified parcel-model physics against KiD benchmark experiments
 - to evaluate sensitivity to aerosol loading, updraft forcing, and ice nucleation
 
-===
+=======
   
 ## 🧭 Scientific Workflow Summary
 
