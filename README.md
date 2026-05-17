@@ -184,33 +184,6 @@ This configuration provides a more realistic transient parcel ascent compared wi
 
 *Figure: Time-dependent KiD-inspired prescribed updraft forcing.*
 
-### Effect of transient forcing
-
-Compared with constant updraft simulations:
-
-- vapour competition is reduced
-- ice growth becomes weaker
-- liquid water persists for longer periods
-- Bergeron–Findeisen transition is delayed or suppressed
-
-![Constant vs KiD forcing](figures/constant_vs_kid_R.png)
-
-*Figure: Comparison of the Bergeron–Findeisen ratio under constant and transient forcing.*
-
-![Constant vs KiD liquid and ice](figures/constant_vs_kid_liquid_ice.png)
-
-*Figure: Comparison of liquid-water and ice-water evolution under different forcing structures.*
-
-![Constant vs KiD supersaturation](figures/constant_vs_kid_supersaturation.png)
-
-*Figure: Comparison of supersaturation evolution under constant and transient forcing.*
-
-![BF transition timing](figures/BF_transition_timing.png)
-
-*Figure: Timing of the Bergeron–Findeisen transition under different forcing configurations.*
-
-These experiments demonstrate that the temporal structure of parcel ascent strongly influences supersaturation evolution, vapour competition, and mixed-phase cloud behaviour.
-
 ---
 
 ## 🧪 Effect of KiD-Inspired Forcing 
