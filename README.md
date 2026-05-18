@@ -743,17 +743,7 @@ Lower thresholds trigger earlier rain conversion and more rapid cloud depletion,
 
 The intermediate threshold (`0.55`) produced the closest qualitative agreement with the KiD warm-cloud benchmark.
 
-### Improved cloud-activation timing
-
-To improve agreement with the KiD benchmark cloud-onset timing, a delayed cloud-activation onset was introduced in the threshold-sensitivity experiments.
-
-The updated configuration reduces the unrealistically early cloud-water growth previously observed in the simplified Python parcel model. The modified onset behaviour produces a more physically realistic activation phase and improves the temporal alignment between the Python framework and the KiD reference simulation.
-
-The results suggest that the initial cloud-development timing is sensitive to the activation criterion used in the simplified parcel framework.
-
-![Improved Threshold Sensitivity](figures/case12_threshold_sensitivity_improved.png)
-
-*Figure: Updated threshold-sensitivity experiment showing improved agreement between the KiD benchmark and the simplified Python parcel model during the initial cloud-activation phase.*
+  ![Threshold Sensitivity](figures/case12_threshold_sensitivity.png)
 
 ### Updraft Sensitivity
 
