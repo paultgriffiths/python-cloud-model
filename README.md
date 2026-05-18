@@ -753,7 +753,7 @@ The updated configuration reduces the unrealistically early cloud-water growth p
 
 The results suggest that the initial cloud-development timing is sensitive to the activation criterion used in the simplified parcel framework.
 
-![Improved Threshold Sensitivity](figures/case12_threshold_sensitivity.png)
+![Improved Threshold Sensitivity](figures/case12_threshold_sensitivity_improved.png)
 
 *Figure: Updated threshold-sensitivity experiment showing improved agreement between the KiD benchmark and the simplified Python parcel model during the initial cloud-activation phase.*
 
