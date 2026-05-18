@@ -79,6 +79,8 @@ plt.legend()
 
 plt.savefig(
     "figures/case12_threshold_sensitivity.png",
+    dpi=300,
+    bbox_inches="tight"
 )
 
 plt.show()
