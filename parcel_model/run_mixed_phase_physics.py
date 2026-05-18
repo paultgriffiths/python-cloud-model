@@ -98,7 +98,12 @@ outfile="mixed_phase_N500.csv"):
 
             # Ice: if Si>0 and ice_active => deposition (dqice_dt positive)
             #      if Si<0 => sublimation (dqice_dt negative)
-            dqice_dt = 0.0
+            if Sw > 0.001:
+                dqcloud_dt = k_liq * (Sw - 0.001)
+            else:
+                dqcloud_dt = 0.0  
+          
+                dqice_dt = 0.0
             if ice_active and Nice > 0.0:
                 dqice_dt = k_ice * Si
 
