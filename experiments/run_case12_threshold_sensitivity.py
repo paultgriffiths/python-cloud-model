@@ -86,8 +86,9 @@ plt.title("Threshold Sensitivity Study")
 plt.legend()
 
 plt.savefig(
-    "figures/case12_threshold_sensitivity.png",
-    dpi=300
+    "figures/case12_threshold_sensitivity_improved.png",
+    dpi=300,
+    bbox_inches="tight"
 )
 
 plt.show()
