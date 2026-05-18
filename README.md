@@ -722,7 +722,7 @@ The larger rain-related errors are expected because the simplified framework cur
 
 ## Sensitivity Studies
 
-### Threshold Sensitivity
+### Warm-Rain Threshold Sensitivity
 
 A sensitivity analysis was performed to investigate how the rain autoconversion threshold influences warm-cloud evolution and agreement with the KiD benchmark.
 
