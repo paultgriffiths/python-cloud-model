@@ -40,12 +40,22 @@ for threshold in thresholds:
 
         t = time[i]
 
-        # cloud growth
-        if t < 1200:
+         # cloud growth
 
-            growth = 1.25 * (1.0 - np.exp(-t / 350.0))
+        cloud_onset_delay = 220.0
+
+        if t < cloud_onset_delay:
+
+            cloud_py[i] = 0.0
+
+        elif t < 1200:
+
+            t_eff = t - cloud_onset_delay
+
+            growth = 1.25 * (1.0 - np.exp(-t_eff / 350.0))
 
             cloud_py[i] = growth
+
 
         else:
 
