@@ -42,17 +42,9 @@ for threshold in thresholds:
 
          # cloud growth
 
-        cloud_onset_delay = 220.0
+        if t < 1200:
 
-        if t < cloud_onset_delay:
-
-            cloud_py[i] = 0.0
-
-        elif t < 1200:
-
-            t_eff = t - cloud_onset_delay
-
-            growth = 1.25 * (1.0 - np.exp(-t_eff / 350.0))
+            growth = 1.25 * (1.0 - np.exp(-t / 350.0))
 
             cloud_py[i] = growth
 
@@ -86,9 +78,7 @@ plt.title("Threshold Sensitivity Study")
 plt.legend()
 
 plt.savefig(
-    "figures/case12_threshold_sensitivity_improved.png",
-    dpi=300,
-    bbox_inches="tight"
+    "figures/case12_threshold_sensitivity.png",
 )
 
 plt.show()
