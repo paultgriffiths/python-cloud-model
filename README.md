@@ -743,7 +743,7 @@ Lower thresholds trigger earlier rain conversion and more rapid cloud depletion,
 
 The intermediate threshold (`0.55`) produced the closest qualitative agreement with the KiD warm-cloud benchmark.
 
-![Threshold Sensitivity](figures/case12_threshold_sensitivity.png)
+![Original Threshold Sensitivity](figures/case12_threshold_sensitivity.png)
 
 ### Improved cloud-activation timing
 
