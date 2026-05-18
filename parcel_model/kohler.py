@@ -15,5 +15,7 @@ def critical_supersaturation(Dp, kappa, sigma=0.072, T=298.15):
     if kappa <= 0:
         return float("inf")
     A = (4.0 * sigma * Mw) / (R * T * rho_w)
-    Sc = (4.0 * A**3) / (27.0 * (Dp**3) * kappa)
+    Sc = math.sqrt(
+    (4.0 * A**3) / (27.0 * (Dp**3) * kappa)
+)
     return Sc
