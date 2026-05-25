@@ -859,6 +859,23 @@ Nevertheless, the experiments demonstrate that simplified physically motivated p
 
 ---
 
+## Literature Comparison and Current Interpretation
+
+Recent investigation suggests that the early-time cloud liquid water content (LWC) behaviour in the Python parcel model is strongly influenced by the initial supersaturation state and aerosol activation timing.
+
+Comparison with the KiD benchmark indicates that the Python model initially produced near-instantaneous activation due to supersaturation values substantially exceeding the aerosol critical supersaturation threshold.
+
+Additional sensitivity experiments reducing the initial water vapour mixing ratio produced a more gradual cloud onset, partially improving agreement with the KiD reference behaviour.
+
+These findings are broadly consistent with warm-cloud modelling studies such as:
+
+Porz et al. (2018),
+"A model for warm clouds with implicit droplet activation, avoiding saturation adjustment"
+
+which discuss the importance of supersaturation evolution and gradual droplet activation in realistic cloud development.
+
+---
+
 ## 🔬 Key Scientific Findings
 
 - Warm-rain evolution is qualitatively reproduced under KiD-inspired forcing conditions.
@@ -1238,6 +1255,12 @@ Future extensions of the model include:
 ---
 
 ## 📚 References
+
+- Porz, N., et al. (2018)."A model for warm clouds with implicit droplet activation, avoiding saturation adjustment." Atmospheric Chemistry and Physics.
+
+- Journal of the Atmospheric Sciences (2022).Warm-cloud and supersaturation evolution studies.https://journals.ametsoc.org/view/journals/atsc/79/9/JAS-D-22-0010.1.xml
+
+- Atmospheric Chemistry and Physics (2024).Cloud microphysics and activation sensitivity analysis.https://acp.copernicus.org/articles/24/11653/2024/
 
 - Pruppacher, H. R., and Klett, J. D. (1997). *Microphysics of Clouds and Precipitation*. Springer.
 
