@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+title: Python Cloud Parcel Model
+message: "Please cite this work if used in research."
+authors:
+  - family-names: Elyamani
+    given-names: Yaktine
+    title: Dr
+date-released: 2026
+version: 0.1.0
