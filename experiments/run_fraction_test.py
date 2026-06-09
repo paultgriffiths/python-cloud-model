@@ -27,7 +27,7 @@ class KiDCase1Config:
     temperature_fixed: bool = True
     initial_temperature: float = 283.15
     initial_pressure: float = 90000.0
-    initial_qv: float = 0.010
+    initial_qv: float = 0.00862
 
     # Aerosol setup
     ccn_concentration: float = 100e6

@@ -14,7 +14,7 @@ from parcel_model.thermodynamics import Sw
 
 @dataclass
 class KiDCase1Config:
-    dt: float = 0.5
+    dt: float = 1.0
     t_end: float = 3600.0
 
     # KiD Case 1 style forcing
@@ -24,13 +24,13 @@ class KiDCase1Config:
     t2: float = 600.0
 
     # Warm-rain benchmark assumptions
-    temperature_fixed: bool = True
-    initial_temperature: float = 283.15
-    initial_pressure: float = 90000.0
-    initial_qv: float = 0.010
+    temperature_fixed: bool = False
+    initial_temperature: float = 297.9
+    initial_pressure: float = 100000.0
+    initial_qv: float = 0.015
 
     # Aerosol setup
-    ccn_concentration: float = 100e6
+    ccn_concentration: float = 50e6
     aerosol_radius: float = 0.05e-6
     aerosol_kappa: float = 0.3
     aerosol_density: float = 1770.0
@@ -213,7 +213,6 @@ def initialize_history() -> dict:
         "liquid_water_path": [],
         "cond_rate": [],
         "n_droplets": [],
-        "activated_fraction": [],
         "S": [],
         "Sc": [],
         "droplet_radius": [],
@@ -234,7 +233,6 @@ def save_diagnostics(history: dict, state: dict, t: float, w: float) -> dict:
     history["liquid_water_path"].append(state["ql"])
     history["cond_rate"].append(state["cond_rate"])
     history["n_droplets"].append(state["n_droplets"])
-    history["activated_fraction"].append(state["n_droplets"] / 1.0e8)
     history["S"].append(state["S"])
     history["Sc"].append(state["Sc"])
     history["droplet_radius"].append(state["droplet_radius"])

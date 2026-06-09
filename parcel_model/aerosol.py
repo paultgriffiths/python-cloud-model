@@ -7,4 +7,6 @@ class AerosolPopulation:
         self.radius = radius    # particle radius (m)
         self.kappa = kappa      # hygroscopicity parameter
         self.rho_p = rho_p      # particle density (kg/m^3)
-        self.activated = False # activation flag
+
+        self.activated = False  # activation flag
+        self.activated_fraction = 0.0
