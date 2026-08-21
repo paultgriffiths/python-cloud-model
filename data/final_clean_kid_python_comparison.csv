@@ -1,0 +1,12 @@
+Diagnostic,Python_Maxwell,KiD_Thompson09_Clean
+Initial_temperature_K,283.15,283.15
+Initial_qv_kgkg,0.0073923,0.0073923
+Aerosol_number_m3,50000000,50000000
+Cooling_rate_Ks,0.001,0.001
+Updraft_ms,0,0
+Cloud_threshold_1e-7_time_s,795.5,750
+Cloud_threshold_1e-6_time_s,822.5,754
+Cloud_threshold_1e-5_time_s,904,794
+SSmax_percent,1.3634636,0.00281334
+SSmax_time_s,1104,3598
+Maximum_cloud_water_kgkg,0.000907083,0.000533698
