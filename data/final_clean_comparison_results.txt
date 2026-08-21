@@ -1,0 +1,63 @@
+Clean KiD-Python controlled comparison
+======================================
+
+Matched setup:
+- Initial temperature: 283.15 K
+- Initial qv: 0.0073923 kg kg-1
+- Aerosol number concentration: 50e6 m-3
+- Imposed cooling rate: 0.001 K s-1
+- Updraft: 0 m s-1
+- KiD divergence/advection disabled
+- KiD rain sedimentation disabled
+
+Results:
+- qc >= 1e-7 kg kg-1:
+  Python Maxwell = 795.5 s
+  KiD Thompson09 = 750.0 s
+  KiD earlier by 45.5 s
+
+- qc >= 1e-6 kg kg-1:
+  Python Maxwell = 822.5 s
+  KiD Thompson09 = 754.0 s
+  KiD earlier by 68.5 s
+
+- qc >= 1e-5 kg kg-1:
+  Python Maxwell = 904.0 s
+  KiD Thompson09 = 794.0 s
+  KiD earlier by 110.0 s
+
+- Maximum supersaturation:
+  Python Maxwell = 1.36346 %
+  KiD Thompson09 = 0.002813 %
+  Python/KiD ratio = 484.6
+
+- Maximum cloud water:
+  Python Maxwell = 9.07083e-4 kg kg-1
+  KiD Thompson09 = 5.33698e-4 kg kg-1
+  Python/KiD ratio = 1.70
+  Python maximum is approximately 70% higher.
+
+Interpretation:
+Under the clean matched-cooling configuration, KiD develops cloud
+water earlier and maintains supersaturation very close to zero,
+whereas the Python Maxwell-growth model permits a substantially
+larger transient supersaturation and ultimately produces more
+maximum cloud water.
+
+Source-code inspection provides a physical explanation for this
+difference. The Python model uses explicit Kohler activation followed
+by finite-rate Maxwell droplet growth. Thompson09 instead applies a
+Newton-Raphson saturation-adjustment treatment when liquid
+supersaturation becomes positive. The controlled saturation-adjustment
+tests in Python support condensation treatment as a major contributor
+to the model discrepancy.
+
+Python activation diagnostics:
+- First saturation time: 742.5 s
+- First activation time: 777.0 s
+- Time to activation from experiment start: 777.0 s
+- Delay from saturation to activation: 34.5 s
+- Nc at first activation: 5.03638e5 m-3
+- Activated fraction at first activation: 1.0073 %
+- Maximum activated fraction: 100 %
+- Maximum supersaturation: 1.36346 %
