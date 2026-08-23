@@ -185,7 +185,8 @@ Therefore, agreement in ice number concentration does not imply agreement in fro
 Important remaining tasks include:
 
 - replace the current simplified classical Kohler-like comparison with an independent literature-based formulation. Sensitivity testing showed that the present implementation is mathematically equivalent to the kappa-Kohler critical-supersaturation expression when `solubility_factor = kappa`;
-- investigation of alternative activation parameterisations such as Abdul-Razzak and Ghan;
+- Abdul-Razzak et al. (1998) single-mode activation has now been implemented and benchmarked against the published Figure-5 reference values. The algebraic part of the parameterization reproduces the published-parameter calculation consistently. Under the current thermophysical closure, the model differs from the paper reference by approximately -6.14% in Sm, +19.56% in eta, and +2.27% in zeta; the resulting activated fraction is about 0.533 compared with about 0.500 using the published dimensionless parameters. Further work should focus on the thermophysical closure rather than retuning the activation algebra;
+
 - further numerical-method/solver sensitivity where appropriate;
 - consolidation of aerosol sensitivity experiments;
 - development of a focused research question from the validation results;
