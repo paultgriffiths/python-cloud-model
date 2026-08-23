@@ -184,7 +184,7 @@ Therefore, agreement in ice number concentration does not imply agreement in fro
 
 Important remaining tasks include:
 
-- systematic comparison of kappa-Kohler and classical Kohler activation;
+- replace the current simplified classical Kohler-like comparison with an independent literature-based formulation. Sensitivity testing showed that the present implementation is mathematically equivalent to the kappa-Kohler critical-supersaturation expression when `solubility_factor = kappa`;
 - investigation of alternative activation parameterisations such as Abdul-Razzak and Ghan;
 - further numerical-method/solver sensitivity where appropriate;
 - consolidation of aerosol sensitivity experiments;
