@@ -133,21 +133,13 @@ mode = ARGAerosolMode(
     B=B,
 )
 
-G_model = growth_coefficient_ARG1998(
-    r=10e-6,
-    T=T,
-    ps=ps,
-    Dv=Dv,
-    Ka=Ka,
-)
-
 out = smax_ARG_single(
     mode=mode,
     T=T,
     p=p,
     ps=ps,
     V=V,
-    G=G_model,
+    G=G_cont,
     sigma_w=sigma_w,
 )
 
@@ -160,7 +152,7 @@ frac_model = activated_fraction_ARG(
 print()
 print("4. FULL MODEL-GENERATED ARG CALCULATION")
 print("---------------------------------------")
-print("G =", G_model)
+print("G =", G_cont)
 print("Sm =", out["Sm"])
 print("eta =", out["eta"])
 print("zeta =", out["zeta"])
