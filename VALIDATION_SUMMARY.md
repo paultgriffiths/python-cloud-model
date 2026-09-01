@@ -195,6 +195,6 @@ Important remaining tasks include:
 
 A possible research direction emerging from the validation is:
 
-> How do simplified aerosol activation and condensational/depositional growth representations affect predicted cloud activation and mixed-phase condensate evolution relative to a more complete microphysics framework such as KiD/Thompson09?
+> Which physical and numerical processes control differences in cloud activation and mixed-phase condensate evolution between a simplified parcel microphysics model and KiD/Thompson09?
 
 The current experiments suggest that process-level diagnostics are essential for interpreting model disagreement rather than relying only on final cloud-water or ice-water amounts.
