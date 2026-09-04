@@ -184,11 +184,10 @@ Therefore, agreement in ice number concentration does not imply agreement in fro
 
 Important remaining tasks include:
 
-- replace the current simplified classical Kohler-like comparison with an independent literature-based formulation. Sensitivity testing showed that the present implementation is mathematically equivalent to the kappa-Kohler critical-supersaturation expression when `solubility_factor = kappa`;
-- Abdul-Razzak et al. (1998) single-mode activation has now been implemented and benchmarked against the published Figure-5 reference values. The algebraic part of the parameterization reproduces the published-parameter calculation consistently. Under the current thermophysical closure, the model differs from the paper reference by approximately -6.14% in Sm, +19.56% in eta, and +2.27% in zeta; the resulting activated fraction is about 0.533 compared with about 0.500 using the published dimensionless parameters. Further work should focus on the thermophysical closure rather than retuning the activation algebra;
+- Abdul-Razzak et al. (1998) single-mode activation has now been implemented and benchmarked against the published Figure-5 reference values (Sm = 1.762e-2, eta = 4.037e-4, zeta = 3.966e-6). The activation algebra reproduces the published-parameter calculation consistently. A thermophysical audit showed that the earlier discrepancies were dominated by input-property assumptions rather than the ARG algebra. Using a pressure- and temperature-adjusted water-vapour diffusivity (Dv = 2.8655e-5 m2 s-1 at 283.15 K and 800 hPa) together with a water surface tension appropriate for 10 C (sigma_w = 0.074221 N m-1), while retaining the independently supported ammonium-sulfate solute treatment without fitting, gives differences of approximately -1.76% in Sm, +1.68% in eta, and -0.12% in zeta relative to the published Figure-5 values when the continuum condensational growth coefficient is used in the analytical ARG closure. The resulting activated fraction is about 0.506. A sensitivity check using a size-dependent, gas-kinetic-corrected growth coefficient evaluated at r = 10 um produced only a small change in G but slightly poorer benchmark agreement. The continuum treatment is therefore retained for the analytical benchmark, consistent with the simplifying assumptions used in the approximate Smax derivation. These results support the correctness of the implemented ARG algebra and show that benchmark agreement is sensitive to documented thermophysical-property and growth-coefficient choices;
 
-- further numerical-method/solver sensitivity where appropriate;
-- consolidation of aerosol sensitivity experiments;
+- numerical sensitivity has been assessed through timestep-convergence tests for the current explicit sequential/Euler-type integration structure (dt = 2.0 to 0.1 s); no alternative solver is currently implemented in the model, so additional solver-to-solver comparison is not required at this stage;
+- aerosol sensitivity has been consolidated into a reproducible clean-baseline experiment at dt = 0.5 s, with independent sweeps of aerosol number concentration (25-200 cm^-3), dry radius (0.03-0.10 um), and hygroscopicity (kappa = 0.1-1.0). Increasing aerosol number reduced SSmax from approximately 1.93% to 0.68% while leaving first activation at approximately 777 s, whereas increasing dry radius advanced the 50% activation time from 854 s to 761 s and increasing kappa advanced it from 832 s to 771 s. Threshold-based activation times (1%, 10%, 50%, and 90%) are retained as the more robust diagnostics because the discrete first-activation fraction is timestep-sensitive;
 - development of a focused research question from the validation results;
 - preparation of publication-quality comparison figures and tables.
 
@@ -196,6 +195,6 @@ Important remaining tasks include:
 
 A possible research direction emerging from the validation is:
 
-> How do simplified aerosol activation and condensational/depositional growth representations affect predicted cloud activation and mixed-phase condensate evolution relative to a more complete microphysics framework such as KiD/Thompson09?
+> Which physical and numerical processes control differences in cloud activation and mixed-phase condensate evolution between a simplified parcel microphysics model and KiD/Thompson09?
 
 The current experiments suggest that process-level diagnostics are essential for interpreting model disagreement rather than relying only on final cloud-water or ice-water amounts.

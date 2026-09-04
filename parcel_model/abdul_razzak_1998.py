@@ -205,7 +205,7 @@ class ARGAerosolMode:
     N      : total aerosol number concentration [m^-3]
     am     : geometric mean dry radius [m]
     sigma  : geometric standard deviation [-]
-    B      : solute/hygroscopicity coefficient in ARG/Kohler notation [m^3]
+    B      : solute/hygroscopicity coefficient in ARG/Kohler notation [-]
     """
     N: float
     am: float

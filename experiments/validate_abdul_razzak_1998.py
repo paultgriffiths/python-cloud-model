@@ -27,8 +27,17 @@ N = 200e6
 am = 0.01e-6
 sigma = 2.5
 
-Dv = 2.2e-5
+# Water-vapour diffusivity using the temperature/pressure scaling
+# already used elsewhere in this project.
+D0 = 2.11e-5
+Dv = D0 * (T / 273.15) ** 1.94 * (101325.0 / p)
+
 Ka = 0.0249
+
+# IAPWS surface-tension correlation for pure water.
+Tc = 647.096
+tau = 1.0 - T / Tc
+sigma_w = 235.8e-3 * tau**1.256 * (1.0 - 0.625 * tau)
 
 # Published reference quantities
 Sm_ref = 1.762e-2
@@ -48,7 +57,7 @@ print("=" * 65)
 
 B = ammonium_sulfate_B()
 
-A = curvature_A(T)
+A = curvature_A(T, sigma_w=sigma_w)
 
 Sm = critical_supersaturation_ARG(
     am,
@@ -124,21 +133,14 @@ mode = ARGAerosolMode(
     B=B,
 )
 
-G_model = growth_coefficient_ARG1998(
-    r=10e-6,
-    T=T,
-    ps=ps,
-    Dv=Dv,
-    Ka=Ka,
-)
-
 out = smax_ARG_single(
     mode=mode,
     T=T,
     p=p,
     ps=ps,
     V=V,
-    G=G_model,
+    G=G_cont,
+    sigma_w=sigma_w,
 )
 
 frac_model = activated_fraction_ARG(
@@ -150,7 +152,7 @@ frac_model = activated_fraction_ARG(
 print()
 print("4. FULL MODEL-GENERATED ARG CALCULATION")
 print("---------------------------------------")
-print("G =", G_model)
+print("G =", G_cont)
 print("Sm =", out["Sm"])
 print("eta =", out["eta"])
 print("zeta =", out["zeta"])
