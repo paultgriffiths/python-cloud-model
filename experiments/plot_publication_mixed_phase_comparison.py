@@ -113,7 +113,7 @@ axes[0].plot(
     py["t_s"],
     py["qice_kgkg"],
     linewidth=2.0,
-    label="Python parcel model: ice",
+    label="Python parcel model: ice (bio-IN = 2500 m^-3)",
 )
 
 axes[0].plot(
@@ -143,7 +143,7 @@ axes[1].plot(
     py["t_s"],
     py["Nice_m3"],
     linewidth=2.0,
-    label="Python parcel model",
+    label="Python parcel model (bio-IN = 2500 m^-3)",
 )
 
 axes[1].plot(
