@@ -106,7 +106,7 @@ fig, axes = plt.subplots(
 
 # Panel (a): integrated depositional growth
 axes[0].bar(
-    ["Python parcel\nmodel", "KiD/\nThompson09"],
+    ["Python parcel\nmodel\n(bio-IN = 2500 m^-3)", "KiD/\nThompson09"],
     [python_dep, kid_dep],
 )
 
