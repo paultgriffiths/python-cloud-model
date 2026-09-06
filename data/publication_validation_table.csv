@@ -1,4 +1,4 @@
-validation_test,model_value,reference_value,relative_difference_percent,units,notes
+validation_test,model_value,comparison_value,relative_difference_percent,units,notes
 ARG1998 critical supersaturation,0.017309650180818044,0.01762,-1.7613497115888554,fraction,Abdul-Razzak et al. (1998) Figure-5 benchmark conditions
 ARG1998 eta,0.00041050075724585424,0.0004037,1.6846066994932407,dimensionless,Published benchmark quantity
 ARG1998 zeta,3.961364435751774e-06,3.966e-06,-0.11688260837685593,dimensionless,Published benchmark quantity

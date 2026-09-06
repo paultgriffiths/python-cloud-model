@@ -108,7 +108,7 @@ table = pd.DataFrame(
         {
             "validation_test": "ARG1998 critical supersaturation",
             "model_value": Sm,
-            "reference_value": Sm_ref,
+            "comparison_value": Sm_ref,
             "relative_difference_percent": 100.0 * (Sm / Sm_ref - 1.0),
             "units": "fraction",
             "notes": "Abdul-Razzak et al. (1998) Figure-5 benchmark conditions",
@@ -116,7 +116,7 @@ table = pd.DataFrame(
         {
             "validation_test": "ARG1998 eta",
             "model_value": out["eta"],
-            "reference_value": eta_ref,
+            "comparison_value": eta_ref,
             "relative_difference_percent": 100.0 * (out["eta"] / eta_ref - 1.0),
             "units": "dimensionless",
             "notes": "Published benchmark quantity",
@@ -124,7 +124,7 @@ table = pd.DataFrame(
         {
             "validation_test": "ARG1998 zeta",
             "model_value": out["zeta"],
-            "reference_value": zeta_ref,
+            "comparison_value": zeta_ref,
             "relative_difference_percent": 100.0 * (out["zeta"] / zeta_ref - 1.0),
             "units": "dimensionless",
             "notes": "Published benchmark quantity",
@@ -132,7 +132,7 @@ table = pd.DataFrame(
         {
             "validation_test": "ARG1998 Smax",
             "model_value": 100.0 * out["Smax"],
-            "reference_value": 100.0 * Smax_ref_algebra,
+            "comparison_value": 100.0 * Smax_ref_algebra,
             "relative_difference_percent": 100.0
             * (out["Smax"] / Smax_ref_algebra - 1.0),
             "units": "%",
@@ -141,7 +141,7 @@ table = pd.DataFrame(
         {
             "validation_test": "ARG1998 activated fraction",
             "model_value": frac_model,
-            "reference_value": frac_ref_algebra,
+            "comparison_value": frac_ref_algebra,
             "relative_difference_percent": 100.0
             * (frac_model / frac_ref_algebra - 1.0),
             "units": "fraction",
@@ -150,7 +150,7 @@ table = pd.DataFrame(
         {
             "validation_test": "Timestep convergence: SSmax",
             "model_value": dt_coarse["SSmax_percent"],
-            "reference_value": dt_fine["SSmax_percent"],
+            "comparison_value": dt_fine["SSmax_percent"],
             "relative_difference_percent": 100.0
             * (dt_coarse["SSmax_percent"] / dt_fine["SSmax_percent"] - 1.0),
             "units": "%",
@@ -159,7 +159,7 @@ table = pd.DataFrame(
         {
             "validation_test": "Timestep convergence: t50",
             "model_value": dt_coarse["t_50pct_s"],
-            "reference_value": dt_fine["t_50pct_s"],
+            "comparison_value": dt_fine["t_50pct_s"],
             "relative_difference_percent": 100.0
             * (dt_coarse["t_50pct_s"] / dt_fine["t_50pct_s"] - 1.0),
             "units": "s",
@@ -168,7 +168,7 @@ table = pd.DataFrame(
         {
             "validation_test": "Timestep convergence: qcmax",
             "model_value": dt_coarse["qcmax_kgkg"],
-            "reference_value": dt_fine["qcmax_kgkg"],
+            "comparison_value": dt_fine["qcmax_kgkg"],
             "relative_difference_percent": 100.0
             * (dt_coarse["qcmax_kgkg"] / dt_fine["qcmax_kgkg"] - 1.0),
             "units": "kg kg^-1",
