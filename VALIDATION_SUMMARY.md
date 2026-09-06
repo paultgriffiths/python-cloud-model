@@ -182,11 +182,14 @@ Therefore, agreement in ice number concentration does not imply agreement in fro
 
 ## 10. Remaining Validation Work
 
-The principal validation experiments are now complete. Remaining work is focused on publication preparation:
+The principal validation experiments, publication figures, and quantitative summary tables are now complete and have undergone a final review of units, experiment provenance, and terminology.
 
-- preparation and refinement of publication-quality comparison figures and tables;
-- consolidation of the key quantitative validation metrics into concise publication-ready tables;
-- final review of figure labels, experiment provenance, units, and terminology to ensure that baseline and sensitivity experiments are clearly distinguished.
+Remaining work is focused on manuscript preparation and interpretation:
+
+- integrate the validated quantitative results into the Methods and Results sections;
+- develop the Discussion around the identified physical and numerical sources of model disagreement;
+- prepare final figure captions and table descriptions that clearly distinguish baseline and sensitivity experiments;
+- perform a final manuscript-level consistency check before submission.
 
 ## 11. Working Research Direction
 
