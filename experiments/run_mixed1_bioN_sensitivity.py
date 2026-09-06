@@ -5,6 +5,9 @@ from parcel_model.run_mixed_phase_maxwell_kidforcing import run
 
 os.makedirs("data", exist_ok=True)
 
+P0 = 101325.0
+Rd = 287.05
+
 bio_values = [1e3, 2.5e3, 1e4, 5e4, 1e5]
 
 results = []
@@ -36,6 +39,10 @@ for bio_N in bio_values:
 
     df = pd.read_csv(outfile)
 
+    rho_air = P0 / (Rd * df["T_K"])
+    df["qice_kgkg"] = df["qice"] / rho_air
+    df["qcloud_kgkg"] = df["qcloud"] / rho_air
+
     ice = df[df["Nice"] > 0.0]
 
     first_ice = (
@@ -44,14 +51,14 @@ for bio_N in bio_values:
         else None
     )
 
-    imax = df["qice"].idxmax()
+    imax = df["qice_kgkg"].idxmax()
 
     results.append({
         "bio_N_m3": bio_N,
         "first_ice_time_s": first_ice,
         "max_Nice_m3": df["Nice"].max(),
-        "max_qice_kgkg": df["qice"].max(),
-        "max_qcloud_kgkg": df["qcloud"].max(),
+        "max_qice_kgkg": df["qice_kgkg"].max(),
+        "max_qcloud_kgkg": df["qcloud_kgkg"].max(),
         "max_Si_percent": df["Si"].max() * 100.0,
         "max_Sw_percent": df["Sw"].max() * 100.0,
         "time_max_qice_s": df.loc[imax, "t_s"],

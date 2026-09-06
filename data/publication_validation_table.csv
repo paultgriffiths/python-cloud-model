@@ -1,0 +1,9 @@
+validation_test,model_value,comparison_value,relative_difference_percent,units,notes
+ARG1998 critical supersaturation,0.017309650180818044,0.01762,-1.7613497115888554,fraction,Abdul-Razzak et al. (1998) Figure-5 benchmark conditions
+ARG1998 eta,0.00041050075724585424,0.0004037,1.6846066994932407,dimensionless,Published benchmark quantity
+ARG1998 zeta,3.961364435751774e-06,3.966e-06,-0.11688260837685593,dimensionless,Published benchmark quantity
+ARG1998 Smax,1.7671972669683411,1.7644189955080345,0.15746098105833273,%,Model-generated versus published-parameter algebra
+ARG1998 activated fraction,0.5060127055207093,0.5003982141190985,1.1220046841083686,fraction,Model-generated versus published-parameter algebra
+Timestep convergence: SSmax,1.3658194528739804,1.36276644914125,0.22402985740179737,%,dt = 2.0 s compared with dt = 0.1 s
+Timestep convergence: t50,794.0,794.300000000112,-0.03776910488632046,s,dt = 2.0 s compared with dt = 0.1 s
+Timestep convergence: qcmax,0.0009070886556616,0.000907081092485,0.0008337927736246087,kg kg^-1,dt = 2.0 s compared with dt = 0.1 s

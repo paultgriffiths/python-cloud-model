@@ -1,0 +1,5 @@
+metric,Python_parcel_model,KiD_Thompson09,units,notes
+Maximum ice number concentration,2464.871883798142,2450.118408203125,m^-3,Matched-number sensitivity; Python bio-IN input = 2500 m^-3
+Maximum cloud ice mixing ratio,1.523914369088421e-05,6.234454730247307e-08,kg kg^-1,Python maximum at 3600 s; KiD ice maximum at 1320 s
+Maximum total frozen mixing ratio,,4.3049769260505855e-07,kg kg^-1,KiD ice + snow maximum at 1680 s
+Python max ice / KiD max total frozen,35.398897491570764,,ratio,"Maximum-to-maximum comparison, not same-time comparison"

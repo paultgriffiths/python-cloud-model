@@ -1,3 +1,3 @@
-model,time_start_s,time_end_s,integrated_net_deposition_kgkg,integrated_positive_deposition_kgkg,integrated_sublimation_kgkg,mean_deposition_kgkg_s,max_deposition_kgkg_s,min_deposition_kgkg_s
-Python,0,3600,1.5246454379417609e-05,1.5246454379417609e-05,0.0,4.2344658643413056e-09,7.0296364815982504e-09,4.091595574122049e-10
-KiD_Thompson09_z400m,0,3600,2.906967e-06,2.906967e-06,0.0,8.4845014e-10,1.861916e-09,1.2774615e-10
+model,experiment,time_start_s,time_end_s,integrated_net_deposition_kgkg,integrated_positive_deposition_kgkg,integrated_sublimation_kgkg,mean_deposition_kgkg_s,max_deposition_kgkg_s,min_deposition_kgkg_s
+Python,matched_number_bioN_2500_m-3,0,3600,1.5246454379417609e-05,1.5246454379417609e-05,0.0,4.2344658643413056e-09,7.029636481598249e-09,4.0915955741220486e-10
+KiD_Thompson09_z400m,mixed1_z400m,0,3600,2.906967e-06,2.906967e-06,0.0,8.4845014e-10,1.861916e-09,1.2774615e-10
